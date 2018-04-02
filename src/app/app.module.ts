@@ -28,39 +28,43 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {ToastModule, ToastOptions} from 'ng2-toastr/ng2-toastr';
 
+import "angular2-navigate-with-data";
+
+import {AccountManagementModule} from "./account-management/account-management.module";
+import {AccountManagementComponent} from "./account-management/account-management.component";
+
 export class CustomOption extends ToastOptions {
   animate = 'flyRight'; // you can override any options available
   newestOnTop = true;
   showCloseButton = true;
 }
 
-import { CustomFormsModule } from 'ng2-validation';
-
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ToastModule.forRoot(),
-    CustomFormsModule,
     LoginModule,
     SignupModule,
     DashboardModule,
     FormsModule,
     HttpClientModule,
+    AccountManagementModule,
 
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
+      { path: 'login/:state', component: LoginComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'signup', component: SignupComponent },
+      { path: 'account-management', component: AccountManagementComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full'},
       { path: '**', redirectTo: 'login', pathMatch: 'full'}
     ]),
-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule
@@ -68,4 +72,8 @@ import { CustomFormsModule } from 'ng2-validation';
   providers: [AuthService,  {provide: ToastOptions, useClass: CustomOption}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+
+}

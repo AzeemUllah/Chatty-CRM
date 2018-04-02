@@ -1,0 +1,56 @@
+<div class="main-wrapper">
+  <div class="account-page">
+
+    <div *ngIf="mode=='verifyEmail'" class="container">
+      <h3 class="account-title">Email Verification</h3>
+      <div class="account-box">
+        <div class="account-wrapper">
+          <div class="account-logo">
+            <a href=""><img style="" src="./../../assets/images/logo2.png" alt="Chatty CRM"></a>
+          </div>
+          <form>
+            <div style="font-size: 17px; margin-top: 50px;" class="form-group  text-center">
+              {{message}}
+            </div>
+            <div *ngIf="loginButton" class="text-center">
+              <a (click)="gotoLogin()">Try logging in? Click here!</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="mode=='resetPassword'" class="container">
+      <h3 class="account-title">Reset Password</h3>
+      <div class="account-box">
+        <div class="account-wrapper">
+          <div class="account-logo">
+            <a href=""><img style="" src="./../../assets/images/logo1.jpg" alt="Chatty CRM"></a>
+          </div>
+          <form *ngIf="!loginButton">
+              <div class="form-group form-focus">
+                <label class="control-label">Password</label>
+                <input name="password" [(ngModel)]="password" class="form-control floating" type="password">
+              </div>
+              <div class="form-group form-focus">
+                <label class="control-label">Repeat Password</label>
+                <input name="conformPassword" [(ngModel)]="conformPassword" class="form-control floating" type="password">
+              </div>
+            <div class="form-group text-center">
+              <button  class="btn btn-primary btn-block account-btn" (click)="changePassword()" type="button">Change Password</button>
+            </div>
+          </form>
+          <form  *ngIf="loginButton">
+            <div style="font-size: 17px; margin-top: 50px;" class="form-group  text-center">
+              {{messageForgotPassword}}
+            </div>
+            <div *ngIf="loginButton" class="text-center">
+              <a (click)="gotoForgotPassword()">Try forgot password again? Click here!</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

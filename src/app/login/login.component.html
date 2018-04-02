@@ -1,16 +1,16 @@
-<div class="main-wrapper">
+<div  class="main-wrapper">
   <div class="account-page">
     <div class="container">
       <h3 class="account-title">Management Login</h3>
       <div class="account-box">
         <div class="account-wrapper">
           <div class="account-logo">
-            <a href=""><img src="./../../assets/images/logo2.png" alt="Chatty CRM"></a>
+            <a href=""><img src="./../../assets/images/logo1.jpg" alt="Chatty CRM"></a>
           </div>
           <form>
             <div class="form-group form-focus">
               <label class="control-label">Email</label>
-              <input id="email" class="form-control floating"  [(ngModel)]="email" name="email" type="text">
+              <input id="email" id="form-control" class="form-control floating"  [(ngModel)]="email" name="email" type="text">
             </div>
             <div class="form-group form-focus">
               <label class="control-label">Password</label>
@@ -20,8 +20,8 @@
               <button class="btn btn-primary btn-block account-btn" type="button" (click)="submit()" >Login</button>
             </div>
             <div style="line-height: 2.5em;" class="text-center">
-              <a href="/forgot-password">Forgot your password?</a><br>
-              <a  href="/signup">Don't have an account? Signup here!</a>
+              <a (click)="gotoForgotPassword()">Forgot your password?</a><br>
+              <a  (click)="gotoSignup()" >Don't have an account? Signup here!</a>
             </div>
           </form>
         </div>

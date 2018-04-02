@@ -22,16 +22,19 @@ export class AuthService {
     this.user = firebaseAuth.authState;
   }
 
-  signup(email: string, password: string) {
+  signup(email: string, password: string):string {
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success!', value);
+        return("Done");
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
+        return(err.message);
       });
+    return("a");
   }
 
   login(email: string, password: string) {
@@ -43,6 +46,7 @@ export class AuthService {
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
+
       });
   }
 

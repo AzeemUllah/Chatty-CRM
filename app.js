@@ -6,10 +6,18 @@ const http = require('http');
 const bodyParser = require('body-parser');
 
 
+var admin = require('firebase-admin');
+
+var serviceAccount = require('./firebase-adminsdk.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://chattycrm-beta.firebaseio.com'
+});
 
 
 // Get our API routes
-const login = require('./routes/login');
+const auth = require('./routes/auth');
 
 const app = express();
 
@@ -27,13 +35,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-
+// Set our api routes
+app.use('/api/auth', auth);
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'views')));
 
-// Set our api routes
-app.use('/api/login', login);
+
 
 
 

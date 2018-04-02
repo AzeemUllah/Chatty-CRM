@@ -2,10 +2,10 @@
   <div class="account-page">
     <div class="container">
       <h3 class="account-title">Signup</h3>
-      <div class="account-box">
+      <div style="margin-bottom: 30px;" class="account-box">
         <div class="account-wrapper">
           <div class="account-logo">
-            <a href=""><img src="./../../assets/images/logo2.png" alt="Chatty CRM"></a>
+            <a href=""><img src="./../../assets/images/logo1.jpg" alt="Chatty CRM"></a>
           </div>
           <form>
             <div class="form-group form-focus">
@@ -30,7 +30,7 @@
               <button  class="btn btn-primary btn-block account-btn" (click)="submit()" type="button">Register</button>
             </div>
             <div class="text-center">
-              <a href="/login">Already have an account?</a>
+              <a (click)="gotoLogin()">Already have an account?</a>
             </div>
           </form>
         </div>
