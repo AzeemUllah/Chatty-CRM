@@ -45,9 +45,7 @@ export class AccountManagementComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.mode = params['mode'];
       this.actionCode = params['oobCode'];
-      this.windowLocation = "http://localhost:4200/"+this.location.path();
-
-      console.log(params);
+      this.windowLocation = "https://chattycrm-beta.firebaseapp.com/"+this.location.path();
 
       if(params){
         if(this.mode != null && this.mode != ''){
@@ -70,6 +68,18 @@ export class AccountManagementComponent implements OnInit {
               });
           }
         }
+        else{
+          this.router.navigateByData({
+            url: ["login"],
+            data: [{"state": "bad-account-management-link"}]
+          });
+        }
+      }
+      else{
+        this.router.navigateByData({
+          url: ["login"],
+          data: [{"state": "bad-account-management-link"}]
+        });
       }
     });
 

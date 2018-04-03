@@ -45,6 +45,9 @@ export class LoginComponent implements OnInit {
           else if (this.routeState[0]['state'] == "password-change-sucessful") {
             this.toastr.success('Your password has been reseted sucessfully. Please Login! ', 'Password Reset Sucessful!');
           }
+          else if (this.routeState[0]['state'] == "bad-account-management-link") {
+            this.toastr.warning('Invalid or bad account management link! ', 'Error!');
+          }
         }
       }
     }
@@ -91,7 +94,6 @@ export class LoginComponent implements OnInit {
             this.toastr.warning('Check your email for conformation link!', 'Verify your account!');
           }
           else {
-            console.log(data);
             this.router.navigate(['dashboard']);
           }
         })

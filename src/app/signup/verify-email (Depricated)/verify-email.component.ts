@@ -29,7 +29,7 @@ export class VerifyEmailComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      firebase.auth().signInWithEmailLink(params['email'].replace('=',''), "http://localhost:4200/"+this.location.path())
+      firebase.auth().signInWithEmailLink(params['email'].replace('=',''), "https://chattycrm-beta.firebaseapp.com/"+this.location.path())
         .then(result => {
           firebase.auth().signOut().then(() => {
             this.router.navigateByData({

@@ -47,7 +47,6 @@ export class ForgotPasswordComponent implements OnInit {
         });
       }).catch(error => {
         this.toastr.warning('You have exceded reset emails limit. Please come back later or contact admin. ', 'Stop!');
-        console.log(error);
       });
     }
   }

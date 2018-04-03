@@ -5,6 +5,7 @@ import {HeaderComponent} from "./header/header.component";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 import {MessageBoxComponent} from "./message-box/message-box.component";
 import { DashboardComponent } from './dashboard.component';
+import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 
 
 
@@ -16,7 +17,8 @@ import { DashboardComponent } from './dashboard.component';
     HeaderComponent,
     SidebarComponent,
     MessageBoxComponent,
-    DashboardComponent
+    DashboardComponent,
+    CommingSoonComponent
   ]
 })
 export class DashboardModule { }
