@@ -9,9 +9,7 @@ import {fadeInAnimation} from "./../animations/fadeIn.animation";
 @Component({
   selector: 'app-account-management',
   templateUrl: './account-management.component.html',
-  styleUrls: ['./account-management.component.css'],
-  animations: [fadeInAnimation],
-  host: { '[@fadeInAnimation]': '' }
+  styleUrls: ['./account-management.component.css']
 })
 export class AccountManagementComponent implements OnInit {
 
@@ -52,13 +50,17 @@ export class AccountManagementComponent implements OnInit {
           if(this.mode == 'verifyEmail'){
             firebase.auth().applyActionCode(this.actionCode)
               .then(result => {
-                firebase.auth().signOut().then(() => {
-                  this.router.navigateByData({
-                    url: ["login"],
-                    data: [{"state": "verify-email-sucessful"}]
+                firebase.database().ref('/users/'+firebase.auth().currentUser.uid).update({
+                  isEmailVerified: true
+                }).then(() => {
+                  firebase.auth().signOut().then(() => {
+                    this.router.navigateByData({
+                      url: ["login"],
+                      data: [{"state": "verify-email-sucessful"}]
+                    });
+                  }).catch(error => {
+                    this.toastr.warning("An unexpected error occured. Contact Admin!", 'Stop!');
                   });
-                }).catch(error => {
-                  this.toastr.warning("An unexpected error occured. Contact Admin!", 'Stop!');
                 });
               })
               .catch(error => {

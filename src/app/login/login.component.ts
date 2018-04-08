@@ -9,9 +9,8 @@ import { fadeInAnimation } from '../animations/fadeIn.animation';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  animations: [fadeInAnimation],
-  host: { '[@fadeInAnimation]': '' }
+  styleUrls: ['./login.component.css']
+
 })
 export class LoginComponent implements OnInit {
 

@@ -40,6 +40,7 @@
     "rxjs": "^5.5.6",
     "session-file-store": "^1.2.0",
     "validator": "^9.4.1",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

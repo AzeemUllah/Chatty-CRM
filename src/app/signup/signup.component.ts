@@ -10,9 +10,7 @@ import {fadeInAnimation} from "../animations/fadeIn.animation";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
-  animations: [fadeInAnimation],
-  host: { '[@fadeInAnimation]': '' }
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
 
@@ -65,8 +63,24 @@ export class SignupComponent implements OnInit {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then(value => {
           let user: any = firebase.auth().currentUser;
+          console.log(user);
           user.sendEmailVerification()
             .then(()=> {
+              firebase.database().ref('users/'+user.uid).set({
+                username: this.username,
+                email: user.email,
+                displayName: user.displayName,
+                isAdmin: false,
+                isEmailVerified: user.emailVerified,
+                createDate: user.metadata.creationTime,
+                providerDisplayName: user.providerData[0].displayName,
+                providerId: user.providerData[0].providerId,
+                providerUid: user.providerData[0].providerId,
+                providerPhotoUrl: user.providerData[0].photoURL,
+                providerPhoneNumber: user.providerData[0].phoneNumber,
+                providerEmail: user.providerData[0].email,
+              });
+              console.log(user);
             this.router.navigateByData({
               url: ["login"],
               data: [{"state": "signup-email-sucessful"}]
