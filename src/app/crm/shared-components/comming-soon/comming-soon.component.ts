@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFireAuth} from "angularfire2/auth";
-import {fadeInAnimation} from "../../animations/fadeIn.animation";
+import {fadeInAnimation} from "../../../animations/fadeIn.animation";
 
 @Component({
   selector: 'app-comming-soon',

@@ -1,0 +1,7 @@
+.bg-primary, .label-primary {
+    background-color: #1382c8;
+}
+
+.sidebar-menu li a:hover {
+    color: #1382c8;
+}

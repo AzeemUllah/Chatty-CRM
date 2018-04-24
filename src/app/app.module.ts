@@ -3,11 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 
 import { RouterModule} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
-import {DashboardComponent} from "./dashboard/dashboard.component";
 
 import { FormsModule } from '@angular/forms';
 
@@ -32,9 +30,17 @@ import "angular2-navigate-with-data";
 
 import {AccountManagementModule} from "./account-management/account-management.module";
 import {AccountManagementComponent} from "./account-management/account-management.component";
+import {CrmComponent} from "./crm/crm.component";
+import {ContactsComponent} from "./crm/main-components/contacts/contacts.component";
+import {DashboardComponent} from "./crm/main-components/dashboard/dashboard.component";
+import {CrmModule} from "./crm/crm.module";
+import {SelectModule} from 'ng2-select';
+import { DataTablesModule } from 'angular-datatables';
+import {AngularFireStorageModule} from "angularfire2/storage";
+
 
 export class CustomOption extends ToastOptions {
-  animate = 'flyRight'; // you can override any options available
+  animate = 'flyRight';
   newestOnTop = true;
   showCloseButton = true;
 }
@@ -50,24 +56,31 @@ export class CustomOption extends ToastOptions {
     ToastModule.forRoot(),
     LoginModule,
     SignupModule,
-    DashboardModule,
     FormsModule,
+    CrmModule,
     HttpClientModule,
+    SelectModule,
+    DataTablesModule,
     AccountManagementModule,
-
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'login/:state', component: LoginComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'account-management', component: AccountManagementComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full'},
+      { path: '', component: CrmComponent,
+        children: [
+          { path: '', redirectTo: 'dashboard', pathMatch: "full" },
+          { path: 'dashboard', component: DashboardComponent },
+          { path: 'contacts', component: ContactsComponent }
+        ]
+      },
       { path: '**', redirectTo: 'login', pathMatch: 'full'}
     ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [AuthService,  {provide: ToastOptions, useClass: CustomOption}],
   bootstrap: [AppComponent]
