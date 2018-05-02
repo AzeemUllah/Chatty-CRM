@@ -7,17 +7,17 @@
       </div>
       <div class="col-xs-8 text-right m-b-30">
         <a  class="btn btn-primary pull-right rounded" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add contact</a>
-        <div class="view-icons">
-          <a class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
-          <a  class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
-        </div>
+        <!--<div class="view-icons">-->
+          <!--<a class="grid-view btn btn-link"><i class="fa fa-th"></i></a>-->
+          <!--<a  class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>-->
+        <!--</div>-->
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
         <div class="">
-          <table datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
+          <table *ngIf="contactsList.length > 0" datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
             <thead>
             <tr>
               <th class="text-center">Contact Name</th>
@@ -31,23 +31,26 @@
               <th class="text-right">Action</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="tableBody">
 
-            <tr *ngFor="let contact of contactsList" class="animated fadeInUp">
-              <td  class="text-center">
-                <a  class="avatar">J</a>
-                <h2><a >{{contact.companyName}} <span>Team Leader</span></a></h2>
+            <tr *ngFor="let contact of contactsList; let i = index" class="animated fadeInUp ">
+              <td   class="text-center">
+
+                <a *ngIf="!contact.contactPicture || (contact.contactPicture).length < 0" class="avatar">{{(contact.firstName).substr(0,1)}}</a>
+                <a *ngIf="contact.contactPicture || (contact.contactPicture).length > 0" class="avatar"><img src="{{contact.contactPicture}}"></a>
+
+                <h2><a > {{contact.firstName + " " + contact.lastName}} <span></span></a></h2>
               </td>
-              <td  class="text-center">FT-0005</td>
-              <td  class="text-center">wilmerdeluna@example.com</td>
-              <td  class="text-center">9876543210</td>
-              <td  class="text-center">22 May 2014</td>
-              <td  class="text-center">22 May 2014</td>
-              <td  class="text-center">22 May 2014</td>
+              <td  class="text-center">{{contact.companyName}} </td>
+              <td  class="text-center">{{contact.phoneNumber}} </td>
+              <td  class="text-center">{{contact.mobileNumber}} </td>
+              <td  class="text-center">{{contact.primaryEmail}} </td>
+              <td  class="text-center">{{contact.lastContactDate}} </td>
+              <td  class="text-center">{{contact.contactType}} </td>
 
               <td class="text-right">
                 <a (click)="loadEdit(contact.rowId);" data-toggle="modal" style="font-size: 150%; cursor: pointer; margin-right: 10%;" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> </a>
-                <a  data-toggle="modal" style="font-size: 150%; cursor: pointer; margin-right: 10%;" data-target="#delete_employee"><i style="color: #e70000;" class="fa fa-trash-o m-r-5"></i> </a>
+                <a  (click)="loadDelete(contact.rowId);"  data-toggle="modal" style="font-size: 150%; cursor: pointer; margin-right: 10%;" data-target="#delete_employee"><i style="color: #e70000;" class="fa fa-trash-o m-r-5"></i> </a>
                 <!--<div class="dropdown">-->
                   <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
                   <!--<ul class="dropdown-menu pull-right">-->
@@ -101,7 +104,7 @@
           <form class="m-b-30">
             <div class="row">
 
-              <hr style="border: 0.5px solid #ffa351;"/>
+              <hr style="border: 0.5px solid #5cafe0;"/>
               <div class="modal-header">
                 <h4 class="modal-title">Personal Details</h4>
               </div>
@@ -113,20 +116,20 @@
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label class="control-label">Middle Name <span class="text-danger">*</span></label>
+                  <label class="control-label">Middle Name </label>
                   <input [(ngModel)]="newContact.middleName" name="middleName" class="form-control" type="text">
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label class="control-label">Last Name</label>
+                  <label class="control-label">Last Name <span class="text-danger">*</span></label>
                   <input [(ngModel)]="newContact.lastName" name="lastName"  class="form-control" type="text">
                 </div>
               </div>
 
               <div class="col-sm-2">
                 <div class="form-group">
-                  <label class="control-label">Title <span class="text-danger">*</span></label>
+                  <label class="control-label">Title </label>
                   <input  [(ngModel)]="newContact.title" name="title"  class="form-control" type="text">
                 </div>
               </div>
@@ -139,7 +142,7 @@
             </div>
             <div class="row">
               <br>
-              <hr style="border: 0.5px solid #ffa351;"/>
+              <hr style="border: 0.5px solid #5cafe0;"/>
               <div class="modal-header">
                 <h4 class="modal-title">Contact Details</h4>
               </div>
@@ -152,14 +155,14 @@
               </div>
               <div class="col-sm-2">
                 <div class="form-group">
-                  <label class="control-label"> Ext. <span class="text-danger">*</span></label>
+                  <label class="control-label"> Ext. </label>
                   <input [(ngModel)]="newContact.ext" name="ext" type="text" class="form-control">
                 </div>
               </div>
 
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label class="control-label"> Mobile Number <span class="text-danger">*</span></label>
+                  <label class="control-label"> Mobile Number </label>
                   <input [(ngModel)]="newContact.mobileNumber" name="mobileNumber" class="form-control" type="text">
                 </div>
               </div>
@@ -186,7 +189,7 @@
             </div>
             <div class="row">
               <br>
-              <hr style="border: 0.5px solid #ffa351;"/>
+              <hr style="border: 0.5px solid #5cafe0;"/>
               <div class="modal-header">
                 <h4 class="modal-title">Mailing Details</h4>
               </div>
@@ -224,7 +227,7 @@
             </div>
             <div class="row">
               <br>
-              <hr style="border: 0.5px solid #ffa351;"/>
+              <hr style="border: 0.5px solid #5cafe0;"/>
               <div class="modal-header">
                 <h4 class="modal-title">Extra Details</h4>
               </div>
@@ -249,7 +252,7 @@
 
             </div>
             <div class="m-t-20 text-center">
-              <button (click)="createContact()" class="btn btn-primary">Create Employee</button>
+              <button (click)="createContact()" class="btn btn-primary">Create Contact</button>
             </div>
           </form>
         </div>
@@ -266,7 +269,7 @@
       <div class="modal-header">
         <h4 class="modal-title" style="text-align: center;">Edit Contact</h4>
       </div>
-      <hr style="border: 0.5px solid #ffa351;"/>
+      <hr style="border: 0.5px solid #5cafe0;"/>
       <div class="modal-header">
         <h4 class="modal-title">Personal Details</h4>
       </div>
@@ -284,13 +287,13 @@
                 </div>
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <label class="control-label">Middle Name <span class="text-danger">*</span></label>
+                    <label class="control-label">Middle Name </label>
                     <input [(ngModel)]="updatedContact.middleName" name="middleName"  class="form-control" type="text">
                   </div>
                 </div>
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <label class="control-label">Last Name</label>
+                    <label class="control-label">Last Name <span class="text-danger">*</span></label>
                     <input  [(ngModel)]="updatedContact.lastName" name="lastName"  class="form-control" type="text">
                   </div>
                 </div>
@@ -318,7 +321,7 @@
               <div class="row">
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <label class="control-label">Title <span class="text-danger">*</span></label>
+                    <label class="control-label">Title </label>
                     <input [(ngModel)]="updatedContact.title" name="title"  class="form-control" type="text">
                   </div>
                 </div>
@@ -327,7 +330,8 @@
             <div class="col-md-3">
               <div class="row">
                 <div class="col-sm-12">
-                  <img src="{{url}}" class="image--cover">
+                  <img *ngIf="url.length > 0" src="{{url}}" class="image--cover">
+                  <img *ngIf="url.length <= 0" src="./../../../../assets/images/user.jpg" class="image--cover">
                 </div>
               </div>
               <div class="row">
@@ -351,7 +355,7 @@
           <br>
           <div class="row">
 
-            <hr style="border: 0.5px solid #ffa351;"/>
+            <hr style="border: 0.5px solid #5cafe0;"/>
 
             <h4 class="modal-title" style="margin-left: 10px;">Contact Details</h4>
 
@@ -363,13 +367,13 @@
             </div>
             <div class="col-sm-1">
               <div class="form-group">
-                <label class="control-label"> Ext. <span class="text-danger">*</span></label>
+                <label class="control-label"> Ext. </label>
                 <input [(ngModel)]="updatedContact.ext" name="ext"  type="text" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
-                <label class="control-label"> Mobile Number <span class="text-danger">*</span></label>
+                <label class="control-label"> Mobile Number </label>
                 <input [(ngModel)]="updatedContact.mobileNumber" name="mobileNumber"  class="form-control" type="text">
               </div>
             </div>
@@ -403,7 +407,7 @@
           <br>
           <div class="row">
 
-            <hr style="border: 0.5px solid #ffa351;"/>
+            <hr style="border: 0.5px solid #5cafe0;"/>
 
             <h4 class="modal-title" style="margin-left: 10px;">Mailing Details</h4>
 
@@ -443,7 +447,7 @@
           <br>
           <div class="row">
 
-            <hr style="border: 0.5px solid #ffa351;"/>
+            <hr style="border: 0.5px solid #5cafe0;"/>
 
             <h4 class="modal-title" style="margin-left: 10px;">Extra Details</h4>
 
@@ -502,7 +506,7 @@
           <div class="table-responsive m-t-15">
             <div class="modal-header">
 
-              <hr style="border: 0.5px solid #ffa351;"/>
+              <hr style="border: 0.5px solid #5cafe0;"/>
               <h4 class="modal-title">Contact Maintenance</h4>
             </div>
             <table class="table table-striped custom-table">
@@ -563,13 +567,13 @@
   <div class="modal-dialog">
     <div class="modal-content modal-md">
       <div class="modal-header">
-        <h4 class="modal-title">Delete Employee</h4>
+        <h4 class="modal-title">Delete Contact</h4>
       </div>
       <form>
         <div class="modal-body card-box">
           <p>Are you sure want to delete this?</p>
           <div class="m-t-20"> <a  class="btn btn-default" data-dismiss="modal">Close</a>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button (click)="deleteContact()" data-dismiss="modal" type="submit" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </form>

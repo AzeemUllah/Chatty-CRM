@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as $ from 'jquery';
 import * as firebase from 'firebase';
 import { fadeInAnimation } from '../animations/fadeIn.animation';
+import {AngularFireAuth} from "angularfire2/auth";
 
 @Component({
   selector: 'app-login',
@@ -23,11 +24,12 @@ export class LoginComponent implements OnInit {
 
   routeState: any = "";
 
-  constructor(private _activatedRoute: ActivatedRoute, public toastr: ToastsManager, vcr: ViewContainerRef, public af: AngularFireDatabase,  public router: Router ) {
+  constructor(private _activatedRoute: ActivatedRoute,private firebaseAuth: AngularFireAuth, public toastr: ToastsManager, vcr: ViewContainerRef, public af: AngularFireDatabase,  public router: Router ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
+
     this.routeState = this.router.getNavigatedData();
     if(this.routeState) {
       if(this.routeState[0]) {
@@ -46,6 +48,9 @@ export class LoginComponent implements OnInit {
           }
           else if (this.routeState[0]['state'] == "bad-account-management-link") {
             this.toastr.warning('Invalid or bad account management link! ', 'Error!');
+          }
+          else if (this.routeState[0]['state'] == "not-authenticated") {
+            this.toastr.warning('Signin Required! ', 'Error!');
           }
         }
       }
@@ -80,11 +85,46 @@ export class LoginComponent implements OnInit {
     if(this.email.length == 0){
       this.toastr.warning('Email can\'t be empty! ', 'Stop!');
     }
-    else if(!(this.regexp.test(this.email))){
-      this.toastr.warning('Email should be in proper format! ', 'Stop!');
-    }
     else if(this.password.length == 0){
       this.toastr.warning('Password can\'t be empty! ', 'Stop!');
+    }
+    else if(!(this.regexp.test(this.email))){
+        firebase.database().ref('/usernames').orderByChild("username").equalTo(this.email).on('value', (snapshot) => {
+          if(snapshot.val()){
+            if((snapshot.val()).length > 1){
+              this.toastr.warning('Two users with same username exists! Use your email address instead.', 'Error!');
+            }
+            else{
+              this.email = (snapshot.val()[Object.keys(snapshot.val())[0]]).email;
+              firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                .then(data => {
+                  if (data.emailVerified == false) {
+                    this.toastr.warning('Check your email for conformation link!', 'Verify your account!');
+                  }
+                  else {
+                    this.router.navigate(['dashboard']);
+                  }
+                })
+                .catch(error => {
+                  if (error.code == "auth/user-not-found") {
+                    this.toastr.warning('No account found for this username!', 'Error!');
+                  }
+                  else if (error.code == "auth/wrong-password") {
+                    this.toastr.warning('Either your username or password is incorrect.', 'Error!');
+                  }
+                  else {
+                    console.log(error);
+                  }
+                });
+            }
+          }
+          else{
+            this.toastr.warning('Incorrect username or password!', 'Error!');
+          }
+        }, (error)=>{
+          this.toastr.error('System Error. Call your Admininstrator!', 'Error!');
+          console.log("alpha",error);
+        });
     }
     else {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from "firebase";
+import {Router} from "@angular/router";
+import {AngularFireDatabase} from "angularfire2/database";
 
 @Component({
   selector: 'app-crm',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrmComponent implements OnInit {
 
-  constructor() { }
+  constructor(public af: AngularFireDatabase,  public router: Router) { }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user){
+
+      }
+      else{
+        this.router.navigateByData({
+          url: ["login"],
+          data: [{"state": "not-authenticated"}]
+        });
+      }
+    });
   }
 
 }

@@ -28,7 +28,7 @@ export class ContactsComponent implements OnInit {
 
   imageUrl: string = '';
   file: any;
-  url: any = "./../../../../assets/images/user.jpg";
+  url: any = "";
 
   contactType: Array<string> = [];
 
@@ -51,6 +51,7 @@ export class ContactsComponent implements OnInit {
   contactsRef: any;
 
   currentUpdateKey: string = "";
+  currentDeleteKey: string = "";
 
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
@@ -121,13 +122,15 @@ export class ContactsComponent implements OnInit {
     //   console.log(this.contactsList);
     // });
 
-    this.contactsRef.once('value', (snapshot) => {
+
+    this.contactsRef.on('value', (snapshot) => {
       //console.log(snapshot.val());
       // this.contactsList = snapshot.val();
       // snapshot.forEach((data)=>{
       //   var child = data;
       //   this.contactsList.push(child.val());
       // });
+      this.contactsList = [];
       var count = 0;
       for (var key in snapshot.val()) {
         var temp = snapshot.val()[key];
@@ -135,7 +138,19 @@ export class ContactsComponent implements OnInit {
         var lastIndex = this.contactsList.push(temp) -1;
         count++;
         if(snapshot.numChildren() == count){
-          this.dtTrigger.next();
+
+          if(!this.dtElement){
+            setTimeout(()=>{
+              this.dtTrigger.next();
+              this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+                dtInstance.destroy();
+                setTimeout(()=>{this.dtTrigger.next();});
+              });
+            });
+          }
+
+
+
         }
       }
     });
@@ -225,14 +240,6 @@ export class ContactsComponent implements OnInit {
     };
   }
 
-  deleteContact(){
-
-  }
-
-  getContact(){
-
-  }
-
   public refreshValueContactType(value:any):void {
     this.valueContactType = [];
     value.forEach((element)=> {
@@ -292,12 +299,17 @@ export class ContactsComponent implements OnInit {
       this.propertyMarketsSelected = [];
       this.propertyTypesSelected = [];
       this.url = this.updatedContact.contactPicture;
-
+      this.valueUpdateContactType = [];
+      this.valuePropertyMarkets = [];
+      this.valuePropertyTypes = [];
+      this.valueUpdatePrincipleType = '';
 
       if(this.updatedContact.contactType) {
         this.updatedContact.contactType.forEach((data) => {
           this.contactTypeSelected.push({text: data, id: data});
           this.contactTypeSelected = this.contactTypeSelected.slice();
+          this.valueUpdateContactType.push(data);
+          this.valueUpdateContactType = this.valueUpdateContactType.slice();
         });
       }
 
@@ -307,12 +319,15 @@ export class ContactsComponent implements OnInit {
           id: this.updatedContact.principleType
         });
         this.principleTypeSelected = this.principleTypeSelected.slice();
+        this.valueUpdatePrincipleType = this.updatedContact.principleType;
       }
 
       if(this.updatedContact.propertyMarkets) {
         this.updatedContact.propertyMarkets.forEach((data) => {
           this.propertyMarketsSelected.push({text: data, id: data});
           this.propertyMarketsSelected = this.propertyMarketsSelected.slice();
+          this.valuePropertyMarkets.push(data);
+          this.valuePropertyMarkets = this.valuePropertyMarkets.slice();
         });
       }
 
@@ -320,8 +335,14 @@ export class ContactsComponent implements OnInit {
         this.updatedContact.propertyTypes.forEach((data) => {
           this.propertyTypesSelected.push({text: data, id: data});
           this.propertyTypesSelected = this.propertyTypesSelected.slice();
+          this.valuePropertyTypes.push(data);
+          this.valuePropertyTypes = this.valuePropertyTypes.slice();
         });
       }
+
+
+
+
 
 
 
@@ -330,6 +351,7 @@ export class ContactsComponent implements OnInit {
   }
 
   updateContact(){
+    console.log(this.valueUpdateContactType);
     if(this.updatedContact.firstName.length <= 0){
       this.toastr.error('First Name required.', 'Error!');
     }
@@ -378,7 +400,9 @@ export class ContactsComponent implements OnInit {
     this.valueUpdateContactType = [];
     value.forEach((element)=> {
       this.valueUpdateContactType.push(element.id);
+      console.log(this.valueUpdateContactType);
     });
+
   }
 
   public refreshValueUpdatePrincipalType(value:any):void {
@@ -411,6 +435,17 @@ export class ContactsComponent implements OnInit {
     console.log(this.file);
   }
 
+  loadDelete(id){
+    this.currentDeleteKey = id;
+  }
+
+  deleteContact(){
+    this.contactsRef.child(this.currentDeleteKey).remove().then(()=>{
+      this.toastr.success('Contact deleted!.', 'Sucess!');
+    }).catch(()=>{
+      this.toastr.error('Error deleting contact!.', 'Error!');
+    });
+  }
   // rerenderDatatable(): void {
   //
   //   setTimeout(() => {

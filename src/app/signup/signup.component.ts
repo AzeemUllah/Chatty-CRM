@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import * as $ from 'jquery';
 import {Router} from "@angular/router";
 import {fadeInAnimation} from "../animations/fadeIn.animation";
+import set = Reflect.set;
 
 @Component({
   selector: 'app-signup',
@@ -21,6 +22,7 @@ export class SignupComponent implements OnInit {
   regexp: any;
 
   actionCodeSettings: any;
+
 
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private firebaseAuth: AngularFireAuth, public router: Router) {
@@ -57,41 +59,49 @@ export class SignupComponent implements OnInit {
     else if(this.conformPassword != this.password){
       this.toastr.warning('Password and Conform Password fields should have same values! ', 'Stop!');
     }
-    else if(!(this.regexp.test(this.email))){
+    else if((!(this.regexp.test(this.email)))){
       this.toastr.warning('Email should be in proper format! ', 'Stop!');
     }else{
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-        .then(value => {
-          let user: any = firebase.auth().currentUser;
-          console.log(user);
-          user.sendEmailVerification()
-            .then(()=> {
-              firebase.database().ref('users/'+user.uid).set({
-                username: this.username,
-                email: user.email,
-                displayName: user.displayName,
-                isAdmin: false,
-                isEmailVerified: user.emailVerified,
-                createDate: user.metadata.creationTime,
-                providerDisplayName: user.providerData[0].displayName,
-                providerId: user.providerData[0].providerId,
-                providerUid: user.providerData[0].providerId,
-                providerPhotoUrl: user.providerData[0].photoURL,
-                providerPhoneNumber: user.providerData[0].phoneNumber,
-                providerEmail: user.providerData[0].email,
-              });
-              console.log(user);
-            this.router.navigateByData({
-              url: ["login"],
-              data: [{"state": "signup-email-sucessful"}]
+        firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+          .then(value => {
+            let user: any = firebase.auth().currentUser;
+            console.log(user);
+            user.sendEmailVerification()
+              .then(() => {
+                firebase.database().ref('users/' + user.uid).set({
+                  username: this.username,
+                  email: user.email,
+                  displayName: user.displayName,
+                  isAdmin: false,
+                  isEmailVerified: user.emailVerified,
+                  createDate: user.metadata.creationTime,
+                  providerDisplayName: user.providerData[0].displayName,
+                  providerId: user.providerData[0].providerId,
+                  providerUid: user.providerData[0].providerId,
+                  providerPhotoUrl: user.providerData[0].photoURL,
+                  providerPhoneNumber: user.providerData[0].phoneNumber,
+                  providerEmail: user.providerData[0].email,
+                });
+
+                firebase.database().ref('usernames/' + user.uid).set({
+                  username: this.username,
+                  email: user.email,
+                });
+
+                console.log(user);
+                this.router.navigateByData({
+                  url: ["login"],
+                  data: [{"state": "signup-email-sucessful"}]
+                });
+              }).catch(error => {
+              this.toastr.warning(error, 'Stop!');
             });
-          }).catch(error=> {
-            this.toastr.warning(error, 'Stop!');
+          })
+          .catch(err => {
+            this.toastr.warning(err, 'Stop!');
           });
-        })
-        .catch(err => {
-          this.toastr.warning(err, 'Stop!');
-        });
+
+
     }
 
 

@@ -9,13 +9,12 @@
             <a href=""><img src="./../../assets/images/logo1.PNG" alt="Chatty CRM"></a>
           </div>
           <form>
-            <div class="form-group form-focus">
+
+            <div class=" form-group form-focus">
               <label class="control-label">Username</label>
               <input name="username" required [(ngModel)]="username" class="form-control floating "  type="text">
-
             </div>
-
-            <div class="form-group form-focus">
+            <div id="signupEmailDiv" class="animated form-group form-focus">
               <label class="control-label">Email</label>
               <input name="email" required [(ngModel)]="email" class="form-control floating" type="email">
             </div>
@@ -27,6 +26,7 @@
               <label class="control-label">Repeat Password</label>
               <input name="conformPassword" [(ngModel)]="conformPassword" class="form-control floating" type="password">
             </div>
+
             <div class="form-group text-center">
               <button  class="btn btn-primary btn-block account-btn" (click)="submit()" type="button">Register</button>
             </div>

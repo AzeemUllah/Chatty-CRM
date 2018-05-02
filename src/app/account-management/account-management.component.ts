@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 import * as firebase from "firebase";
 import {AngularFireAuth} from "angularfire2/auth";
 import {ToastsManager} from "ng2-toastr";
-import {fadeInAnimation} from "./../animations/fadeIn.animation";
 
 @Component({
   selector: 'app-account-management',
@@ -25,6 +24,7 @@ export class AccountManagementComponent implements OnInit {
   password: string = null;
   conformPassword: string = null;
 
+  uid:string = '';
 
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private route:ActivatedRoute, public router: Router, public location: Location, private firebaseAuth: AngularFireAuth) {
@@ -40,6 +40,12 @@ export class AccountManagementComponent implements OnInit {
   }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.uid = user.uid;
+      }
+    });
+
     this.route.queryParams.subscribe(params => {
       this.mode = params['mode'];
       this.actionCode = params['oobCode'];
@@ -50,18 +56,20 @@ export class AccountManagementComponent implements OnInit {
           if(this.mode == 'verifyEmail'){
             firebase.auth().applyActionCode(this.actionCode)
               .then(result => {
-                firebase.database().ref('/users/'+firebase.auth().currentUser.uid).update({
-                  isEmailVerified: true
-                }).then(() => {
-                  firebase.auth().signOut().then(() => {
-                    this.router.navigateByData({
-                      url: ["login"],
-                      data: [{"state": "verify-email-sucessful"}]
+                setTimeout(()=>{
+                  firebase.database().ref('/users/'+this.uid).update({
+                    isEmailVerified: true
+                  }).then(() => {
+                    firebase.auth().signOut().then(() => {
+                      this.router.navigateByData({
+                        url: ["login"],
+                        data: [{"state": "verify-email-sucessful"}]
+                      });
+                    }).catch(error => {
+                      this.toastr.warning("An unexpected error occured. Contact Admin!", 'Stop!');
                     });
-                  }).catch(error => {
-                    this.toastr.warning("An unexpected error occured. Contact Admin!", 'Stop!');
                   });
-                });
+                },1000);
               })
               .catch(error => {
                 this.message = error;
