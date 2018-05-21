@@ -11,6 +11,11 @@ import {CrmComponent} from "./crm.component";
 import {RouterModule} from "@angular/router";
 import {SelectModule} from 'ng2-select';
 import {DataTablesModule} from "angular-datatables";
+import { ContactDetailsComponent } from './main-components/contacts/contact-details/contact-details.component';
+import { ContactsListComponent } from './main-components/contacts/contacts-list/contacts-list.component';
+import { CompanyComponent } from './main-components/company/company.component';
+import { CompanyDetailsComponent } from './main-components/company/company-details/company-details.component';
+import { CompanyListComponent } from './main-components/company/company-list/company-list.component';
 
 @NgModule({
   imports: [
@@ -20,6 +25,6 @@ import {DataTablesModule} from "angular-datatables";
     SelectModule,
     DataTablesModule
   ],
-  declarations: [CrmComponent, CommingSoonComponent, HeaderComponent, MessageBoxComponent, SidebarComponent, DashboardComponent, ContactsComponent]
+  declarations: [CrmComponent, CommingSoonComponent, HeaderComponent, MessageBoxComponent, SidebarComponent, DashboardComponent, ContactsComponent, ContactDetailsComponent, ContactsListComponent, CompanyComponent, CompanyDetailsComponent, CompanyListComponent]
 })
 export class CrmModule { }

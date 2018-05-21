@@ -35,9 +35,13 @@ import {ContactsComponent} from "./crm/main-components/contacts/contacts.compone
 import {DashboardComponent} from "./crm/main-components/dashboard/dashboard.component";
 import {CrmModule} from "./crm/crm.module";
 import {SelectModule} from 'ng2-select';
-import { DataTablesModule } from 'angular-datatables';
+import {DataTablesModule} from 'angular-datatables';
 import {AngularFireStorageModule} from "angularfire2/storage";
-
+import {ContactDetailsComponent} from "./crm/main-components/contacts/contact-details/contact-details.component";
+import {ContactsListComponent} from "./crm/main-components/contacts/contacts-list/contacts-list.component";
+import {CompanyDetailsComponent} from "./crm/main-components/company/company-details/company-details.component";
+import {CompanyListComponent} from "./crm/main-components/company/company-list/company-list.component";
+import {CompanyComponent} from "./crm/main-components/company/company.component";
 
 export class CustomOption extends ToastOptions {
   animate = 'flyRight';
@@ -72,9 +76,19 @@ export class CustomOption extends ToastOptions {
         children: [
           { path: '', redirectTo: 'dashboard', pathMatch: "full" },
           { path: 'dashboard', component: DashboardComponent },
-          { path: 'contacts', component: ContactsComponent }
+          { path: 'contacts', component: ContactsComponent,  children: [
+              { path: '', component: ContactsListComponent},
+              { path: 'contact-details', component: ContactDetailsComponent}
+            ]
+          },
+          { path: 'company', component: CompanyComponent,  children: [
+            { path: '', component: CompanyListComponent},
+            { path: 'company-details', component: CompanyDetailsComponent}
+          ]
+          }
         ]
       },
+
       { path: '**', redirectTo: 'login', pathMatch: 'full'}
     ]),
     AngularFireModule.initializeApp(environment.firebase),

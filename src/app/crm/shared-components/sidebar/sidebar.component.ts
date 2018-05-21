@@ -13,7 +13,8 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router) {
     this.isActive = {
       dashboard: '',
-      contacts: ''
+      contacts: '',
+      company: ''
     }
   }
 
@@ -25,13 +26,21 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['dashboard']);
     this.isActive.dashboard = 'active';
     this.isActive.contacts = '';
+    this.isActive.company = '';
   }
 
   gotoContacts(){
     this.router.navigate(['contacts']);
     this.isActive.contacts = 'active';
     this.isActive.dashboard = '';
+    this.isActive.company = '';
+  }
 
+  gotoCompany(){
+    this.router.navigate(['company']);
+    this.isActive.company = 'active';
+    this.isActive.contacts = '';
+    this.isActive.dashboard = '';
   }
 
   activeClassAssignment(){
@@ -41,6 +50,9 @@ export class SidebarComponent implements OnInit {
     }
     else if(currentUrl == 'contacts'){
       this.isActive.contacts = 'active';
+    }
+    else if(currentUrl == 'company'){
+      this.isActive.company = 'active';
     }
   }
 

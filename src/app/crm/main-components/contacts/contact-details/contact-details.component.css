@@ -1,0 +1,26 @@
+/*ng-select{*/
+  /*width: 60%;*/
+  /*float: right;*/
+  /*margin-right: 3%;*/
+/*}*/
+.image--cover {
+  width: 130px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 20px;
+
+  object-fit: cover;
+  object-position: center right;
+}
+
+.nav-tabs.nav-tabs-bottom > li.active > a, .nav-tabs.nav-tabs-bottom > li.active > a:hover, .nav-tabs.nav-tabs-bottom > li.active > a:focus{
+  border-bottom-color: #1382c8;
+}
+
+.avatar{
+  background-color: #1382c8 !important;
+}
+
+.text-primary{
+  color: #1382c8 !important;
+}

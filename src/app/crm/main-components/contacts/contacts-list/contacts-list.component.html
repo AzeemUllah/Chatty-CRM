@@ -1,0 +1,582 @@
+
+    <div class="row">
+      <div class="col-xs-4">
+        <h4 class="page-title">Contact</h4>
+      </div>
+      <div class="col-xs-8 text-right m-b-30">
+        <a  class="btn btn-primary pull-right rounded" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add contact</a>
+        <!--<div class="view-icons">-->
+        <!--<a class="grid-view btn btn-link"><i class="fa fa-th"></i></a>-->
+        <!--<a  class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>-->
+        <!--</div>-->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="">
+          <table *ngIf="contactsList.length > 0" datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
+            <thead>
+            <tr>
+              <th class="text-center">Contact Name</th>
+              <th class="text-center">Company Name</th>
+              <th class="text-center">Phone</th>
+              <th class="text-center">Mobile</th>
+              <th class="text-center">Email</th>
+              <th class="text-center">Contact Date</th>
+              <th  class="text-center">Contact Type</th>
+
+              <th class="text-right">Action</th>
+            </tr>
+            </thead>
+            <tbody class="tableBody">
+
+            <tr *ngFor="let contact of contactsList; let i = index" class="animated fadeInUp ">
+              <td   class="text-center">
+
+                <a *ngIf="!contact.contactPicture || (contact.contactPicture).length < 0" class="avatar">{{(contact.firstName).substr(0,1)}}</a>
+                <a *ngIf="contact.contactPicture || (contact.contactPicture).length > 0" class="avatar"><img src="{{contact.contactPicture}}"></a>
+
+                <h2><a > {{contact.firstName + " " + contact.lastName}} <span></span></a></h2>
+              </td>
+              <td  class="text-center">{{contact.companyName}} </td>
+              <td  class="text-center">{{contact.phoneNumber}} </td>
+              <td  class="text-center">{{contact.mobileNumber}} </td>
+              <td  class="text-center">{{contact.primaryEmail}} </td>
+              <td  class="text-center">{{contact.lastContactDate}} </td>
+              <td  class="text-center">{{contact.contactType}} </td>
+
+              <td class="text-right" style="padding: 0;">
+                <a  (click)="gotoContactDetails(contact.rowId);"   style="font-size: 150%; cursor: pointer; margin-right: 10%;"><i style="color: #2bda61;" class="fa fa-info m-r-5"></i> </a>
+                <a  (click)="loadEdit(contact.rowId);" data-toggle="modal" style="font-size: 150%; cursor: pointer; margin-right: 10%;" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> </a>
+                <a  (click)="loadDelete(contact.rowId);"  data-toggle="modal" style="font-size: 150%; cursor: pointer; margin-right: 10%;" data-target="#delete_employee"><i style="color: #e70000;" class="fa fa-trash-o m-r-5"></i> </a>
+
+                <!--<div class="dropdown">-->
+                <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                <!--<ul class="dropdown-menu pull-right">-->
+                <!--<li><a  data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                <!--<li><a  data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                <!--</ul>-->
+                <!--</div>-->
+              </td>
+            </tr>
+            <!--<tr class="animated fadeInUp" style=" animation-delay: 0.2s;">-->
+            <!--<td  class="text-center">-->
+            <!--<a  class="avatar">J</a>-->
+            <!--<h2><a >Wilmer Deluna <span>Team Leader</span></a></h2>-->
+            <!--</td>-->
+            <!--<td  class="text-center">FT-0005</td>-->
+            <!--<td  class="text-center">wilmerdeluna@example.com</td>-->
+            <!--<td  class="text-center">9876543210</td>-->
+            <!--<td  class="text-center">22 May 2014</td>-->
+            <!--<td  class="text-center">22 May 2014</td>-->
+            <!--<td  class="text-center">22 May 2014</td>-->
+
+            <!--<td class="text-right">-->
+            <!--<div class="dropdown">-->
+            <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+            <!--<ul class="dropdown-menu pull-right">-->
+            <!--<li><a  data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+            <!--<li><a  data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div id="edit_employee" class="modal custom-modal fade" role="dialog">
+      <div class="modal-dialog">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content modal-lg">
+          <div class="modal-header">
+            <h4 class="modal-title" style="text-align: center;">Edit Contact</h4>
+          </div>
+          <hr style="border: 0.5px solid #5cafe0;"/>
+          <div class="modal-header">
+            <h4 class="modal-title">Personal Details</h4>
+          </div>
+          <div class="modal-body">
+            <form class="m-b-30">
+
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label">First Name <span class="text-danger">*</span></label>
+                        <input [(ngModel)]="updatedContact.firstName" name="firstName"  class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label">Middle Name </label>
+                        <input [(ngModel)]="updatedContact.middleName" name="middleName"  class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label">Last Name <span class="text-danger">*</span></label>
+                        <input  [(ngModel)]="updatedContact.lastName" name="lastName"  class="form-control" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label">Company Name</label>
+                        <input [(ngModel)]="updatedContact.companyName" class="form-control" name="companyName"  type="text">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label">Birthdate</label>
+                        <div class="cal-icon"><input [(ngModel)]="updatedContact.birthdate" name="birthdate" id="birthDate" class="form-control datetimepicker" type="text" ></div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label">Occupation</label>
+                        <input class="form-control"  [(ngModel)]="updatedContact.occupation" name="occupation"  type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label class="control-label">Title </label>
+                        <input [(ngModel)]="updatedContact.title" name="title"  class="form-control" type="text">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <img *ngIf="url.length > 0" src="{{url}}" class="image--cover">
+                      <img *ngIf="url.length <= 0" src="./../../../../../assets/images/user.jpg" class="image--cover">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label class="control-label">Contact Picture</label>
+                        <input class="form-control" type="file" (change)="uploadFile($event)" >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+
+
+
+
+              </div>
+              <br>
+              <div class="row">
+
+                <hr style="border: 0.5px solid #5cafe0;"/>
+
+                <h4 class="modal-title" style="margin-left: 10px;">Contact Details</h4>
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Phone Number</label>
+                    <input [(ngModel)]="updatedContact.phoneNumber" name="phoneNumber"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="form-group">
+                    <label class="control-label"> Ext. </label>
+                    <input [(ngModel)]="updatedContact.ext" name="ext"  type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label"> Mobile Number </label>
+                    <input [(ngModel)]="updatedContact.mobileNumber" name="mobileNumber"  class="form-control" type="text">
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Home Number </label>
+                    <input [(ngModel)]="updatedContact.homeNumber" name="homeNumber"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Fax Number</label>
+                    <input [(ngModel)]="updatedContact.faxNumber"  name="faxNumber"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Primary Email</label>
+                    <input [(ngModel)]="updatedContact.primaryEmail"  name="primaryEmail"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Contact Website</label>
+                    <input [(ngModel)]="updatedContact.contactWebsite" name="contactWebsite"  class="form-control" type="url">
+                  </div>
+                </div>
+              </div>
+
+              <br>
+              <div class="row">
+
+                <hr style="border: 0.5px solid #5cafe0;"/>
+
+                <h4 class="modal-title" style="margin-left: 10px;">Mailing Details</h4>
+
+
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing Street</label>
+                    <input [(ngModel)]="updatedContact.mailingStreet" name="mailingStreet"  class="form-control" type="text">
+
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing City</label>
+                    <input [(ngModel)]="updatedContact.mailingCity" name="mailingCity"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing Zip</label>
+                    <input [(ngModel)]="updatedContact.mailingZip"  name="mailingZip"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing State</label>
+                    <input [(ngModel)]="updatedContact.mailingState"  name="mailingState"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing Country</label>
+                    <input [(ngModel)]="updatedContact.mailingCountry"  name="mailingCountry"  class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+
+                <hr style="border: 0.5px solid #5cafe0;"/>
+
+                <h4 class="modal-title" style="margin-left: 10px;">Extra Details</h4>
+
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Contact Type</label>
+                    <ng-select  [multiple]="true"
+                                [items]="contactType"
+                                [active]="contactTypeSelected"
+                                (data)="refreshValueUpdateContactType($event)"
+                                placeholder="No contatct type selected"></ng-select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Property Type</label>
+                    <ng-select  [multiple]="true"
+                                [items]="propertyTypes"
+                                [active]="propertyTypesSelected"
+                                (data)="refreshValueUpdatePropertyTypes($event)"
+                                placeholder="No Property Types selected"></ng-select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Property Markets</label>
+                    <ng-select  [multiple]="true"
+                                [items]="propertyMarkets"
+                                [active]="propertyMarketsSelected"
+                                (data)="refreshValueUpdatePropertyMarkets($event)"
+                                placeholder="No Property Market selected"></ng-select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Principal Type</label>
+                    <ng-select  [multiple]="false"
+                                [items]="principleType"
+                                [active]="principleTypeSelected"
+                                (data)="refreshValueUpdatePrincipalType($event)"
+                                placeholder="No principal type selected"></ng-select>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label class="control-label">Contact Notes</label>
+                    <textarea style="width: 100%;" [(ngModel)]="updatedContact.contactNotes" name="contactNotes" rows="2" cols="80"></textarea>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="table-responsive m-t-15">
+                <div class="modal-header">
+
+                  <hr style="border: 0.5px solid #5cafe0;"/>
+                  <h4 class="modal-title">Contact Maintenance</h4>
+                </div>
+                <table class="table table-striped custom-table">
+                  <thead>
+                  <tr>
+
+                    <th class="text-center">Do Not Call</th>
+                    <th class="text-center">Email Opt Out</th>
+                    <th class="text-center">Fax Opt Out</th>
+                    <th class="text-center">Verified</th>
+                    <th class="text-center">Research</th>
+                    <th class="text-center">Newsletter</th>
+
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+
+                    <td class="text-center">
+                      <input [(ngModel)]="updatedContact.doNotCall" name="doNotCall" checked="" type="checkbox">
+                    </td>
+                    <td class="text-center">
+                      <input [(ngModel)]="updatedContact.emailOptOut" name="emailOptOut" type="checkbox">
+                    </td>
+                    <td class="text-center">
+                      <input [(ngModel)]="updatedContact.faxOptOut" name="faxOptOut" type="checkbox">
+                    </td>
+                    <td class="text-center">
+                      <input [(ngModel)]="updatedContact.verified" name="verified" type="checkbox">
+                    </td>
+                    <td class="text-center">
+                      <input [(ngModel)]="updatedContact.research" name="research" type="checkbox">
+                    </td>
+                    <td class="text-center">
+                      <input [(ngModel)]="updatedContact.newsletter" name="newsletter" type="checkbox">
+                    </td>
+                  </tr>
+
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="m-t-20 text-center">
+                <button class="btn btn-primary" (click)="updateContact()">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div id="delete_employee" style="text-align: center;" class="modal custom-modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content modal-md">
+          <div class="modal-header">
+            <h4 class="modal-title">Delete Contact</h4>
+          </div>
+          <form>
+            <div class="modal-body card-box">
+              <p>Are you sure want to delete this?</p>
+              <div class="m-t-20"> <a  class="btn btn-default" data-dismiss="modal">Close</a>
+                <button (click)="deleteContact()" data-dismiss="modal" type="submit" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="add_employee" class="modal custom-modal fade" role="dialog">
+      <div class="modal-dialog">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content modal-lg">
+          <div class="modal-header">
+            <h4 class="modal-title" style="text-align: center;">Add Contact</h4>
+          </div>
+          <div class="modal-body">
+            <form class="m-b-30">
+              <div class="row">
+
+                <hr style="border: 0.5px solid #5cafe0;"/>
+                <div class="modal-header">
+                  <h4 class="modal-title">Personal Details</h4>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label  class="control-label">First Name <span class="text-danger">*</span></label>
+                    <input [(ngModel)]="newContact.firstName" name="firstName" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Middle Name </label>
+                    <input [(ngModel)]="newContact.middleName" name="middleName" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Last Name <span class="text-danger">*</span></label>
+                    <input [(ngModel)]="newContact.lastName" name="lastName"  class="form-control" type="text">
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <label class="control-label">Title </label>
+                    <input  [(ngModel)]="newContact.title" name="title"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Company Name</label>
+                    <input [(ngModel)]="newContact.companyName" name="companyName" class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <br>
+                <hr style="border: 0.5px solid #5cafe0;"/>
+                <div class="modal-header">
+                  <h4 class="modal-title">Contact Details</h4>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Phone Number</label>
+                    <input [(ngModel)]="newContact.phoneNumber" name="phoneNumber" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <label class="control-label"> Ext. </label>
+                    <input [(ngModel)]="newContact.ext" name="ext" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label"> Mobile Number </label>
+                    <input [(ngModel)]="newContact.mobileNumber" name="mobileNumber" class="form-control" type="text">
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Home Number </label>
+                    <input [(ngModel)]="newContact.homeNumber" name="homeNumber" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Fax Number</label>
+                    <input [(ngModel)]="newContact.faxNumber" name="faxNumber" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Primary Email</label>
+                    <input [(ngModel)]="newContact.primaryEmail" name="primaryEmail" class="form-control" type="text">
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <br>
+                <hr style="border: 0.5px solid #5cafe0;"/>
+                <div class="modal-header">
+                  <h4 class="modal-title">Mailing Details</h4>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing Street</label>
+                    <input [(ngModel)]="newContact.mailingStreet" name="mailingStreet" class="form-control" type="text">
+
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing City</label>
+                    <input  [(ngModel)]="newContact.mailingCity" name="mailingCity" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing Zip</label>
+                    <input [(ngModel)]="newContact.mailingZip" name="mailingZip" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing State</label>
+                    <input  [(ngModel)]="newContact.mailingState" name="mailingState"  class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Mailing Country</label>
+                    <input  [(ngModel)]="newContact.mailingCountry" name="mailingCountry" class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <br>
+                <hr style="border: 0.5px solid #5cafe0;"/>
+                <div class="modal-header">
+                  <h4 class="modal-title">Extra Details</h4>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Contact Type</label>
+                    <ng-select  [multiple]="true"
+                                [items]="contactType"
+                                (data)="refreshValueContactType($event)"
+                                placeholder="No contatct type selected"></ng-select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Principle Type</label>
+                    <ng-select  [multiple]="false"
+                                [items]="principleType"
+                                (data)="refreshValuePrincipalType($event)"
+                                placeholder="No principal type selected"></ng-select>
+                  </div>
+                </div>
+
+              </div>
+              <div class="m-t-20 text-center">
+                <button (click)="createContact()" class="btn btn-primary">Create Contact</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+

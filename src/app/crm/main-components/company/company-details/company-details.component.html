@@ -1,0 +1,969 @@
+<app-comming-soon></app-comming-soon>
+
+
+
+<!--&lt;!&ndash;https://www.npmjs.com/package/angular-content-editable&ndash;&gt;-->
+<!--<div class="content container-fluid">-->
+  <!--<div class="row">-->
+    <!--<div class="col-sm-8">-->
+      <!--<h4 class="page-title">My Profile</h4>-->
+    <!--</div>-->
+    <!--<div class="col-sm-4 text-right m-b-30">-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="card-box m-b-0">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-12">-->
+        <!--<div class="profile-view">-->
+          <!--<div class="profile-img-wrap" style="height: 50%;">-->
+            <!--<div class="profile-img">-->
+              <!--<a >-->
+                <!--<img *ngIf="url.length > 0" src="{{url}}" class="image&#45;&#45;cover">-->
+                <!--<img *ngIf="url.length <= 0" src="./../../../../../assets/./../../../../../assets/images/user.jpg" class="image&#45;&#45;cover">-->
+              <!--</a>-->
+            <!--</div>-->
+            <!--<input style="    font-size: 8px;-->
+    <!--outline: none;-->
+    <!--border: none;" class="form-control" type="file" (change)="uploadFile($event)" >-->
+          <!--</div>-->
+          <!--<div class="profile-basic">-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-5">-->
+                <!--<div class="profile-info-left">-->
+                  <!--<h3 class="user-name m-t-0" >-->
+                    <!--<span (blur)="onBlurFirstName($event.target.innerHTML)" contenteditable="true">{{updatedContact.firstName}}</span>-->
+                    <!--<span (blur)="onBlurMiddleName($event.target.innerHTML)" contenteditable="true">{{updatedContact.middleName}}</span>-->
+                    <!--<span (blur)="onBlurLastName($event.target.innerHTML)" contenteditable="true">{{updatedContact.lastName}}</span>-->
+                  <!--</h3>-->
+                  <!--&lt;!&ndash;<h5 class="company-role m-t-0 m-b-0" ><span (blur)="onBlurCompanyName($event.target.innerHTML)" contenteditable="true">{{updatedContact.companyName}}</span></h5>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<small class="text-muted" ><span (blur)="onBlurTitle($event.target.innerHTML)" contenteditable="true">{{updatedContact.title}}</span></small>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="staff-id"><span (blur)="onBlurOccupation($event.target.innerHTML)" contenteditable="true">{{updatedContact.occupation}}</span></div>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+                  <!--<ul class="personal-info">-->
+                    <!--<li>-->
+                      <!--<span class="title">Company:</span>-->
+                      <!--<span class="text" (blur)="onBlurCompanyName($event.target.innerHTML)" contenteditable="true">{{updatedContact.companyName}}</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<span class="title">Title:</span>-->
+                      <!--<span class="text" (blur)="onBlurTitle($event.target.innerHTML)" contenteditable="true">{{updatedContact.title}}</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<span class="title">Occupation:</span>-->
+                      <!--<span class="text" (blur)="onBlurOccupation($event.target.innerHTML)" contenteditable="true">{{updatedContact.occupation}}</span>-->
+                    <!--</li>-->
+
+
+                    <!--<li>-->
+                      <!--<span class="title">Street:</span>-->
+                      <!--<span class="text" (blur)="onBlurMailingStreet($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingStreet}}</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<span class="title">City:</span>-->
+                      <!--<span class="text" (blur)="onBlurMailingCity($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingCity}}</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<span class="title">State:</span>-->
+                      <!--<span class="text" (blur)="onBlurMailingState($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingState}}</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<span class="title">Country:</span>-->
+                      <!--<span class="text" (blur)="onBlurMailingCountry($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingCountry}}</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<span class="title">Zip:</span>-->
+                      <!--<span class="text" (blur)="onBlurMailingZip($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingZip}}</span>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="col-md-7">-->
+                <!--<ul class="personal-info">-->
+                  <!--<li>-->
+                    <!--<span class="title">Ext:</span>-->
+                    <!--<span class="text" (blur)="onBlurExt($event.target.innerHTML)" contenteditable="true">{{updatedContact.ext}}</span>-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<span class="title">Phone:</span>-->
+                    <!--<span class="text" (blur)="onBlurPhoneNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.phoneNumber}}</span>-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<span class="title">Mobile:</span>-->
+                    <!--<span class="text" (blur)="onBlurMobileNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.mobileNumber}}</span>-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<span class="title">Home:</span>-->
+                    <!--<span class="text" (blur)="onBlurHomeNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.homeNumber}}</span>-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<span class="title">Fax:</span>-->
+                    <!--<span class="text" (blur)="onBlurFaxNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.faxNumber}}</span>-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<span class="title">Email:</span>-->
+                    <!--<span class="text" (blur)="onBlurPrimaryEmail($event.target.innerHTML)" contenteditable="true">{{updatedContact.primaryEmail}}</span>-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<span class="title">Website:</span>-->
+                    <!--<span class="text" (blur)="onBlurContactWebsite($event.target.innerHTML)" contenteditable="true">{{updatedContact.contactWebsite}}</span>-->
+                  <!--</li>-->
+                  <!--<li>-->
+                    <!--<span class="title" >Birthday:</span>-->
+                    <!--<span class="text" (blur)="onBlurBirthDate($event.target.innerHTML)" contenteditable="true">{{updatedContact.birthdate}}</span>-->
+                  <!--</li>-->
+
+
+
+                <!--</ul>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row" style="    margin-top: 2%;">-->
+              <!--<div class="col-md-4" style="line-height: 2.5em;">-->
+
+                <!--<span class="title" >Contact Types:</span>-->
+                <!--<span class="">-->
+                    <!--<ng-select  [multiple]="true"-->
+                                <!--[items]="contactType"-->
+                                <!--[active]="contactTypeSelected"-->
+                                <!--(data)="refreshValueUpdateContactType($event)"-->
+                                <!--placeholder="No contatct type selected"></ng-select>-->
+                      <!--</span>-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-4" style="line-height: 2.5em;">-->
+
+
+                      <!--<span class="">-->
+                        <!--<span class="title" >Property Types:</span>-->
+                      <!--<ng-select  [multiple]="true"-->
+                                  <!--[items]="propertyTypes"-->
+                                  <!--[active]="propertyTypesSelected"-->
+                                  <!--(data)="refreshValueUpdatePropertyTypes($event)"-->
+                                  <!--placeholder="No Property Types selected"></ng-select>-->
+                        <!--</span>-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-4" style="line-height: 2.5em;">-->
+
+                <!--<span class="title" >Property Markets:</span>-->
+                <!--<span class="">-->
+                      <!--<ng-select  [multiple]="true"-->
+                                  <!--[items]="propertyMarkets"-->
+                                  <!--[active]="propertyMarketsSelected"-->
+                                  <!--(data)="refreshValueUpdatePropertyMarkets($event)"-->
+                                  <!--placeholder="No Property Market selected"></ng-select>-->
+                        <!--</span>-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-4" style="line-height: 2.5em;">-->
+
+                <!--<span class="title" >Principal Types:</span>-->
+                <!--<span class="">-->
+                      <!--<ng-select  [multiple]="false"-->
+                                  <!--[items]="principleType"-->
+                                  <!--[active]="principleTypeSelected"-->
+                                  <!--(data)="refreshValueUpdatePrincipalType($event)"-->
+                                  <!--placeholder="No principal type selected"></ng-select>-->
+                        <!--</span>-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-4" style="line-height: 2.5em;">-->
+
+                <!--<span class="title" >Notes:</span>-->
+                <!--<span class="">-->
+                      <!--<textarea style="width: 100%;     line-height: 1.4em;" (blur)="onBlurContactNotes($event.target.innerHTML)" [(ngModel)]="updatedContact.contactNotes" name="contactNotes" rows="2" cols="80"></textarea>-->
+                <!--</span>-->
+              <!--</div>-->
+
+            <!--</div>-->
+
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="card-box tab-box">-->
+    <!--<div class="row user-tabs">-->
+      <!--<div class="col-lg-12 col-md-12 col-sm-12 line-tabs">-->
+        <!--<ul class="nav nav-tabs tabs nav-tabs-bottom" style="    text-align: center;">-->
+          <!--<li class="active col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#activity" >Activity</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#portfolio" >Portfolio</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#projects" >Projects</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#listing" >Listing</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#needs" >Needs</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#files">Files</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#notes" >Notes</a></li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="col-lg-12">-->
+      <!--<div class="tab-content  profile-tab-content">-->
+
+        <!--<div id="activity" class="tab-pane fade in active">-->
+          <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+              <!--<div>-->
+                <!--<div class="activity">-->
+                  <!--<div class="activity-box">-->
+                    <!--<ul class="activity-list">-->
+                      <!--<li>-->
+                        <!--<div class="activity-user">-->
+                          <!--<a  title="" data-toggle="tooltip" class="avatar" data-original-title="Lesley Grauer">-->
+                            <!--<img alt="Lesley Grauer" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">-->
+                          <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="activity-content">-->
+                          <!--<div class="timeline-content">-->
+                            <!--<a class="name">Lesley Grauer</a> added new task <a >Find 3BHK</a>-->
+                            <!--<span class="time">4 mins ago</span>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</li>-->
+                      <!--<li>-->
+                        <!--<div class="activity-user">-->
+                          <!--<a class="avatar" title="" data-toggle="tooltip" style="background-color: #ff6d00" data-original-title="Jeffery Lalor">L</a>-->
+                        <!--</div>-->
+                        <!--<div class="activity-content">-->
+                          <!--<div class="timeline-content">-->
+                            <!--<a class="name">Jeffery Lalor</a> added <a class="name">Loren Gatlin</a> and <a class="name">Tarah Shropshire</a> to project <a >Waterloo building sale</a>-->
+                            <!--<span class="time">6 mins ago</span>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</li>-->
+                      <!--<li>-->
+                        <!--<div class="activity-user">-->
+                          <!--<a title="" data-toggle="tooltip" class="avatar" data-original-title="Catherine Manseau">-->
+                            <!--<img alt="Catherine Manseau" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">-->
+                          <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="activity-content">-->
+                          <!--<div class="timeline-content">-->
+                            <!--<a class="name">Catherine Manseau</a> completed task <a >Meeting with client</a>-->
+                            <!--<span class="time">12 mins ago</span>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</li>-->
+                      <!--<li>-->
+                        <!--<div class="activity-user">-->
+                          <!--<a  title="" data-toggle="tooltip" class="avatar" data-original-title="Bernardo Galaviz">-->
+                            <!--<img alt="Bernardo Galaviz" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">-->
+                          <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="activity-content">-->
+                          <!--<div class="timeline-content">-->
+                            <!--<a class="name">Bernardo Galaviz</a> changed the task name <a >Resale of property</a>-->
+                            <!--<span class="time">1 day ago</span>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</li>-->
+                      <!--<li>-->
+                        <!--<div class="activity-user">-->
+                          <!--<a title="" data-toggle="tooltip" class="avatar" data-original-title="Mike Litorus">-->
+                            <!--<img alt="Mike Litorus" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">-->
+                          <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="activity-content">-->
+                          <!--<div class="timeline-content">-->
+                            <!--<a class="name">Mike Litorus</a> added new task <a >File tax for property</a>-->
+                            <!--<span class="time">2 days ago</span>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</li>-->
+                      <!--<li>-->
+                        <!--<div class="activity-user">-->
+                          <!--<a title="" data-toggle="tooltip" class="avatar" data-original-title="Jeffery Lalor">-->
+                            <!--<img alt="Jeffery Lalor" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">-->
+                          <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="activity-content">-->
+                          <!--<div class="timeline-content">-->
+                            <!--<a class="name">Jeffery Lalor</a> added <a class="name">Jeffrey Warden</a> and <a class="name">Bernardo Galaviz</a> to the task of <a >Tata and Birla property dispute</a>-->
+                            <!--<span class="time">7 days ago</span>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</li>-->
+                    <!--</ul>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div id="portfolio" class="tab-pane fade">-->
+          <!--<div class="row">-->
+            <!--<div class="col-lg-3 col-sm-4">-->
+              <!--<div class="card-box project-box">-->
+                <!--<div class="dropdown profile-action">-->
+                  <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                  <!--<ul class="dropdown-menu pull-right">-->
+                    <!--<li><a  data-toggle="modal" data-target="#edit_project"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                    <!--<li><a  data-toggle="modal" data-target="#delete_project"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<h4 class="project-title"><a >Property One</a></h4>-->
+                <!--<small class="block text-ellipsis m-b-15">-->
+                  <!--<span class="text-xs">1</span> <span class="text-muted">user needs partially matches, </span><br/>-->
+                  <!--<span class="text-xs">9</span> <span class="text-muted">user needs completely matches</span>-->
+                <!--</small>-->
+                <!--<p class="text-muted">Lorem Ipsum is simply dummy text of the printing and-->
+                  <!--typesetting industry. When an unknown printer took a galley of type and-->
+                  <!--scrambled it...-->
+                <!--</p>-->
+                <!--<div class="pro-deadline m-b-15">-->
+                  <!--<div class="sub-title">-->
+                    <!--Last payed tax:-->
+                  <!--</div>-->
+                  <!--<div class="text-muted">-->
+                    <!--27th of Feb, 2018-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Property owner :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Jeffery Lalor"><img src="./../../../../../assets/images/user.jpg" alt="Jeffery Lalor"></a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Clients who maybe intrested :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Doe"><img src="./../../../../../assets/images/user.jpg" alt="John Doe"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Richard Miles"><img src="./../../../../../assets/images/user.jpg" alt="Richard Miles"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Smith"><img src="./../../../../../assets/images/user.jpg" alt="John Smith"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Mike Litorus"><img src="./../../../../../assets/images/user.jpg" alt="Mike Litorus"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  class="all-users">+15</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<p class="m-b-5">Profit ratio <span class="text-success pull-right">40%</span></p>-->
+                <!--<div class="progress progress-xs m-b-0">-->
+                  <!--<div class="progress-bar progress-bar-success" role="progressbar" data-toggle="tooltip" title="" style="width: 40%" data-original-title="40%"></div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-lg-3 col-sm-4">-->
+              <!--<div class="card-box project-box">-->
+                <!--<div class="dropdown profile-action">-->
+                  <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                  <!--<ul class="dropdown-menu pull-right">-->
+                    <!--<li><a  data-toggle="modal" data-target="#edit_project"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                    <!--<li><a  data-toggle="modal" data-target="#delete_project"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<h4 class="project-title"><a >Property Two</a></h4>-->
+                <!--<small class="block text-ellipsis m-b-15">-->
+                  <!--<span class="text-xs">1</span> <span class="text-muted">user needs partially matches, </span><br/>-->
+                  <!--<span class="text-xs">9</span> <span class="text-muted">user needs completely matches</span>-->
+                <!--</small>-->
+                <!--<p class="text-muted">Lorem Ipsum is simply dummy text of the printing and-->
+                  <!--typesetting industry. When an unknown printer took a galley of type and-->
+                  <!--scrambled it...-->
+                <!--</p>-->
+                <!--<div class="pro-deadline m-b-15">-->
+                  <!--<div class="sub-title">-->
+                    <!--Last payed tax:-->
+                  <!--</div>-->
+                  <!--<div class="text-muted">-->
+                    <!--27th of Feb, 2018-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Property owner :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Jeffery Lalor"><img src="./../../../../../assets/images/user.jpg" alt="Jeffery Lalor"></a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Clients who maybe intrested :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Doe"><img src="./../../../../../assets/images/user.jpg" alt="John Doe"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Richard Miles"><img src="./../../../../../assets/images/user.jpg" alt="Richard Miles"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Smith"><img src="./../../../../../assets/images/user.jpg" alt="John Smith"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Mike Litorus"><img src="./../../../../../assets/images/user.jpg" alt="Mike Litorus"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  class="all-users">+15</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<p class="m-b-5">Profit ratio <span class="text-success pull-right">40%</span></p>-->
+                <!--<div class="progress progress-xs m-b-0">-->
+                  <!--<div class="progress-bar progress-bar-success" role="progressbar" data-toggle="tooltip" title="" style="width: 40%" data-original-title="40%"></div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-lg-3 col-sm-4">-->
+              <!--<div class="card-box project-box">-->
+                <!--<div class="dropdown profile-action">-->
+                  <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                  <!--<ul class="dropdown-menu pull-right">-->
+                    <!--<li><a  data-toggle="modal" data-target="#edit_project"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                    <!--<li><a  data-toggle="modal" data-target="#delete_project"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<h4 class="project-title"><a >Property Three</a></h4>-->
+                <!--<small class="block text-ellipsis m-b-15">-->
+                  <!--<span class="text-xs">1</span> <span class="text-muted">user needs partially matches, </span><br/>-->
+                  <!--<span class="text-xs">9</span> <span class="text-muted">user needs completely matches</span>-->
+                <!--</small>-->
+                <!--<p class="text-muted">Lorem Ipsum is simply dummy text of the printing and-->
+                  <!--typesetting industry. When an unknown printer took a galley of type and-->
+                  <!--scrambled it...-->
+                <!--</p>-->
+                <!--<div class="pro-deadline m-b-15">-->
+                  <!--<div class="sub-title">-->
+                    <!--Last payed tax:-->
+                  <!--</div>-->
+                  <!--<div class="text-muted">-->
+                    <!--27th of Feb, 2018-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Property owner :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Jeffery Lalor"><img src="./../../../../../assets/images/user.jpg" alt="Jeffery Lalor"></a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Clients who maybe intrested :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Doe"><img src="./../../../../../assets/images/user.jpg" alt="John Doe"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Richard Miles"><img src="./../../../../../assets/images/user.jpg" alt="Richard Miles"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Smith"><img src="./../../../../../assets/images/user.jpg" alt="John Smith"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Mike Litorus"><img src="./../../../../../assets/images/user.jpg" alt="Mike Litorus"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  class="all-users">+15</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<p class="m-b-5">Profit ratio <span class="text-success pull-right">40%</span></p>-->
+                <!--<div class="progress progress-xs m-b-0">-->
+                  <!--<div class="progress-bar progress-bar-success" role="progressbar" data-toggle="tooltip" title="" style="width: 40%" data-original-title="40%"></div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-lg-3 col-sm-4">-->
+              <!--<div class="card-box project-box">-->
+                <!--<div class="dropdown profile-action">-->
+                  <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                  <!--<ul class="dropdown-menu pull-right">-->
+                    <!--<li><a  data-toggle="modal" data-target="#edit_project"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                    <!--<li><a  data-toggle="modal" data-target="#delete_project"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<h4 class="project-title"><a >Property Four</a></h4>-->
+                <!--<small class="block text-ellipsis m-b-15">-->
+                  <!--<span class="text-xs">1</span> <span class="text-muted">user needs partially matches, </span><br/>-->
+                  <!--<span class="text-xs">9</span> <span class="text-muted">user needs completely matches</span>-->
+                <!--</small>-->
+                <!--<p class="text-muted">Lorem Ipsum is simply dummy text of the printing and-->
+                  <!--typesetting industry. When an unknown printer took a galley of type and-->
+                  <!--scrambled it...-->
+                <!--</p>-->
+                <!--<div class="pro-deadline m-b-15">-->
+                  <!--<div class="sub-title">-->
+                    <!--Last payed tax:-->
+                  <!--</div>-->
+                  <!--<div class="text-muted">-->
+                    <!--27th of Feb, 2018-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Property owner :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Jeffery Lalor"><img src="./../../../../../assets/images/user.jpg" alt="Jeffery Lalor"></a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="project-members m-b-15">-->
+                  <!--<div>Clients who maybe intrested :</div>-->
+                  <!--<ul class="team-members">-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Doe"><img src="./../../../../../assets/images/user.jpg" alt="John Doe"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Richard Miles"><img src="./../../../../../assets/images/user.jpg" alt="Richard Miles"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="John Smith"><img src="./../../../../../assets/images/user.jpg" alt="John Smith"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  data-toggle="tooltip" title="" data-original-title="Mike Litorus"><img src="./../../../../../assets/images/user.jpg" alt="Mike Litorus"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                      <!--<a  class="all-users">+15</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--<p class="m-b-5">Profit ratio <span class="text-success pull-right">40%</span></p>-->
+                <!--<div class="progress progress-xs m-b-0">-->
+                  <!--<div class="progress-bar progress-bar-success" role="progressbar" data-toggle="tooltip" title="" style="width: 40%" data-original-title="40%"></div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div id="projects" class="tab-pane fade">-->
+          <!--<div class="col-md-12" style="    padding: 0;">-->
+            <!--<div class="panel panel-table">-->
+
+              <!--<div class="panel-body">-->
+                <!--<div class="table-responsive">-->
+                  <!--<table class="table table-striped custom-table m-b-0">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                      <!--<th class="col-md-3">Project Name </th>-->
+                      <!--<th class="col-md-3">Progress</th>-->
+                      <!--<th class="text-right col-md-1">Action</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td>-->
+                        <!--<h2><a >Project One</a></h2>-->
+                        <!--<small class="block text-ellipsis">-->
+                          <!--<span class="text-xs">1</span> <span class="text-muted">open tasks, </span>-->
+                          <!--<span class="text-xs">9</span> <span class="text-muted">tasks completed</span>-->
+                        <!--</small>-->
+                      <!--</td>-->
+                      <!--<td>-->
+                        <!--<div class="progress progress-xs progress-striped">-->
+                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 65%" data-original-title="65%"></div>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                      <!--<td class="text-right">-->
+                        <!--<div class="dropdown">-->
+                          <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                          <!--<ul class="dropdown-menu pull-right">-->
+                            <!--<li><a  title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                            <!--<li><a  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                          <!--</ul>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>-->
+                        <!--<h2><a >Project Two</a></h2>-->
+                        <!--<small class="block text-ellipsis">-->
+                          <!--<span class="text-xs">2</span> <span class="text-muted">open tasks, </span>-->
+                          <!--<span class="text-xs">5</span> <span class="text-muted">tasks completed</span>-->
+                        <!--</small>-->
+                      <!--</td>-->
+                      <!--<td>-->
+                        <!--<div class="progress progress-xs progress-striped">-->
+                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 15%" data-original-title="15%"></div>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                      <!--<td class="text-right">-->
+                        <!--<div class="dropdown">-->
+                          <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                          <!--<ul class="dropdown-menu pull-right">-->
+                            <!--<li><a  title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                            <!--<li><a  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                          <!--</ul>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>-->
+                        <!--<h2><a >Project Three</a></h2>-->
+                        <!--<small class="block text-ellipsis">-->
+                          <!--<span class="text-xs">3</span> <span class="text-muted">open tasks, </span>-->
+                          <!--<span class="text-xs">3</span> <span class="text-muted">tasks completed</span>-->
+                        <!--</small>-->
+                      <!--</td>-->
+                      <!--<td>-->
+                        <!--<div class="progress progress-xs progress-striped">-->
+                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 49%" data-original-title="49%"></div>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                      <!--<td class="text-right">-->
+                        <!--<div class="dropdown">-->
+                          <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                          <!--<ul class="dropdown-menu pull-right">-->
+                            <!--<li><a  title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                            <!--<li><a  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                          <!--</ul>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>-->
+                        <!--<h2><a >Project Four</a></h2>-->
+                        <!--<small class="block text-ellipsis">-->
+                          <!--<span class="text-xs">12</span> <span class="text-muted">open tasks, </span>-->
+                          <!--<span class="text-xs">4</span> <span class="text-muted">tasks completed</span>-->
+                        <!--</small>-->
+                      <!--</td>-->
+                      <!--<td>-->
+                        <!--<div class="progress progress-xs progress-striped">-->
+                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 88%" data-original-title="88%"></div>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                      <!--<td class="text-right">-->
+                        <!--<div class="dropdown">-->
+                          <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                          <!--<ul class="dropdown-menu pull-right">-->
+                            <!--<li><a  title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                            <!--<li><a  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                          <!--</ul>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>-->
+                        <!--<h2><a >Project Five</a></h2>-->
+                        <!--<small class="block text-ellipsis">-->
+                          <!--<span class="text-xs">7</span> <span class="text-muted">open tasks, </span>-->
+                          <!--<span class="text-xs">14</span> <span class="text-muted">tasks completed</span>-->
+                        <!--</small>-->
+                      <!--</td>-->
+                      <!--<td>-->
+                        <!--<div class="progress progress-xs progress-striped">-->
+                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 100%" data-original-title="100%"></div>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                      <!--<td class="text-right">-->
+                        <!--<div class="dropdown">-->
+                          <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
+                          <!--<ul class="dropdown-menu pull-right">-->
+                            <!--<li><a  title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
+                            <!--<li><a  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
+                          <!--</ul>-->
+                        <!--</div>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+                <!--<a  class="text-primary">View all projects</a>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div id="listing" class="tab-pane fade">-->
+          <!--<div class="col-md-12" style="padding: 0px;">-->
+            <!--<div class="panel panel-table">-->
+
+              <!--<div class="panel-body">-->
+                <!--<div class="table-responsive">-->
+                  <!--<table class="table table-striped custom-table m-b-0">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                      <!--<th>Listing ID</th>-->
+                      <!--<th>Address</th>-->
+                      <!--<th>Date</th>-->
+                      <!--<th>Price</th>-->
+                      <!--<th>Status</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td><a >#LST-0001</a></td>-->
+                      <!--<td>-->
+                        <!--<h2><a >H#2, 21st Jump Street.</a></h2>-->
+                      <!--</td>-->
+                      <!--<td>30 Aug 201</td>-->
+                      <!--<td>$380,000</td>-->
+                      <!--<td>-->
+                        <!--<span class="label label-warning-border">BOOKED</span>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td><a >#LST-0002</a></td>-->
+                      <!--<td>-->
+                        <!--<h2><a >Appartment 21, 21st and Lex.</a></h2>-->
+                      <!--</td>-->
+                      <!--<td>17 Sep 2018</td>-->
+                      <!--<td>$500,000</td>-->
+                      <!--<td>-->
+                        <!--<span class="label label-success-border">SOLD</span>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td><a >#LST-0003</a></td>-->
+                      <!--<td>-->
+                        <!--<h2><a >Corner of 23 and Waterloo.</a></h2>-->
+                      <!--</td>-->
+                      <!--<td>30 Nov 2018</td>-->
+                      <!--<td>$600,000</td>-->
+                      <!--<td>-->
+                        <!--<span class="label label-danger-border">FOR SALE</span>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+                <!--<a class="text-primary">View all listings</a>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div id="needs" class="tab-pane fade">-->
+          <!--<div class="add-task-btn-wrapper" style="padding-bottom: 12px; float: right;">-->
+												<!--<span class="add-task-btn btn btn-default btn-xs">-->
+													<!--Add Needs-->
+												<!--</span>-->
+          <!--</div>-->
+          <!--<div class="task-wrapper" style="    padding: 0;">-->
+            <!--<div class="task-list-container">-->
+              <!--<div class="task-list-body" style="    width: 100%;">-->
+                <!--<ul id="task-list">-->
+                  <!--<li class="task">-->
+                    <!--<div class="task-container">-->
+																	<!--<span class="task-action-btn task-check">-->
+																		<!--<span class="action-circle large complete-btn" title="Mark Complete">-->
+																			<!--<i class="material-icons">check</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                      <!--<span class="task-label" contenteditable="true">West open house.</span>-->
+                      <!--<span class="task-action-btn task-btn-right">-->
+
+																		<!--<span class="action-circle large delete-btn" title="Delete Task">-->
+																			<!--<i class="material-icons">delete</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                    <!--</div>-->
+                  <!--</li>-->
+                  <!--<li class="task">-->
+                    <!--<div class="task-container">-->
+																	<!--<span class="task-action-btn task-check">-->
+																		<!--<span class="action-circle large complete-btn" title="Mark Complete">-->
+																			<!--<i class="material-icons">check</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                      <!--<span class="task-label" contenteditable="true">Italian flooring</span>-->
+                      <!--<span class="task-action-btn task-btn-right">-->
+
+																		<!--<span class="action-circle large delete-btn" title="Delete Task">-->
+																			<!--<i class="material-icons">delete</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                    <!--</div>-->
+                  <!--</li>-->
+                  <!--<li class="completed task">-->
+                    <!--<div class="task-container">-->
+																	<!--<span class="task-action-btn task-check">-->
+																		<!--<span class="action-circle large complete-btn" title="Mark Complete">-->
+																			<!--<i class="material-icons">check</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                      <!--<span class="task-label">Guest rooms</span>-->
+                      <!--<span class="task-action-btn task-btn-right">-->
+
+																		<!--<span class="action-circle large delete-btn" title="Delete Task">-->
+																			<!--<i class="material-icons">delete</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                    <!--</div>-->
+                  <!--</li>-->
+                  <!--<li class="task">-->
+                    <!--<div class="task-container">-->
+																	<!--<span class="task-action-btn task-check">-->
+																		<!--<span class="action-circle large complete-btn" title="Mark Complete">-->
+																			<!--<i class="material-icons">check</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                      <!--<span class="task-label" contenteditable="true">Three Bedrooms</span>-->
+                      <!--<span class="task-action-btn task-btn-right">-->
+
+																		<!--<span class="action-circle large delete-btn" title="Delete Task">-->
+																			<!--<i class="material-icons">delete</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                    <!--</div>-->
+                  <!--</li>-->
+                  <!--<li class="task">-->
+                    <!--<div class="task-container">-->
+																	<!--<span class="task-action-btn task-check">-->
+																		<!--<span class="action-circle large complete-btn" title="Mark Complete">-->
+																			<!--<i class="material-icons">check</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                      <!--<span class="task-label" contenteditable="true">Some other need</span>-->
+                      <!--<span class="task-action-btn task-btn-right">-->
+
+																		<!--<span class="action-circle large delete-btn" title="Delete Task">-->
+																			<!--<i class="material-icons">delete</i>-->
+																		<!--</span>-->
+																	<!--</span>-->
+                    <!--</div>-->
+                  <!--</li>-->
+
+                <!--</ul>-->
+              <!--</div>-->
+              <!--<div class="task-list-footer">-->
+                <!--<div class="new-task-wrapper">-->
+                  <!--<textarea id="new-task" placeholder="Enter new need here. . ."></textarea>-->
+                  <!--<span class="error-message hidden">You need to enter a need first</span>-->
+                  <!--<span class="add-new-task-btn btn" id="add-task">Add Need</span>-->
+                  <!--<span class="cancel-btn btn" id="close-task-panel">Close</span>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div id="files" class="tab-pane fade">-->
+          <!--<div class="panel" style="padding: 0px;">-->
+            <!--<div class="panel-body">-->
+
+              <!--<ul class="files-list">-->
+                <!--<li>-->
+                  <!--<div class="files-cont">-->
+                    <!--<div class="file-type">-->
+                      <!--<span class="files-icon"><i class="fa fa-file-pdf-o"></i></span>-->
+                    <!--</div>-->
+                    <!--<div class="files-info">-->
+                      <!--<span class="file-name text-ellipsis"><a >Some file name.xls</a></span>-->
+                      <!--<span class="file-author"><a >Norris</a></span> <span class="file-date">May 11th at 6:53 PM</span>-->
+                      <!--<div class="file-size">Size: 14.8Mb</div>-->
+                    <!--</div>-->
+                    <!--<ul class="files-action">-->
+                      <!--<li class="dropdown">-->
+                        <!--<a  class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>-->
+                        <!--<ul class="dropdown-menu">-->
+                          <!--<li><a href="javascript:void(0)">Download</a></li>-->
+                          <!--<li><a  data-toggle="modal" data-target="#share_files">Share</a></li>-->
+                          <!--<li><a href="javascript:void(0)">Delete</a></li>-->
+                        <!--</ul>-->
+                      <!--</li>-->
+                    <!--</ul>-->
+                  <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<div class="files-cont">-->
+                    <!--<div class="file-type">-->
+                      <!--<span class="files-icon"><i class="fa fa-file-pdf-o"></i></span>-->
+                    <!--</div>-->
+                    <!--<div class="files-info">-->
+                      <!--<span class="file-name text-ellipsis"><a >some other file name (demo).xls</a></span>-->
+                      <!--<span class="file-author"><a >Stevens</a></span> <span class="file-date">May 01st at 6:53 PM</span>-->
+                      <!--<div class="file-size">Size: 1.2Mb</div>-->
+                    <!--</div>-->
+                    <!--<ul class="files-action">-->
+                      <!--<li class="dropdown">-->
+                        <!--<a  class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>-->
+                        <!--<ul class="dropdown-menu">-->
+                          <!--<li><a href="javascript:void(0)">Download</a></li>-->
+                          <!--<li><a  data-toggle="modal" data-target="#share_files">Share</a></li>-->
+                        <!--</ul>-->
+                      <!--</li>-->
+                    <!--</ul>-->
+                  <!--</div>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div id="notes" class="tab-pane fade">-->
+          <!--<div class="col-md-12" style="padding: 0px;">-->
+            <!--<div class="panel panel-table">-->
+
+              <!--<div class="panel-body">-->
+                <!--<div class="table-responsive">-->
+                  <!--<table class="table table-striped custom-table m-b-0">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                      <!--<th>ID</th>-->
+                      <!--<th>Notes</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td>1</td>-->
+                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>2</td>-->
+                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>3</td>-->
+                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>4</td>-->
+                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td>5</td>-->
+                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+                <!--<a class="text-primary">View all notes</a>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+
+
+
+
+
+
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+

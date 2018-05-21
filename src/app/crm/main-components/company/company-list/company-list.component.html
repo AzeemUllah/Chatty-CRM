@@ -1,0 +1,444 @@
+
+<div class="row">
+  <div class="col-xs-4">
+    <h4 class="page-title">Company</h4>
+  </div>
+  <div class="col-xs-8 text-right m-b-30">
+    <a  class="btn btn-primary pull-right rounded" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add company</a>
+    <div class="view-icons">
+    <!--<a (click)="pivotTable('block')" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>-->
+    <!--<a (click)="pivotTable('list')" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>-->
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="">
+      <table *ngIf="companyList.length > 0 && !pivot" datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
+        <thead>
+        <tr>
+          <th class="text-center">Company Name</th>
+          <th class="text-center">Company Type</th>
+          <th class="text-center">Phone</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Investor Type</th>
+          <th class="text-center">Property Markets</th>
+          <th  class="text-center">Property Types</th>
+          <th class="text-right">Action</th>
+        </tr>
+        </thead>
+        <tbody class="tableBody">
+        <tr *ngFor="let company of companyList; let i = index" class="animated fadeInUp ">
+          <td class="text-center">
+            <a *ngIf="!company.contactPicture || (company.contactPicture).length < 0" class="avatar">{{(company.companyName).substr(0,1)}}</a>
+            <a *ngIf="company.contactPicture || (company.contactPicture).length > 0" class="avatar"><img src="{{company.contactPicture}}"></a>
+            <h2><a > {{company.companyName}} <span></span></a></h2>
+          </td>
+          <td  class="text-center">{{company.companyType}} </td>
+          <td  class="text-center">{{company.companyPhone}} </td>
+          <td  class="text-center">{{company.companyEmail}} </td>
+          <td  class="text-center">{{company.investorType}} </td>
+          <td  class="text-center">{{company.propertyMarkets}} </td>
+          <td  class="text-center">{{company.propertyTypes}} </td>
+          <td class="text-right" style="padding: 0;">
+            <a  (click)="gotoCompanyDetails(company.rowId);"   style="font-size: 150%; cursor: pointer; margin-right: 10%;"><i style="color: #2bda61;" class="fa fa-info m-r-5"></i> </a>
+            <a (click)="loadEdit(company.rowId);" data-toggle="modal" style="font-size: 150%; cursor: pointer; margin-right: 10%;" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> </a>
+            <a  (click)="loadDelete(company.rowId);"  data-toggle="modal" style="font-size: 150%; cursor: pointer; margin-right: 10%;" data-target="#delete_employee"><i style="color: #e70000;" class="fa fa-trash-o m-r-5"></i> </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+
+
+      <div  *ngIf="companyList.length > 0 && pivot"  class="row staff-grid-row">
+        <div *ngFor="let company of companyList; let i = index" class="animated fadeInUp col-md-4 col-sm-4 col-xs-6 col-lg-3">
+          <div class="profile-widget">
+            <div class="profile-img">
+              <img *ngIf="company.contactPicture.length > 0" src="{{company.contactPicture}}" class="image--cover2">
+              <img *ngIf="company.contactPicture.length < 0" src="./../../../../../assets/images/user.jpg" class="image--cover2">
+              <!--<a class="avatar">G</a>-->
+            </div>
+            <div class="dropdown profile-action">
+              <a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+              <ul class="dropdown-menu pull-right">
+                <li><a  (click)="gotoCompanyDetails(company.rowId);" style="font-size: 100%; cursor: pointer;"><i style="color: #2bda61;" class="fa fa-info m-r-5"></i> Details </a></li>
+                <li><a (click)="loadEdit(company.rowId);" data-toggle="modal" style="font-size: 100%; cursor: pointer;" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit </a></li>
+                <li><a  (click)="loadDelete(company.rowId);"  data-toggle="modal" style="font-size: 100%; cursor: pointer;" data-target="#delete_employee"><i style="color: #e70000;" class="fa fa-trash-o m-r-5"></i> Delete </a></li>
+              </ul>
+            </div>
+            <h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a >{{company.companyName}}</a></h4>
+            <h5 class="user-name m-t-10 m-b-0 text-ellipsis"><a >{{company.companyPhone}}</a></h5>
+            <div class="small text-muted">{{company.companyEmail}}</div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div id="delete_employee" style="text-align: center;" class="modal custom-modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content modal-md">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Company</h4>
+      </div>
+      <form>
+        <div class="modal-body card-box">
+          <p>Are you sure want to delete this?</p>
+          <div class="m-t-20"> <a  class="btn btn-default" data-dismiss="modal">Close</a>
+            <button (click)="deleteCompany()" data-dismiss="modal" type="submit" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="add_employee" class="modal custom-modal fade" role="dialog">
+  <div class="modal-dialog">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: center;">Add Company</h4>
+      </div>
+      <div class="modal-body">
+        <form class="m-b-30">
+          <div class="row">
+
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">General Details</h4>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label  class="control-label">Company Name <span class="text-danger">*</span></label>
+                <input [(ngModel)]="companyAddObj.companyName" name="firstName" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label  class="control-label">Company Type </label>
+                <ng-select  [multiple]="true"
+                            [items]="companyType"
+                            (data)="refreshValueCompanyType($event)"
+                            placeholder="No company type selected"></ng-select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label  class="control-label">Investor Type </label>
+                <ng-select  [multiple]="false"
+                            [items]="investorType"
+                            (data)="refreshValueInvestorType($event)"
+                            placeholder="No investor type selected"></ng-select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <br>
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">Contact Details</h4>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Phone Number</label>
+                <input [(ngModel)]="companyAddObj.companyPhone" name="phoneNumber" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label"> Company Website </label>
+                <input [(ngModel)]="companyAddObj.companyWebsite" name="mobileNumber" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Fax Number</label>
+                <input [(ngModel)]="companyAddObj.companyFax" name="faxNumber" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Comany Email</label>
+                <input [(ngModel)]="companyAddObj.companyEmail" name="primaryEmail" class="form-control" type="text">
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <br>
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">Mailing Details</h4>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing Street</label>
+                <input [(ngModel)]="companyAddObj.companyStreet" name="mailingStreet" class="form-control" type="text">
+
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing City</label>
+                <input  [(ngModel)]="companyAddObj.companyCity" name="mailingCity" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing Zip</label>
+                <input [(ngModel)]="companyAddObj.companyZip" name="mailingZip" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing State</label>
+                <input  [(ngModel)]="companyAddObj.companyState" name="mailingState"  class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing Country</label>
+                <input  [(ngModel)]="companyAddObj.companyCountry" name="mailingCountry" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <br>
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">Extra Details</h4>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Property Markets</label>
+                <ng-select  [multiple]="true"
+                            [items]="propertyMarkets"
+                            (data)="refreshValuePropertyMarkets($event)"
+                            placeholder="No property markets selected"></ng-select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Property Types</label>
+                <ng-select  [multiple]="true"
+                            [items]="propertyTypes"
+                            (data)="refreshValuePropertyTypes($event)"
+                            placeholder="No property types selected"></ng-select>
+              </div>
+            </div>
+
+            <div  class="col-sm-12">
+              <div  class="form-group">
+                <label  class="control-label">Description</label>
+                <textarea [(ngModel)]="companyAddObj.description" cols="80" name="description" rows="2" style="width: 100%;" ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="m-t-20 text-center">
+            <button (click)="addCompany()" class="btn btn-primary">Create Contact</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="edit_employee" class="modal custom-modal fade" role="dialog">
+  <div class="modal-dialog">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: center;">Edit Company</h4>
+      </div>
+      <div class="modal-body">
+        <form class="m-b-30">
+
+
+<div class="row">
+  <div class="col-md-9">
+          <div class="row">
+
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">General Details</h4>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label  class="control-label">Company Name <span class="text-danger">*</span></label>
+                <input [(ngModel)]="companyUpdateObj.companyName" name="firstName" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label  class="control-label">Company Type </label>
+                <ng-select  [multiple]="true"
+                            [items]="companyType"
+                            [active]="companyTypeSelected"
+                            (data)="refreshValueUpdateCompanyType($event)"
+                            placeholder="No company type selected"></ng-select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label  class="control-label">Investor Type </label>
+                <ng-select  [multiple]="false"
+                            [items]="investorType"
+                            [active]="investorTypeSelected"
+                            (data)="refreshValueUpdateInvestorType($event)"
+                            placeholder="No investor type selected"></ng-select>
+              </div>
+            </div>
+          </div>
+  </div>
+
+
+
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-sm-12">
+                <img *ngIf="url.length > 0" src="{{url}}" class="image--cover">
+                <img *ngIf="url.length <= 0" src="./../../../../../assets/images/user.jpg" class="image--cover">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label class="control-label">Contact Picture</label>
+                  <input class="form-control" type="file" (change)="uploadFile($event)" >
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+
+          <div class="row">
+            <br>
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">Contact Details</h4>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Phone Number</label>
+                <input [(ngModel)]="companyUpdateObj.companyPhone" name="phoneNumber" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label"> Company Website </label>
+                <input [(ngModel)]="companyUpdateObj.companyWebsite" name="mobileNumber" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Fax Number</label>
+                <input [(ngModel)]="companyUpdateObj.companyFax" name="faxNumber" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Comany Email</label>
+                <input [(ngModel)]="companyUpdateObj.companyEmail" name="primaryEmail" class="form-control" type="text">
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <br>
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">Mailing Details</h4>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing Street</label>
+                <input [(ngModel)]="companyUpdateObj.companyStreet" name="mailingStreet" class="form-control" type="text">
+
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing City</label>
+                <input  [(ngModel)]="companyUpdateObj.companyCity" name="mailingCity" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing Zip</label>
+                <input [(ngModel)]="companyUpdateObj.companyZip" name="mailingZip" class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing State</label>
+                <input  [(ngModel)]="companyUpdateObj.companyState" name="mailingState"  class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Mailing Country</label>
+                <input  [(ngModel)]="companyUpdateObj.companyCountry" name="mailingCountry" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <br>
+            <hr style="border: 0.5px solid #5cafe0;"/>
+            <div class="modal-header">
+              <h4 class="modal-title">Extra Details</h4>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Property Markets</label>
+                <ng-select  [multiple]="true"
+                            [items]="propertyMarkets"
+                            [active]="propertyMarketsSelected"
+                            (data)="refreshValueUpdatePropertyMarkets($event)"
+                            placeholder="No property markets selected"></ng-select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label">Property Types</label>
+                <ng-select  [multiple]="true"
+                            [items]="propertyTypes"
+                            [active]="propertyTypesSelected"
+                            (data)="refreshValueUpdatePropertyTypes($event)"
+                            placeholder="No property types selected"></ng-select>
+              </div>
+            </div>
+
+            <div  class="col-sm-12">
+              <div  class="form-group">
+                <label  class="control-label">Description</label>
+                <textarea [(ngModel)]="companyUpdateObj.description" cols="80" name="description" rows="2" style="width: 100%;" ></textarea>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="m-t-20 text-center">
+            <button class="btn btn-primary" (click)="updateCompany()">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
