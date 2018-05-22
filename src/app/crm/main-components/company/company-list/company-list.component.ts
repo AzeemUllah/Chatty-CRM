@@ -16,28 +16,7 @@ export class CompanyListComponent implements OnInit {
 
   companyList:Array<string> = [];
 
-  companyUpdateObj: any = {
-    'companyName': '',
-    'companyType': '',
-    'companyPhone': '',
-    'companyFax': '',
-    'companyEmail': '',
-    'companyWebsite': '',
-    'investorType': '',
-    'companyStreet': '',
-    'companyCity': '',
-    'companyZip': '',
-    'companyState': '',
-    'companyCountry': '',
-    'description': '',
-    'propertyMarkets': '',
-    'propertyTypes': '',
-    "createdBy": "",
-    "createTime": "",
-    "updatedBy": "",
-    "updateTime": "",
-    "contactPicture": ""
-  };
+  companyUpdateObj: any = {};
 
   companyAddObj: any = {};
 

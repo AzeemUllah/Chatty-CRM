@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col-xs-4">
-    <h4 class="page-title">Company</h4>
+    <h4 class="page-title">Companies</h4>
   </div>
   <div class="col-xs-8 text-right m-b-30">
     <a  class="btn btn-primary pull-right rounded" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add company</a>
@@ -33,7 +33,7 @@
           <td class="text-center">
             <a *ngIf="!company.contactPicture || (company.contactPicture).length < 0" class="avatar">{{(company.companyName).substr(0,1)}}</a>
             <a *ngIf="company.contactPicture || (company.contactPicture).length > 0" class="avatar"><img src="{{company.contactPicture}}"></a>
-            <h2><a > {{company.companyName}} <span></span></a></h2>
+            <h2><a (click)="gotoCompanyDetails(company.rowId);"> {{company.companyName}} <span></span></a></h2>
           </td>
           <td  class="text-center">{{company.companyType}} </td>
           <td  class="text-center">{{company.companyPhone}} </td>

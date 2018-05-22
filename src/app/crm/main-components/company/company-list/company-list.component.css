@@ -70,3 +70,8 @@
 table.dataTable.no-footer{
   border-bottom: none;
 }
+
+
+table.table td h2 a:hover {
+  color: #429fd7;
+}

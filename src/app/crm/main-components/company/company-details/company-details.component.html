@@ -1,7 +1,5 @@
 <app-comming-soon></app-comming-soon>
 
-
-
 <!--&lt;!&ndash;https://www.npmjs.com/package/angular-content-editable&ndash;&gt;-->
 <!--<div class="content container-fluid">-->
   <!--<div class="row">-->
@@ -19,7 +17,7 @@
             <!--<div class="profile-img">-->
               <!--<a >-->
                 <!--<img *ngIf="url.length > 0" src="{{url}}" class="image&#45;&#45;cover">-->
-                <!--<img *ngIf="url.length <= 0" src="./../../../../../assets/./../../../../../assets/images/user.jpg" class="image&#45;&#45;cover">-->
+                <!--<img *ngIf="url.length <= 0" src="./../../../../../assets/images/user.jpg" class="image&#45;&#45;cover">-->
               <!--</a>-->
             <!--</div>-->
             <!--<input style="    font-size: 8px;-->
@@ -31,9 +29,7 @@
               <!--<div class="col-md-5">-->
                 <!--<div class="profile-info-left">-->
                   <!--<h3 class="user-name m-t-0" >-->
-                    <!--<span (blur)="onBlurFirstName($event.target.innerHTML)" contenteditable="true">{{updatedContact.firstName}}</span>-->
-                    <!--<span (blur)="onBlurMiddleName($event.target.innerHTML)" contenteditable="true">{{updatedContact.middleName}}</span>-->
-                    <!--<span (blur)="onBlurLastName($event.target.innerHTML)" contenteditable="true">{{updatedContact.lastName}}</span>-->
+                    <!--<span (blur)="onBlurCompanyName($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyName}}</span>-->
                   <!--</h3>-->
                   <!--&lt;!&ndash;<h5 class="company-role m-t-0 m-b-0" ><span (blur)="onBlurCompanyName($event.target.innerHTML)" contenteditable="true">{{updatedContact.companyName}}</span></h5>&ndash;&gt;-->
                   <!--&lt;!&ndash;<small class="text-muted" ><span (blur)="onBlurTitle($event.target.innerHTML)" contenteditable="true">{{updatedContact.title}}</span></small>&ndash;&gt;-->
@@ -42,38 +38,24 @@
                   <!--&lt;!&ndash;<br/>&ndash;&gt;-->
                   <!--<ul class="personal-info">-->
                     <!--<li>-->
-                      <!--<span class="title">Company:</span>-->
-                      <!--<span class="text" (blur)="onBlurCompanyName($event.target.innerHTML)" contenteditable="true">{{updatedContact.companyName}}</span>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                      <!--<span class="title">Title:</span>-->
-                      <!--<span class="text" (blur)="onBlurTitle($event.target.innerHTML)" contenteditable="true">{{updatedContact.title}}</span>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                      <!--<span class="title">Occupation:</span>-->
-                      <!--<span class="text" (blur)="onBlurOccupation($event.target.innerHTML)" contenteditable="true">{{updatedContact.occupation}}</span>-->
-                    <!--</li>-->
-
-
-                    <!--<li>-->
                       <!--<span class="title">Street:</span>-->
-                      <!--<span class="text" (blur)="onBlurMailingStreet($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingStreet}}</span>-->
+                      <!--<span class="text" (blur)="onBlurCompanyStreet($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyStreet}}</span>-->
                     <!--</li>-->
                     <!--<li>-->
                       <!--<span class="title">City:</span>-->
-                      <!--<span class="text" (blur)="onBlurMailingCity($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingCity}}</span>-->
+                      <!--<span class="text" (blur)="onBlurCompanyCity($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyCity}}</span>-->
                     <!--</li>-->
                     <!--<li>-->
                       <!--<span class="title">State:</span>-->
-                      <!--<span class="text" (blur)="onBlurMailingState($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingState}}</span>-->
+                      <!--<span class="text" (blur)="onBlurCompanyState($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyState}}</span>-->
                     <!--</li>-->
                     <!--<li>-->
                       <!--<span class="title">Country:</span>-->
-                      <!--<span class="text" (blur)="onBlurMailingCountry($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingCountry}}</span>-->
+                      <!--<span class="text" (blur)="onBlurCompanyCountry($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyCountry}}</span>-->
                     <!--</li>-->
                     <!--<li>-->
                       <!--<span class="title">Zip:</span>-->
-                      <!--<span class="text" (blur)="onBlurMailingZip($event.target.innerHTML)" contenteditable="true">{{updatedContact.mailingZip}}</span>-->
+                      <!--<span class="text" (blur)="onBlurCompanyZip($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyZip}}</span>-->
                     <!--</li>-->
                   <!--</ul>-->
 
@@ -82,39 +64,21 @@
               <!--<div class="col-md-7">-->
                 <!--<ul class="personal-info">-->
                   <!--<li>-->
-                    <!--<span class="title">Ext:</span>-->
-                    <!--<span class="text" (blur)="onBlurExt($event.target.innerHTML)" contenteditable="true">{{updatedContact.ext}}</span>-->
-                  <!--</li>-->
-                  <!--<li>-->
                     <!--<span class="title">Phone:</span>-->
-                    <!--<span class="text" (blur)="onBlurPhoneNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.phoneNumber}}</span>-->
-                  <!--</li>-->
-                  <!--<li>-->
-                    <!--<span class="title">Mobile:</span>-->
-                    <!--<span class="text" (blur)="onBlurMobileNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.mobileNumber}}</span>-->
-                  <!--</li>-->
-                  <!--<li>-->
-                    <!--<span class="title">Home:</span>-->
-                    <!--<span class="text" (blur)="onBlurHomeNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.homeNumber}}</span>-->
+                    <!--<span class="text" (blur)="onBlurCompanyPhone($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyPhone}}</span>-->
                   <!--</li>-->
                   <!--<li>-->
                     <!--<span class="title">Fax:</span>-->
-                    <!--<span class="text" (blur)="onBlurFaxNumber($event.target.innerHTML)" contenteditable="true">{{updatedContact.faxNumber}}</span>-->
+                    <!--<span class="text" (blur)="onBlurCompanyFax($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyFax}}</span>-->
                   <!--</li>-->
                   <!--<li>-->
                     <!--<span class="title">Email:</span>-->
-                    <!--<span class="text" (blur)="onBlurPrimaryEmail($event.target.innerHTML)" contenteditable="true">{{updatedContact.primaryEmail}}</span>-->
+                    <!--<span class="text" (blur)="onBlurCompanyEmail($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyEmail}}</span>-->
                   <!--</li>-->
                   <!--<li>-->
                     <!--<span class="title">Website:</span>-->
-                    <!--<span class="text" (blur)="onBlurContactWebsite($event.target.innerHTML)" contenteditable="true">{{updatedContact.contactWebsite}}</span>-->
+                    <!--<span class="text" (blur)="onBlurCompanyWebsite($event.target.innerHTML)" contenteditable="true">{{companyUpdateObj.companyWebsite}}</span>-->
                   <!--</li>-->
-                  <!--<li>-->
-                    <!--<span class="title" >Birthday:</span>-->
-                    <!--<span class="text" (blur)="onBlurBirthDate($event.target.innerHTML)" contenteditable="true">{{updatedContact.birthdate}}</span>-->
-                  <!--</li>-->
-
-
 
                 <!--</ul>-->
               <!--</div>-->
@@ -123,13 +87,13 @@
             <!--<div class="row" style="    margin-top: 2%;">-->
               <!--<div class="col-md-4" style="line-height: 2.5em;">-->
 
-                <!--<span class="title" >Contact Types:</span>-->
+                <!--<span class="title" >Company Type:</span>-->
                 <!--<span class="">-->
                     <!--<ng-select  [multiple]="true"-->
-                                <!--[items]="contactType"-->
-                                <!--[active]="contactTypeSelected"-->
-                                <!--(data)="refreshValueUpdateContactType($event)"-->
-                                <!--placeholder="No contatct type selected"></ng-select>-->
+                                <!--[items]="companyType"-->
+                                <!--[active]="companyTypeSelected"-->
+                                <!--(data)="refreshValueUpdateCompanyType($event)"-->
+                                <!--placeholder="No company type selected"></ng-select>-->
                       <!--</span>-->
 
               <!--</div>-->
@@ -138,24 +102,24 @@
 
 
                       <!--<span class="">-->
-                        <!--<span class="title" >Property Types:</span>-->
+                        <!--<span class="title" >Property Markets:</span>-->
                       <!--<ng-select  [multiple]="true"-->
-                                  <!--[items]="propertyTypes"-->
-                                  <!--[active]="propertyTypesSelected"-->
-                                  <!--(data)="refreshValueUpdatePropertyTypes($event)"-->
-                                  <!--placeholder="No Property Types selected"></ng-select>-->
+                                  <!--[items]="propertyMarkets"-->
+                                  <!--[active]="propertyMarketsSelected"-->
+                                  <!--(data)="refreshValueUpdatePropertyMarkets($event)"-->
+                                  <!--placeholder="No Property Markets selected"></ng-select>-->
                         <!--</span>-->
 
               <!--</div>-->
 
               <!--<div class="col-md-4" style="line-height: 2.5em;">-->
 
-                <!--<span class="title" >Property Markets:</span>-->
+                <!--<span class="title" >Property Types:</span>-->
                 <!--<span class="">-->
                       <!--<ng-select  [multiple]="true"-->
-                                  <!--[items]="propertyMarkets"-->
-                                  <!--[active]="propertyMarketsSelected"-->
-                                  <!--(data)="refreshValueUpdatePropertyMarkets($event)"-->
+                                  <!--[items]="propertyTypes"-->
+                                  <!--[active]="propertyTypesSelected"-->
+                                  <!--(data)="refreshValueUpdatePropertyTypes($event)"-->
                                   <!--placeholder="No Property Market selected"></ng-select>-->
                         <!--</span>-->
 
@@ -163,13 +127,13 @@
 
               <!--<div class="col-md-4" style="line-height: 2.5em;">-->
 
-                <!--<span class="title" >Principal Types:</span>-->
+                <!--<span class="title" >Investor Types:</span>-->
                 <!--<span class="">-->
                       <!--<ng-select  [multiple]="false"-->
-                                  <!--[items]="principleType"-->
-                                  <!--[active]="principleTypeSelected"-->
-                                  <!--(data)="refreshValueUpdatePrincipalType($event)"-->
-                                  <!--placeholder="No principal type selected"></ng-select>-->
+                                  <!--[items]="investorType"-->
+                                  <!--[active]="investorTypeSelected"-->
+                                  <!--(data)="refreshValueUpdateInvestorType($event)"-->
+                                  <!--placeholder="No investor type selected"></ng-select>-->
                         <!--</span>-->
 
               <!--</div>-->
@@ -178,7 +142,7 @@
 
                 <!--<span class="title" >Notes:</span>-->
                 <!--<span class="">-->
-                      <!--<textarea style="width: 100%;     line-height: 1.4em;" (blur)="onBlurContactNotes($event.target.innerHTML)" [(ngModel)]="updatedContact.contactNotes" name="contactNotes" rows="2" cols="80"></textarea>-->
+                      <!--<textarea style="width: 100%;     line-height: 1.4em;" (blur)="onBlurDescription($event.target.innerHTML)" [(ngModel)]="companyUpdateObj.description" name="contactNotes" rows="2" cols="80"></textarea>-->
                 <!--</span>-->
               <!--</div>-->
 
@@ -195,11 +159,11 @@
         <!--<ul class="nav nav-tabs tabs nav-tabs-bottom" style="    text-align: center;">-->
           <!--<li class="active col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#activity" >Activity</a></li>-->
           <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#portfolio" >Portfolio</a></li>-->
-          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#projects" >Projects</a></li>-->
-          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#listing" >Listing</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#projects" >Groups</a></li>-->
+          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#listing" >Proposals</a></li>-->
           <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#needs" >Needs</a></li>-->
           <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#files">Files</a></li>-->
-          <!--<li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#notes" >Notes</a></li>-->
+
         <!--</ul>-->
       <!--</div>-->
     <!--</div>-->
@@ -556,24 +520,21 @@
                   <!--<table class="table table-striped custom-table m-b-0">-->
                     <!--<thead>-->
                     <!--<tr>-->
-                      <!--<th class="col-md-3">Project Name </th>-->
-                      <!--<th class="col-md-3">Progress</th>-->
+                      <!--<th class="col-md-3">Group Name </th>-->
+                      <!--<th class="col-md-3">Details</th>-->
                       <!--<th class="text-right col-md-1">Action</th>-->
                     <!--</tr>-->
                     <!--</thead>-->
                     <!--<tbody>-->
                     <!--<tr>-->
                       <!--<td>-->
-                        <!--<h2><a >Project One</a></h2>-->
+                        <!--<h2><a >Daily Newsletter</a></h2>-->
                         <!--<small class="block text-ellipsis">-->
-                          <!--<span class="text-xs">1</span> <span class="text-muted">open tasks, </span>-->
-                          <!--<span class="text-xs">9</span> <span class="text-muted">tasks completed</span>-->
+                          <!--<span class="text-xs">1</span> <span class="text-muted">members subscribed </span>-->
                         <!--</small>-->
                       <!--</td>-->
                       <!--<td>-->
-                        <!--<div class="progress progress-xs progress-striped">-->
-                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 65%" data-original-title="65%"></div>-->
-                        <!--</div>-->
+                        <!--Some description about this group to give you an idea about what its really about.-->
                       <!--</td>-->
                       <!--<td class="text-right">-->
                         <!--<div class="dropdown">-->
@@ -587,16 +548,13 @@
                     <!--</tr>-->
                     <!--<tr>-->
                       <!--<td>-->
-                        <!--<h2><a >Project Two</a></h2>-->
+                        <!--<h2><a >Monthly Magzine</a></h2>-->
                         <!--<small class="block text-ellipsis">-->
-                          <!--<span class="text-xs">2</span> <span class="text-muted">open tasks, </span>-->
-                          <!--<span class="text-xs">5</span> <span class="text-muted">tasks completed</span>-->
+                          <!--<span class="text-xs">2</span> <span class="text-muted">members subscribed </span>-->
                         <!--</small>-->
                       <!--</td>-->
                       <!--<td>-->
-                        <!--<div class="progress progress-xs progress-striped">-->
-                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 15%" data-original-title="15%"></div>-->
-                        <!--</div>-->
+                        <!--Some description about this group to give you an idea about what its really about.-->
                       <!--</td>-->
                       <!--<td class="text-right">-->
                         <!--<div class="dropdown">-->
@@ -610,16 +568,13 @@
                     <!--</tr>-->
                     <!--<tr>-->
                       <!--<td>-->
-                        <!--<h2><a >Project Three</a></h2>-->
+                        <!--<h2><a >Anual Magzine</a></h2>-->
                         <!--<small class="block text-ellipsis">-->
-                          <!--<span class="text-xs">3</span> <span class="text-muted">open tasks, </span>-->
-                          <!--<span class="text-xs">3</span> <span class="text-muted">tasks completed</span>-->
+                          <!--<span class="text-xs">2</span> <span class="text-muted">members subscribed </span>-->
                         <!--</small>-->
                       <!--</td>-->
                       <!--<td>-->
-                        <!--<div class="progress progress-xs progress-striped">-->
-                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 49%" data-original-title="49%"></div>-->
-                        <!--</div>-->
+                        <!--Some description about this group to give you an idea about what its really about.-->
                       <!--</td>-->
                       <!--<td class="text-right">-->
                         <!--<div class="dropdown">-->
@@ -631,58 +586,13 @@
                         <!--</div>-->
                       <!--</td>-->
                     <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>-->
-                        <!--<h2><a >Project Four</a></h2>-->
-                        <!--<small class="block text-ellipsis">-->
-                          <!--<span class="text-xs">12</span> <span class="text-muted">open tasks, </span>-->
-                          <!--<span class="text-xs">4</span> <span class="text-muted">tasks completed</span>-->
-                        <!--</small>-->
-                      <!--</td>-->
-                      <!--<td>-->
-                        <!--<div class="progress progress-xs progress-striped">-->
-                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 88%" data-original-title="88%"></div>-->
-                        <!--</div>-->
-                      <!--</td>-->
-                      <!--<td class="text-right">-->
-                        <!--<div class="dropdown">-->
-                          <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
-                          <!--<ul class="dropdown-menu pull-right">-->
-                            <!--<li><a  title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
-                            <!--<li><a  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
-                          <!--</ul>-->
-                        <!--</div>-->
-                      <!--</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>-->
-                        <!--<h2><a >Project Five</a></h2>-->
-                        <!--<small class="block text-ellipsis">-->
-                          <!--<span class="text-xs">7</span> <span class="text-muted">open tasks, </span>-->
-                          <!--<span class="text-xs">14</span> <span class="text-muted">tasks completed</span>-->
-                        <!--</small>-->
-                      <!--</td>-->
-                      <!--<td>-->
-                        <!--<div class="progress progress-xs progress-striped">-->
-                          <!--<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="" style="width: 100%" data-original-title="100%"></div>-->
-                        <!--</div>-->
-                      <!--</td>-->
-                      <!--<td class="text-right">-->
-                        <!--<div class="dropdown">-->
-                          <!--<a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>-->
-                          <!--<ul class="dropdown-menu pull-right">-->
-                            <!--<li><a  title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>-->
-                            <!--<li><a  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>-->
-                          <!--</ul>-->
-                        <!--</div>-->
-                      <!--</td>-->
-                    <!--</tr>-->
+
                     <!--</tbody>-->
                   <!--</table>-->
                 <!--</div>-->
               <!--</div>-->
               <!--<div class="panel-footer">-->
-                <!--<a  class="text-primary">View all projects</a>-->
+                <!--<a  class="text-primary">View all groups</a>-->
               <!--</div>-->
             <!--</div>-->
           <!--</div>-->
@@ -697,45 +607,42 @@
                   <!--<table class="table table-striped custom-table m-b-0">-->
                     <!--<thead>-->
                     <!--<tr>-->
-                      <!--<th>Listing ID</th>-->
-                      <!--<th>Address</th>-->
+                      <!--<th>Proposal ID</th>-->
+                      <!--<th>Subject</th>-->
                       <!--<th>Date</th>-->
-                      <!--<th>Price</th>-->
+
                       <!--<th>Status</th>-->
                     <!--</tr>-->
                     <!--</thead>-->
                     <!--<tbody>-->
                     <!--<tr>-->
-                      <!--<td><a >#LST-0001</a></td>-->
+                      <!--<td><a >#PRO-0001</a></td>-->
                       <!--<td>-->
-                        <!--<h2><a >H#2, 21st Jump Street.</a></h2>-->
+                        <!--<h2><a >Purchase at 10% less price.</a></h2>-->
                       <!--</td>-->
-                      <!--<td>30 Aug 201</td>-->
-                      <!--<td>$380,000</td>-->
+                      <!--<td>30 Aug 2018</td>-->
                       <!--<td>-->
-                        <!--<span class="label label-warning-border">BOOKED</span>-->
+                        <!--<span class="label label-warning-border">Pending</span>-->
                       <!--</td>-->
                     <!--</tr>-->
                     <!--<tr>-->
-                      <!--<td><a >#LST-0002</a></td>-->
+                      <!--<td><a >#PRO-0002</a></td>-->
                       <!--<td>-->
-                        <!--<h2><a >Appartment 21, 21st and Lex.</a></h2>-->
+                        <!--<h2><a >Corner building, west open.</a></h2>-->
                       <!--</td>-->
                       <!--<td>17 Sep 2018</td>-->
-                      <!--<td>$500,000</td>-->
                       <!--<td>-->
-                        <!--<span class="label label-success-border">SOLD</span>-->
+                        <!--<span class="label label-success-border">Accepted</span>-->
                       <!--</td>-->
                     <!--</tr>-->
                     <!--<tr>-->
                       <!--<td><a >#LST-0003</a></td>-->
                       <!--<td>-->
-                        <!--<h2><a >Corner of 23 and Waterloo.</a></h2>-->
+                        <!--<h2><a >On lease property discount offer.</a></h2>-->
                       <!--</td>-->
                       <!--<td>30 Nov 2018</td>-->
-                      <!--<td>$600,000</td>-->
                       <!--<td>-->
-                        <!--<span class="label label-danger-border">FOR SALE</span>-->
+                        <!--<span class="label label-danger-border">Rejected</span>-->
                       <!--</td>-->
                     <!--</tr>-->
                     <!--</tbody>-->
@@ -743,7 +650,7 @@
                 <!--</div>-->
               <!--</div>-->
               <!--<div class="panel-footer">-->
-                <!--<a class="text-primary">View all listings</a>-->
+                <!--<a class="text-primary">View all proposals</a>-->
               <!--</div>-->
             <!--</div>-->
           <!--</div>-->
@@ -908,53 +815,6 @@
             <!--</div>-->
           <!--</div>-->
         <!--</div>-->
-
-
-        <!--<div id="notes" class="tab-pane fade">-->
-          <!--<div class="col-md-12" style="padding: 0px;">-->
-            <!--<div class="panel panel-table">-->
-
-              <!--<div class="panel-body">-->
-                <!--<div class="table-responsive">-->
-                  <!--<table class="table table-striped custom-table m-b-0">-->
-                    <!--<thead>-->
-                    <!--<tr>-->
-                      <!--<th>ID</th>-->
-                      <!--<th>Notes</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--<tr>-->
-                      <!--<td>1</td>-->
-                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>2</td>-->
-                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>3</td>-->
-                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>4</td>-->
-                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                      <!--<td>5</td>-->
-                      <!--<td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                  <!--</table>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="panel-footer">-->
-                <!--<a class="text-primary">View all notes</a>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-
 
 
 
