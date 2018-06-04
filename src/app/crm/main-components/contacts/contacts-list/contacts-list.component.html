@@ -5,17 +5,17 @@
       </div>
       <div class="col-xs-8 text-right m-b-30">
         <a  class="btn btn-primary pull-right rounded" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add contact</a>
-        <!--<div class="view-icons">-->
-        <!--<a class="grid-view btn btn-link"><i class="fa fa-th"></i></a>-->
-        <!--<a  class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>-->
-        <!--</div>-->
+        <div class="view-icons">
+          <a (click)="pivotTable('block')" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
+          <a (click)="pivotTable('list')" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
+        </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
         <div class="">
-          <table *ngIf="contactsList.length > 0" datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
+          <table *ngIf="contactsList.length > 0 && !pivot" datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
             <thead>
             <tr>
               <th class="text-center">Contact Name</th>
@@ -85,6 +85,31 @@
 
             </tbody>
           </table>
+
+
+          <div  *ngIf="contactsList.length > 0 && pivot"  class="row staff-grid-row">
+            <div *ngFor="let contact of contactsList; let i = index" class="animated fadeInUp col-md-4 col-sm-4 col-xs-6 col-lg-3">
+              <div class="profile-widget">
+                <div class="profile-img">
+                  <img *ngIf="contact.contactPicture || contact.contactPicture.length > 0" src="{{contact.contactPicture}}" class="image--cover2">
+                  <img *ngIf="!contact.contactPicture || contact.contactPicture.length < 0" src="./../../../../../assets/images/user.jpg" class="image--cover2">
+                  <!--<a class="avatar">G</a>-->
+                </div>
+                <div class="dropdown profile-action">
+                  <a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a  (click)="gotoContactDetails(contact.rowId);" style="font-size: 100%; cursor: pointer;"><i style="color: #2bda61;" class="fa fa-info m-r-5"></i> Details </a></li>
+                    <li><a (click)="loadEdit(contact.rowId);" data-toggle="modal" style="font-size: 100%; cursor: pointer;" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit </a></li>
+                    <li><a  (click)="loadDelete(contact.rowId);"  data-toggle="modal" style="font-size: 100%; cursor: pointer;" data-target="#delete_employee"><i style="color: #e70000;" class="fa fa-trash-o m-r-5"></i> Delete </a></li>
+                  </ul>
+                </div>
+                <h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a style="cursor: pointer;" (click)="gotoContactDetails(company.rowId);">{{contact.firstName + " " + contact.lastName}}</a></h4>
+                <h5 class="user-name m-t-10 m-b-0 text-ellipsis"><a >{{contact.companyName}}</a></h5>
+                <div class="small text-muted">{{contact.primaryEmail}}</div>
+              </div>
+            </div>
+          </div>
+
 
 
         </div>

@@ -1,0 +1,455 @@
+<form class="m-b-30">
+
+
+
+  <div class="row">
+    <hr style="border: 0.5px solid #5cafe0;"/>
+    <div class="modal-header">
+      <h4 class="modal-title">General Details</h4>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Property Name <span class="text-danger">*</span></label>
+        <input [(ngModel)]="propertyUpdateObj.propertyName" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Property Type </label>
+        <ng-select   [multiple]="false"
+                    [items]="recordType"
+                    (data)="refreshValueRecordType($event)"
+                    placeholder="No property type selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Street Address </label>
+        <input [(ngModel)]="propertyUpdateObj.streetAddress" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">City </label>
+        <input [(ngModel)]="propertyUpdateObj.city" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">State </label>
+        <ng-select  [multiple]="false"
+                    [items]="state"
+                    (data)="refreshValueState($event)"
+                    placeholder="No state selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Zip </label>
+        <input [(ngModel)]="propertyUpdateObj.zip" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">County </label>
+        <ng-select  [multiple]="false"
+                    [items]="county"
+                    (data)="refreshValueCounty($event)"
+                    placeholder="No county selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">MSA </label>
+        <ng-select  [multiple]="false"
+                    [items]="msa"
+                    (data)="refreshValueMsa($event)"
+                    placeholder="No MSA selected"></ng-select>
+      </div>
+    </div>
+
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Market </label>
+        <ng-select  [multiple]="false"
+                    [items]="market"
+                    (data)="refreshValueMarket($event)"
+                    placeholder="No market selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Sub Market </label>
+        <ng-select  [multiple]="false"
+                    [items]="submarket"
+                    (data)="refreshValueSubmarket($event)"
+                    placeholder="No submarket selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Primary Use </label>
+        <ng-select  [multiple]="false"
+                    [items]="primaryUse"
+                    (data)="refreshValuePrimaryUse($event)"
+                    placeholder="No primary use selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Property Status </label>
+        <ng-select  [multiple]="false"
+                    [items]="propertyStatus"
+                    (data)="refreshValuePropertyStatus($event)"
+                    placeholder="No property status selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Building Class </label>
+        <ng-select  [multiple]="false"
+                    [items]="buildingClass"
+                    (data)="refreshValueBuildingClass($event)"
+                    placeholder="No building class selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Rent Type </label>
+        <ng-select  [multiple]="false"
+                    [items]="rentType"
+                    (data)="refreshValueRentType($event)"
+                    placeholder="No rent type selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Last Sale Date </label>
+        <input [(ngModel)]="propertyUpdateObj.lastSaleDate" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Last Sale Price </label>
+        <input [(ngModel)]="propertyUpdateObj.lastSalePrice" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Last Sale Cap </label>
+        <input [(ngModel)]="propertyUpdateObj.lastSaleCap" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <!-- Resume from Here -->
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Last Sale Type </label>
+        <input [(ngModel)]="propertyUpdateObj.lastSaleType" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label"># of Units </label>
+        <input [(ngModel)]="propertyUpdateObj.units" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Property Management </label>
+        <input [(ngModel)]="propertyUpdateObj.propertyManagement" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">On Site Phone </label>
+        <input [(ngModel)]="propertyUpdateObj.onSitePhone" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">On Site Contact </label>
+        <input [(ngModel)]="propertyUpdateObj.onSiteContact" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Group </label>
+        <input [(ngModel)]="propertyUpdateObj.group" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Ownership Entity </label>
+        <input [(ngModel)]="propertyUpdateObj.ownershipEntity" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Ownership Entity Address</label>
+        <input [(ngModel)]="propertyUpdateObj.ownershipEntityAddress" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Square Footage</label>
+        <input [(ngModel)]="propertyUpdateObj.squareFootage" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Parcel Number</label>
+        <input [(ngModel)]="propertyUpdateObj.parcelNumber" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Land Acres</label>
+        <input [(ngModel)]="propertyUpdateObj.landAcres" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Land SF</label>
+        <input [(ngModel)]="propertyUpdateObj.landSf" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Far</label>
+        <input [(ngModel)]="propertyUpdateObj.far" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Year Built</label>
+        <input [(ngModel)]="propertyUpdateObj.yearBuilt" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Year Renovated</label>
+        <input [(ngModel)]="propertyUpdateObj.yearRenovated" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Zoning</label>
+        <input [(ngModel)]="propertyUpdateObj.zoning" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Construction </label>
+        <ng-select  [multiple]="false"
+                    [items]="construction"
+                    (data)="refreshValueConstruction($event)"
+                    placeholder="No construction selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Roof Type </label>
+        <ng-select  [multiple]="false"
+                    [items]="roofType"
+                    (data)="refreshValueRoofType($event)"
+                    placeholder="No roof type selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Siding Type </label>
+        <ng-select  [multiple]="false"
+                    [items]="sidingType"
+                    (data)="refreshValueSidingType($event)"
+                    placeholder="No siding type selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Foundation Type </label>
+        <ng-select  [multiple]="false"
+                    [items]="foundationType"
+                    (data)="refreshValueFoundationType($event)"
+                    placeholder="No foundation type selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Number Stories</label>
+        <input [(ngModel)]="propertyUpdateObj.numberStories" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Number Buildings</label>
+        <input [(ngModel)]="propertyUpdateObj.numberBuildings" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Website</label>
+        <input [(ngModel)]="propertyUpdateObj.website" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Unit Amenities </label>
+        <ng-select  [multiple]="true"
+                    [items]="unitAmenities"
+                    (data)="refreshValueUnitAmenities($event)"
+                    placeholder="No unit amenities selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Site Amenities </label>
+        <ng-select  [multiple]="true"
+                    [items]="siteAmenities"
+                    (data)="refreshValueSiteAmenitiese($event)"
+                    placeholder="No site amenities selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Master Metered</label>
+        <input [(ngModel)]="propertyUpdateObj.masterMetered" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Individually Metered</label>
+        <input [(ngModel)]="propertyUpdateObj.individuallyMetered" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Parking Spaces </label>
+        <input [(ngModel)]="propertyUpdateObj.parkingSpaces" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Parking Ratio </label>
+        <input [(ngModel)]="propertyUpdateObj.parkingRatio" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Parking Type </label>
+        <ng-select  [multiple]="false"
+                    [items]="parkingType"
+                    (data)="refreshValueParkingType($event)"
+                    placeholder="No parking type selected"></ng-select>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Garages</label>
+        <input [(ngModel)]="propertyUpdateObj.garages" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Carports</label>
+        <input [(ngModel)]="propertyUpdateObj.carports" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Primary Contact</label>
+        <input [(ngModel)]="propertyUpdateObj.forSale" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Primary Contact Phone</label>
+        <input [(ngModel)]="propertyUpdateObj.primaryContactPhone" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Primary Contact Mobile</label>
+        <input [(ngModel)]="propertyUpdateObj.primaryContactMobile" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Primary Contact Email</label>
+        <input [(ngModel)]="propertyUpdateObj.primaryContactEmail" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label  class="control-label">Primary Contact Last Activity Date</label>
+        <input [(ngModel)]="propertyUpdateObj.primaryContact" name="firstName" class="form-control" type="text">
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+  <div class="m-t-20 text-center">
+    <button (click)="addProperty()" class="btn btn-primary">Create Property</button>
+  </div>
+</form>

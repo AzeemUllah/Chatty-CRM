@@ -53,6 +53,9 @@ export class ContactsListComponent implements OnInit {
 
   userId: string = '';
 
+  //Stores view type i.e. block or table view
+  pivot: boolean = false;
+
   updatedContact: any = {
     "firstName": "",
     "lastName": "",
@@ -388,10 +391,12 @@ export class ContactsListComponent implements OnInit {
 
   uploadFile(event) {
     this.file = event.srcElement.files[0];
+    console.log(this.file);
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event:any) => {
         this.url = event.target.result;
+
       };
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -416,4 +421,12 @@ export class ContactsListComponent implements OnInit {
     });
   }
 
+  //Function to toggle between two diffrent kinds of table view, i.e. Block and List view
+  pivotTable(viewType){
+    if(viewType == 'block'){
+      this.pivot = true;
+    }else{
+      this.pivot = false;
+    }
+  }
 }

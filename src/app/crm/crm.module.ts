@@ -16,6 +16,11 @@ import { ContactsListComponent } from './main-components/contacts/contacts-list/
 import { CompanyComponent } from './main-components/company/company.component';
 import { CompanyDetailsComponent } from './main-components/company/company-details/company-details.component';
 import { CompanyListComponent } from './main-components/company/company-list/company-list.component';
+import { PropertyComponent } from './main-components/property/property.component';
+import { PropertyListComponent } from './main-components/property/property-list/property-list.component';
+import { PropertyDetailsComponent } from './main-components/property/property-details/property-details.component';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -23,8 +28,11 @@ import { CompanyListComponent } from './main-components/company/company-list/com
     FormsModule,
     RouterModule,
     SelectModule,
-    DataTablesModule
+    DataTablesModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAFMtYWKJswJb49g9NymmEbLlua_xSHfZQ'
+    })
   ],
-  declarations: [CrmComponent, CommingSoonComponent, HeaderComponent, MessageBoxComponent, SidebarComponent, DashboardComponent, ContactsComponent, ContactDetailsComponent, ContactsListComponent, CompanyComponent, CompanyDetailsComponent, CompanyListComponent]
+  declarations: [CrmComponent, CommingSoonComponent, HeaderComponent, MessageBoxComponent, SidebarComponent, DashboardComponent, ContactsComponent, ContactDetailsComponent, ContactsListComponent, CompanyComponent, CompanyDetailsComponent, CompanyListComponent, PropertyComponent, PropertyListComponent, PropertyDetailsComponent]
 })
 export class CrmModule { }

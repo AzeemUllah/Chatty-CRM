@@ -42,6 +42,11 @@ import {ContactsListComponent} from "./crm/main-components/contacts/contacts-lis
 import {CompanyDetailsComponent} from "./crm/main-components/company/company-details/company-details.component";
 import {CompanyListComponent} from "./crm/main-components/company/company-list/company-list.component";
 import {CompanyComponent} from "./crm/main-components/company/company.component";
+import {PropertyComponent} from "./crm/main-components/property/property.component";
+import {PropertyListComponent} from "./crm/main-components/property/property-list/property-list.component";
+import {PropertyDetailsComponent} from "./crm/main-components/property/property-details/property-details.component";
+
+import { AgmCoreModule } from '@agm/core';
 
 export class CustomOption extends ToastOptions {
   animate = 'flyRight';
@@ -85,6 +90,11 @@ export class CustomOption extends ToastOptions {
             { path: '', component: CompanyListComponent},
             { path: 'company-details', component: CompanyDetailsComponent}
           ]
+          },
+          { path: 'property', component: PropertyComponent,  children: [
+            { path: '', component: PropertyListComponent},
+            { path: 'property-details', component: PropertyDetailsComponent}
+          ]
           }
         ]
       },
@@ -94,7 +104,10 @@ export class CustomOption extends ToastOptions {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAFMtYWKJswJb49g9NymmEbLlua_xSHfZQ'
+    })
   ],
   providers: [AuthService,  {provide: ToastOptions, useClass: CustomOption}],
   bootstrap: [AppComponent]
