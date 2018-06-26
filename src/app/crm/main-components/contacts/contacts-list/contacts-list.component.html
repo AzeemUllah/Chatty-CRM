@@ -37,9 +37,9 @@
                 <a *ngIf="!contact.contactPicture || (contact.contactPicture).length < 0" class="avatar">{{(contact.firstName).substr(0,1)}}</a>
                 <a *ngIf="contact.contactPicture || (contact.contactPicture).length > 0" class="avatar"><img src="{{contact.contactPicture}}"></a>
 
-                <h2><a > {{contact.firstName + " " + contact.lastName}} <span></span></a></h2>
+                <h2><a (click)="gotoContactDetails(contact.rowId);" style="cursor: pointer;"> {{contact.firstName + " " + contact.lastName}} <span></span></a></h2>
               </td>
-              <td  class="text-center">{{contact.companyName}} </td>
+              <td  class="text-center" >{{contact.companyName}} </td>
               <td  class="text-center">{{contact.phoneNumber}} </td>
               <td  class="text-center">{{contact.mobileNumber}} </td>
               <td  class="text-center">{{contact.primaryEmail}} </td>
@@ -103,7 +103,7 @@
                     <li><a  (click)="loadDelete(contact.rowId);"  data-toggle="modal" style="font-size: 100%; cursor: pointer;" data-target="#delete_employee"><i style="color: #e70000;" class="fa fa-trash-o m-r-5"></i> Delete </a></li>
                   </ul>
                 </div>
-                <h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a style="cursor: pointer;" (click)="gotoContactDetails(company.rowId);">{{contact.firstName + " " + contact.lastName}}</a></h4>
+                <h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a style="cursor: pointer;" (click)="gotoContactDetails(contact.rowId);">{{contact.firstName + " " + contact.lastName}}</a></h4>
                 <h5 class="user-name m-t-10 m-b-0 text-ellipsis"><a >{{contact.companyName}}</a></h5>
                 <div class="small text-muted">{{contact.primaryEmail}}</div>
               </div>

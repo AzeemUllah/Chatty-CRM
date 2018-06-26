@@ -47,6 +47,10 @@ import {PropertyListComponent} from "./crm/main-components/property/property-lis
 import {PropertyDetailsComponent} from "./crm/main-components/property/property-details/property-details.component";
 
 import { AgmCoreModule } from '@agm/core';
+import { MultiSelectComponent } from './crm/main-components/multi-select/multi-select.component';
+import { PropertyMultiSelectComponent } from './crm/main-components/multi-select/property-multi-select/property-multi-select.component';
+
+
 
 export class CustomOption extends ToastOptions {
   animate = 'flyRight';
@@ -94,6 +98,11 @@ export class CustomOption extends ToastOptions {
           { path: 'property', component: PropertyComponent,  children: [
             { path: '', component: PropertyListComponent},
             { path: 'property-details', component: PropertyDetailsComponent}
+          ]
+          },
+          { path: 'multi-select', component: MultiSelectComponent,  children: [
+            { path: '', component: PropertyMultiSelectComponent},
+            { path: 'property', component: PropertyMultiSelectComponent}
           ]
           }
         ]

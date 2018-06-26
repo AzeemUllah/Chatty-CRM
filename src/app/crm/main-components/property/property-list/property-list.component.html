@@ -31,8 +31,8 @@
         <tbody class="tableBody">
         <tr *ngFor="let property of propertyList; let i = index" class="animated fadeInUp ">
           <td class="text-center">
-            <a *ngIf="!property.pictures || (property.pictures[0])?.length < 0" class="avatar">{{(property.propertyName).substr(0,1)}}</a>
-            <a *ngIf="property.pictures || (property.pictures[0])?.length > 0" class="avatar"><img src="{{property.pictures[0]}}"></a>
+            <a *ngIf="!property.pictures || (property.pictures)?.length < 0" class="avatar">{{(property.propertyName).substr(0,1)}}</a>
+            <a *ngIf="property.pictures || (property.pictures)?.length > 0" class="avatar"><img src="{{property.pictures[0]}}"></a>
             <h2><a (click)="gotoCompanyDetails(company.rowId);"> {{property.propertyName}} <span></span></a></h2>
           </td>
           <td  class="text-center">{{property.recordType}} </td>
@@ -56,7 +56,7 @@
         <div *ngFor="let property of propertyList; let i = index" class="animated fadeInUp col-md-4 col-sm-4 col-xs-6 col-lg-3">
           <div class="profile-widget">
             <div class="profile-img">
-              <img *ngIf="property.pictures[0].length > 0" src="{{property.pictures}}" class="image--cover2">
+              <img *ngIf="property.pictures[0].length > 0" src="{{property.pictures[0]}}" class="image--cover2">
               <img *ngIf="property.pictures[0].length < 0" src="./../../../../../assets/images/user.jpg" class="image--cover2">
               <!--<a class="avatar">G</a>-->
             </div>
@@ -364,11 +364,11 @@
     <button type="button" class="close" data-dismiss="modal">&times;</button>
     <div class="modal-content modal-lg">
       <div class="modal-header">
-        <h4 class="modal-title" style="text-align: center;">Edit Contact</h4>
+        <h4 class="modal-title" style="text-align: center;">Edit Property</h4>
       </div>
       <hr style="border: 0.5px solid #5cafe0;"/>
       <div class="modal-header">
-        <h4 class="modal-title">Personal Details</h4>
+        <h4 class="modal-title">General Details</h4>
       </div>
       <div class="modal-body">
 
@@ -853,41 +853,65 @@
             </div>
           </div>
 
-
           <div class="col-sm-8">
-            <div class="form-group">
-              <div>
-                <div class="carousel">
-                  <ul class="slides" *ngIf="(propertyUpdateObj.pictures).length > 0">
+              <div class="form-group">
+                <div>
+                  <a *ngIf="(propertyUpdateObj.pictures)?.length > 0" (click)="deleteImage()" style="cursor: pointer;
+                      right: 10%;
+                      position: absolute;
+                      font-size: 200%;
+                      z-index: 999;
+                      top: -5%;"><i  class="fa fa-trash-o m-r-5" style="color: #e70000;"></i></a>
+                  <div class="carousel">
 
-                    <div  *ngFor="let image of propertyUpdateObj.pictures; let i = index">
-                      <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i==0" checked />
-                      <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i!=0" />
-                      <li class="slide-container">
-                        <div class="slide-image">
-                          <img src={{image}}>
-                        </div>
-                        <div class="carousel-controls">
-                          <label for="img-{{i-1}}" class="prev-slide">
-                            <span>&lsaquo;</span>
-                          </label>
-                          <label for="img-{{i+1}}" class="next-slide">
-                            <span>&rsaquo;</span>
-                          </label>
-                        </div>
-                      </li>
-                    </div>
-
-
-
-                  </ul>
+                    
+                    <ul class="slides" *ngIf="(propertyUpdateObj.pictures)?.length == 1">
+                      <div>
+                        <input type="radio" name="radio-buttons" id="one" checked />
+                        <li class="slide-container">
+                          <div class="slide-image">
+                            <img src={{(propertyUpdateObj.pictures)[0]}}>
+                          </div>
+                          <div class="carousel-controls">
+  
+                          </div>
+                        </li>
+                      </div>
+                    </ul>
+  
+                    
+                    <ul class="slides" *ngIf="(propertyUpdateObj.pictures)?.length > 1">
+                        
+                      <div  *ngFor="let image of propertyUpdateObj.pictures; let i = index">
+                        <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i==0" checked />
+                        <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i!=0" />
+                      
+                        <li class="slide-container">
+                          <div class="slide-image">
+                              
+                            <img src={{image}}>  
+                          </div>
+                        
+                          <div class="carousel-controls">
+                            <label for="img-{{i-1}}" *ngIf="i != 0"  (click)="recordDeleteIndex(i-1)" class="prev-slide">
+                              <span>&lsaquo;</span>
+                            </label>
+                            <label for="img-{{i+1}}" *ngIf="(propertyUpdateObj.pictures)?.length != i+1" (click)="recordDeleteIndex(i+1)" class="next-slide">
+                              <span>&rsaquo;</span>
+                            </label>
+                          </div>
+                        </li>
+                      </div>
+                    </ul>
+                  </div>
                 </div>
+  
               </div>
-
             </div>
-          </div>
 
-          <div class="m-t-20 text-center">
+
+
+          <div class="m-t-20 text-center col-sm-12 col-md-12" style="margin-bottom: 5%;" >
             <button class="btn btn-primary" (click)="updateProperty()">Save Changes</button>
           </div>
         </form>

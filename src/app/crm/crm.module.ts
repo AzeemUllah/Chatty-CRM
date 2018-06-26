@@ -21,6 +21,8 @@ import { PropertyListComponent } from './main-components/property/property-list/
 import { PropertyDetailsComponent } from './main-components/property/property-details/property-details.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { MultiSelectComponent } from './main-components/multi-select/multi-select.component';
+import { PropertyMultiSelectComponent } from './main-components/multi-select/property-multi-select/property-multi-select.component';
 
 @NgModule({
   imports: [
@@ -29,10 +31,15 @@ import { AgmCoreModule } from '@agm/core';
     RouterModule,
     SelectModule,
     DataTablesModule,
+
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAFMtYWKJswJb49g9NymmEbLlua_xSHfZQ'
     })
   ],
-  declarations: [CrmComponent, CommingSoonComponent, HeaderComponent, MessageBoxComponent, SidebarComponent, DashboardComponent, ContactsComponent, ContactDetailsComponent, ContactsListComponent, CompanyComponent, CompanyDetailsComponent, CompanyListComponent, PropertyComponent, PropertyListComponent, PropertyDetailsComponent]
+  declarations: [CrmComponent, CommingSoonComponent, HeaderComponent, MessageBoxComponent,
+     SidebarComponent, DashboardComponent, ContactsComponent, ContactDetailsComponent, 
+     ContactsListComponent, CompanyComponent, CompanyDetailsComponent, CompanyListComponent, 
+     PropertyComponent, PropertyListComponent, PropertyDetailsComponent, MultiSelectComponent,
+      PropertyMultiSelectComponent]
 })
 export class CrmModule { }

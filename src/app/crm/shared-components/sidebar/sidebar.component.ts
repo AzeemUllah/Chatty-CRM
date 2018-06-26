@@ -14,7 +14,8 @@ export class SidebarComponent implements OnInit {
     this.isActive = {
       dashboard: '',
       contacts: '',
-      company: ''
+      company: '',
+      property: ''
     }
   }
 
@@ -27,6 +28,7 @@ export class SidebarComponent implements OnInit {
     this.isActive.dashboard = 'active';
     this.isActive.contacts = '';
     this.isActive.company = '';
+    this.isActive.property = '';
   }
 
   gotoContacts(){
@@ -34,11 +36,21 @@ export class SidebarComponent implements OnInit {
     this.isActive.contacts = 'active';
     this.isActive.dashboard = '';
     this.isActive.company = '';
+    this.isActive.property = '';
   }
 
   gotoCompany(){
     this.router.navigate(['company']);
     this.isActive.company = 'active';
+    this.isActive.contacts = '';
+    this.isActive.dashboard = '';
+    this.isActive.property = '';
+  }
+
+  gotoProperty(){
+    this.router.navigate(['property']);
+    this.isActive.property = 'active';
+    this.isActive.company = '';
     this.isActive.contacts = '';
     this.isActive.dashboard = '';
   }
@@ -53,6 +65,9 @@ export class SidebarComponent implements OnInit {
     }
     else if(currentUrl == 'company'){
       this.isActive.company = 'active';
+    }
+    else if(currentUrl == 'property'){
+      this.isActive.property = 'active';
     }
   }
 

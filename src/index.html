@@ -101,12 +101,53 @@
 
     //console.log(filePondProperty);
     // Select the file input and use create() to turn it into a pond
-    if(undefined == filePondProperty) {
-      filePondProperty = FilePond.create(
-        document.querySelector('.filepond')
-      );
+    if($('.filepond').length == 1){
+      if(undefined == filePondProperty) {
+        filePondProperty = FilePond.create(
+          document.querySelector('.filepond')
+        );
+      }
     }
   },1000)
+
+  var filePondProperty2;
+setInterval(function () {
+    FilePond.registerPlugin(
+
+      // encodes the file as base64 data
+      FilePondPluginFileEncode,
+
+      // validates the size of the file
+      FilePondPluginFileValidateSize,
+
+      // corrects mobile image orientation
+      FilePondPluginImageExifOrientation,
+
+      // previews dropped images
+      FilePondPluginImagePreview
+    );
+
+    //console.log($('.filepond2').length);
+    // Select the file input and use create() to turn it into a pond
+    if($('.filepond2').length == 1){
+    if(undefined == filePondProperty2) {
+      filePondProperty2 = FilePond.create(
+        document.querySelector('.filepond2')
+      );
+    }
+  }
+  },1000)
+
+  var currentUrl = (window.location.pathname);
+  var previousUrl = '';
+  setInterval(function () {
+    currentUrl = (window.location.pathname);
+    if(currentUrl != previousUrl){
+      filePondProperty = undefined;
+      filePondProperty2 = undefined;
+      previousUrl = currentUrl;
+    }
+  },1000);
 
 
 

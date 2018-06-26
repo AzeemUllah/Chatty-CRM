@@ -1,455 +1,998 @@
-<form class="m-b-30">
-
-
-
+<!--https://www.npmjs.com/package/angular-content-editable-->
+<div class="content container-fluid">
   <div class="row">
-    <hr style="border: 0.5px solid #5cafe0;"/>
-    <div class="modal-header">
-      <h4 class="modal-title">General Details</h4>
+    <div class="col-sm-8">
+      <h4 class="page-title">Property Details</h4>
     </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Property Name <span class="text-danger">*</span></label>
-        <input [(ngModel)]="propertyUpdateObj.propertyName" name="firstName" class="form-control" type="text">
-      </div>
+    <div class="col-sm-4 text-right m-b-30">
     </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Property Type </label>
-        <ng-select   [multiple]="false"
-                    [items]="recordType"
-                    (data)="refreshValueRecordType($event)"
-                    placeholder="No property type selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Street Address </label>
-        <input [(ngModel)]="propertyUpdateObj.streetAddress" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">City </label>
-        <input [(ngModel)]="propertyUpdateObj.city" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">State </label>
-        <ng-select  [multiple]="false"
-                    [items]="state"
-                    (data)="refreshValueState($event)"
-                    placeholder="No state selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Zip </label>
-        <input [(ngModel)]="propertyUpdateObj.zip" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">County </label>
-        <ng-select  [multiple]="false"
-                    [items]="county"
-                    (data)="refreshValueCounty($event)"
-                    placeholder="No county selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">MSA </label>
-        <ng-select  [multiple]="false"
-                    [items]="msa"
-                    (data)="refreshValueMsa($event)"
-                    placeholder="No MSA selected"></ng-select>
-      </div>
-    </div>
-
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Market </label>
-        <ng-select  [multiple]="false"
-                    [items]="market"
-                    (data)="refreshValueMarket($event)"
-                    placeholder="No market selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Sub Market </label>
-        <ng-select  [multiple]="false"
-                    [items]="submarket"
-                    (data)="refreshValueSubmarket($event)"
-                    placeholder="No submarket selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Primary Use </label>
-        <ng-select  [multiple]="false"
-                    [items]="primaryUse"
-                    (data)="refreshValuePrimaryUse($event)"
-                    placeholder="No primary use selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Property Status </label>
-        <ng-select  [multiple]="false"
-                    [items]="propertyStatus"
-                    (data)="refreshValuePropertyStatus($event)"
-                    placeholder="No property status selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Building Class </label>
-        <ng-select  [multiple]="false"
-                    [items]="buildingClass"
-                    (data)="refreshValueBuildingClass($event)"
-                    placeholder="No building class selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Rent Type </label>
-        <ng-select  [multiple]="false"
-                    [items]="rentType"
-                    (data)="refreshValueRentType($event)"
-                    placeholder="No rent type selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Last Sale Date </label>
-        <input [(ngModel)]="propertyUpdateObj.lastSaleDate" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Last Sale Price </label>
-        <input [(ngModel)]="propertyUpdateObj.lastSalePrice" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Last Sale Cap </label>
-        <input [(ngModel)]="propertyUpdateObj.lastSaleCap" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <!-- Resume from Here -->
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Last Sale Type </label>
-        <input [(ngModel)]="propertyUpdateObj.lastSaleType" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label"># of Units </label>
-        <input [(ngModel)]="propertyUpdateObj.units" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Property Management </label>
-        <input [(ngModel)]="propertyUpdateObj.propertyManagement" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">On Site Phone </label>
-        <input [(ngModel)]="propertyUpdateObj.onSitePhone" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">On Site Contact </label>
-        <input [(ngModel)]="propertyUpdateObj.onSiteContact" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Group </label>
-        <input [(ngModel)]="propertyUpdateObj.group" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Ownership Entity </label>
-        <input [(ngModel)]="propertyUpdateObj.ownershipEntity" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Ownership Entity Address</label>
-        <input [(ngModel)]="propertyUpdateObj.ownershipEntityAddress" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Square Footage</label>
-        <input [(ngModel)]="propertyUpdateObj.squareFootage" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Parcel Number</label>
-        <input [(ngModel)]="propertyUpdateObj.parcelNumber" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Land Acres</label>
-        <input [(ngModel)]="propertyUpdateObj.landAcres" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Land SF</label>
-        <input [(ngModel)]="propertyUpdateObj.landSf" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Far</label>
-        <input [(ngModel)]="propertyUpdateObj.far" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Year Built</label>
-        <input [(ngModel)]="propertyUpdateObj.yearBuilt" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Year Renovated</label>
-        <input [(ngModel)]="propertyUpdateObj.yearRenovated" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Zoning</label>
-        <input [(ngModel)]="propertyUpdateObj.zoning" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Construction </label>
-        <ng-select  [multiple]="false"
-                    [items]="construction"
-                    (data)="refreshValueConstruction($event)"
-                    placeholder="No construction selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Roof Type </label>
-        <ng-select  [multiple]="false"
-                    [items]="roofType"
-                    (data)="refreshValueRoofType($event)"
-                    placeholder="No roof type selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Siding Type </label>
-        <ng-select  [multiple]="false"
-                    [items]="sidingType"
-                    (data)="refreshValueSidingType($event)"
-                    placeholder="No siding type selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Foundation Type </label>
-        <ng-select  [multiple]="false"
-                    [items]="foundationType"
-                    (data)="refreshValueFoundationType($event)"
-                    placeholder="No foundation type selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Number Stories</label>
-        <input [(ngModel)]="propertyUpdateObj.numberStories" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Number Buildings</label>
-        <input [(ngModel)]="propertyUpdateObj.numberBuildings" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Website</label>
-        <input [(ngModel)]="propertyUpdateObj.website" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Unit Amenities </label>
-        <ng-select  [multiple]="true"
-                    [items]="unitAmenities"
-                    (data)="refreshValueUnitAmenities($event)"
-                    placeholder="No unit amenities selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Site Amenities </label>
-        <ng-select  [multiple]="true"
-                    [items]="siteAmenities"
-                    (data)="refreshValueSiteAmenitiese($event)"
-                    placeholder="No site amenities selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Master Metered</label>
-        <input [(ngModel)]="propertyUpdateObj.masterMetered" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Individually Metered</label>
-        <input [(ngModel)]="propertyUpdateObj.individuallyMetered" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Parking Spaces </label>
-        <input [(ngModel)]="propertyUpdateObj.parkingSpaces" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Parking Ratio </label>
-        <input [(ngModel)]="propertyUpdateObj.parkingRatio" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Parking Type </label>
-        <ng-select  [multiple]="false"
-                    [items]="parkingType"
-                    (data)="refreshValueParkingType($event)"
-                    placeholder="No parking type selected"></ng-select>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Garages</label>
-        <input [(ngModel)]="propertyUpdateObj.garages" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Carports</label>
-        <input [(ngModel)]="propertyUpdateObj.carports" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Primary Contact</label>
-        <input [(ngModel)]="propertyUpdateObj.forSale" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Primary Contact Phone</label>
-        <input [(ngModel)]="propertyUpdateObj.primaryContactPhone" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Primary Contact Mobile</label>
-        <input [(ngModel)]="propertyUpdateObj.primaryContactMobile" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Primary Contact Email</label>
-        <input [(ngModel)]="propertyUpdateObj.primaryContactEmail" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label  class="control-label">Primary Contact Last Activity Date</label>
-        <input [(ngModel)]="propertyUpdateObj.primaryContact" name="firstName" class="form-control" type="text">
-      </div>
-    </div>
-
-
-
-
   </div>
+  <div class="card-box m-b-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="profile-view">
+          <div class="profile-img-wrap" style="height: 50%;">
+            <div class="profile-img">
+              <a >
+                <img *ngIf="url" src="{{url}}" class="image--cover">
+                <img *ngIf="!url" src="./../../../../../assets/images/user.jpg" class="image--cover">
+              </a>
+            </div>
+          <!--  <input style="    font-size: 8px;
+    outline: none;
+    border: none;" class="form-control" type="file" (change)="uploadFile($event)" > -->
+          </div>
+          <div class="profile-basic">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="profile-info-left">
+                  <h3 class="user-name m-t-0" >
+                    <span (blur)="onBlurPropertyName($event.target)"  contenteditable="true">{{propertyUpdateObj.propertyName}}</span>
+                  </h3>
+                  <!--<h5 class="company-role m-t-0 m-b-0" ><span (blur)="onBlurCompanyName($event.target)" contenteditable="true">{{propertyUpdateObj.companyName}}</span></h5>-->
+                  <!--<small class="text-muted" ><span (blur)="onBlurTitle($event.target)" contenteditable="true">{{propertyUpdateObj.title}}</span></small>-->
+                  <!--<div class="staff-id"><span (blur)="onBlurOccupation($event.target)" contenteditable="true">{{propertyUpdateObj.occupation}}</span></div>-->
+                  <!--<br/>-->
+                  <!--<br/>-->
+                  <ul class="personal-info">
+                    <li>
+                      <span class="title">Street:</span>
+                      <span class="text" (blur)="onBlurStreetAddress($event.target)" contenteditable="true">{{propertyUpdateObj.streetAddress}}</span>
+                    </li>
+                    <li>
+                      <span class="title">City:</span>
+                      <span class="text" (blur)="onBlurCity($event.target)" contenteditable="true">{{propertyUpdateObj.city}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Zip:</span>
+                      <span class="text" (blur)="onBlurZip($event.target)" contenteditable="true">{{propertyUpdateObj.zip}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Last Sale Price:</span>
+                      <span class="text" (blur)="onBlurLastSalePrice($event.target)" contenteditable="true">{{propertyUpdateObj.lastSalePrice}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Last Sale Cap:</span>
+                      <span class="text" (blur)="onBlurLastSaleCap($event.target)" contenteditable="true">{{propertyUpdateObj.lastSaleCap}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Last Sale Type:</span>
+                      <span class="text" (blur)="onBlurLastSaleType($event.target)" contenteditable="true">{{propertyUpdateObj.lastSaleType}}</span>
+                    </li>
+
+
+                    <li>
+                      <span class="title">Last Sale Date:</span>
+                      <span class="text" (blur)="onBlurLastSaleDate($event.target)" contenteditable="true">{{propertyUpdateObj.lastSaleDate}}</span>
+                    </li>
 
 
 
 
-  <div class="m-t-20 text-center">
-    <button (click)="addProperty()" class="btn btn-primary">Create Property</button>
+
+
+                    <li>
+                      <span class="title">Zoning:</span>
+                      <span class="text" (blur)="onBlurZoning($event.target)" contenteditable="true">{{propertyUpdateObj.zoning}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Number Stories:</span>
+                      <span class="text" (blur)="onBlurNumberStories($event.target)" contenteditable="true">{{propertyUpdateObj.numberStories}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Number Buildings:</span>
+                      <span class="text" (blur)="onBlurNumberBuildings($event.target)" contenteditable="true">{{propertyUpdateObj.numberBuildings}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Website:</span>
+                      <span class="text" (blur)="onBlurWebsite($event.target)" contenteditable="true">{{propertyUpdateObj.website}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Master Metered:</span>
+                      <span class="text" (blur)="onBlurMasterMetered($event.target)" contenteditable="true">{{propertyUpdateObj.masterMetered}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Individually Metered:</span>
+                      <span class="text" (blur)="onBlurIndividuallyMetered($event.target)" contenteditable="true">{{propertyUpdateObj.lastSaleType}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Parking Spaces:</span>
+                      <span class="text" (blur)="onBlurParkingSpaces($event.target)" contenteditable="true">{{propertyUpdateObj.parkingSpaces}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Parking Ratio:</span>
+                      <span class="text" (blur)="onBlurParkingRatio($event.target)" contenteditable="true">{{propertyUpdateObj.parkingRatio}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Parking Type:</span>
+                      <span class="text" (blur)="onBlurParkingType($event.target)" contenteditable="true">{{propertyUpdateObj.parkingType}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Garages:</span>
+                      <span class="text" (blur)="onBlurGarages($event.target)" contenteditable="true">{{propertyUpdateObj.garages}}</span>
+                    </li>
+                    <li>
+                      <span class="title">Carports:</span>
+                      <span class="text" (blur)="onBlurCarports($event.target)" contenteditable="true">{{propertyUpdateObj.carports}}</span>
+                    </li>
+
+
+
+
+
+                  </ul>
+
+                </div>
+              </div>
+              <div class="col-md-7">
+                <ul class="personal-info">
+                  <li>
+                    <span class="title">Property Management:</span>
+                    <span class="text" (blur)="onBlurPropertyManagement($event.target)" contenteditable="true">{{propertyUpdateObj.propertyManagement}}</span>
+                  </li>
+                  <li>
+                    <span class="title">On Site Phone:</span>
+                    <span class="text" (blur)="onBlurOnSitePhone($event.target)" contenteditable="true">{{propertyUpdateObj.onSitePhone}}</span>
+                  </li>
+                  <li>
+                    <span class="title">On Site Contact:</span>
+                    <span class="text" (blur)="onBlurOnSiteContact($event.target)" contenteditable="true">{{propertyUpdateObj.onSiteContact}}</span>
+                  </li>
+                  <li>
+                    <span class="title">Group:</span>
+                    <span class="text" (blur)="onBlurGroup($event.target)" contenteditable="true">{{propertyUpdateObj.group}}</span>
+                  </li>
+                  <li>
+                    <span class="title">Ownership Entity:</span>
+                    <span class="text" (blur)="onBlurOwnershipEntity($event.target)" contenteditable="true">{{propertyUpdateObj.ownershipEntity}}</span>
+                  </li>
+                  <li>
+                    <span class="title">Ownership Entity Address:</span>
+                    <span class="text" (blur)="onBlurOwnershipEntityAddress($event.target)" contenteditable="true">{{propertyUpdateObj.ownershipEntityAddress}}</span>
+                  </li>
+                  <li>
+                    <span class="title">Units:</span>
+                    <span class="text" (blur)="onBlurUnits($event.target)" contenteditable="true">{{propertyUpdateObj.units}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Square Footage:</span>
+                    <span class="text" (blur)="onBlurSquareFootage($event.target)" contenteditable="true">{{propertyUpdateObj.squareFootage}}</span>
+                  </li>
+
+                  <li>
+                    <span class="title" >Parcel Number:</span>
+                    <span class="text" (blur)="onBlurParcelNumber($event.target)" contenteditable="true">{{propertyUpdateObj.parcelNumber}}</span>
+                  </li>
+
+                  <li>
+                    <span class="title" >Land Acres:</span>
+                    <span class="text" (blur)="onBlurLandAcres($event.target)" contenteditable="true">{{propertyUpdateObj.landAcres}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Land SF:</span>
+                    <span class="text" (blur)="onBlurLandSf($event.target)" contenteditable="true">{{propertyUpdateObj.landSf}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Far:</span>
+                    <span class="text" (blur)="onBlurFar($event.target)" contenteditable="true">{{propertyUpdateObj.far}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Year Built:</span>
+                    <span class="text" (blur)="onBlurYearBuilt($event.target)" contenteditable="true">{{propertyUpdateObj.yearBuilt}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Year Renovated:</span>
+                    <span class="text" (blur)="onBlurYearRenovated($event.target)" contenteditable="true">{{propertyUpdateObj.yearRenovated}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Primary Contact Phone:</span>
+                    <span class="text" (blur)="onBlurPrimaryContactPhone($event.target)" contenteditable="true">{{propertyUpdateObj.primaryContactPhone}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Primary Contact Email:</span>
+                    <span class="text" (blur)="onBlurPrimaryContactEmail($event.target)" contenteditable="true">{{propertyUpdateObj.primaryContactEmail}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Primary Contact Mobile:</span>
+                    <span class="text" (blur)="onBlurPrimaryContactMobile($event.target)" contenteditable="true">{{propertyUpdateObj.primaryContactMobile}}</span>
+                  </li>
+                  <li>
+                    <span class="title" >Last Activity Date:</span>
+                    <span class="text" (blur)="onBlurPrimaryContactLastActivityDate($event.target)" contenteditable="true">{{propertyUpdateObj.primaryContactLastActivityDate}}</span>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="row" style="    margin-top: 2%;">
+              <div class="col-md-4" style="line-height: 2.5em;">
+
+                <span class="title">Property Type </span>
+                <ng-select  [multiple]="false"
+                            [items]="recordType"
+                            [active]="recordTypeSelected"
+                            (data)="refreshValueUpdateRecordType($event)"
+                            placeholder="No property type selected"></ng-select>
+
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+
+
+                      <span class="">
+                     <span class="title">State </span>
+              <ng-select  [multiple]="false"
+                          [items]="state"
+                          [active]="stateSelected"
+                          (data)="refreshValueUpdateState($event)"
+                          placeholder="No state selected"></ng-select>
+                        </span>
+
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+
+                <span class="title">County </span>
+                <ng-select  [multiple]="false"
+
+                            [items]="county"
+                            [active]="countySelected"
+                            (data)="refreshValueUpdateCounty($event)"
+
+                            placeholder="No county selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">MSA </span>
+                <ng-select  [multiple]="false"
+                            [items]="msa"
+                            [active]="msaSelected"
+                            (data)="refreshValueUpdateMsa($event)"
+                            placeholder="No MSA selected"></ng-select>
+              </div>
+
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Market </span>
+                <ng-select  [multiple]="false"
+                            [items]="market"
+                            [active]="marketSelected"
+                            (data)="refreshValueUpdateMarket($event)"
+                            placeholder="No market selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Sub Market </span>
+                <ng-select  [multiple]="false"
+                            [items]="submarket"
+                            [active]="submarketSelected"
+                            (data)="refreshValueUpdateSubmarket($event)"
+                            placeholder="No submarket selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Primary Use </span>
+                <ng-select  [multiple]="false"
+                            [items]="primaryUse"
+                            [active]="primaryUseSelected"
+                            (data)="refreshValueUpdatePrimaryUse($event)"
+                            placeholder="No primary use selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Property Status </span>
+                <ng-select  [multiple]="false"
+                            [items]="propertyStatus"
+                            [active]="propertyStatusSelected"
+                            (data)="refreshValueUpdatePropertyStatus($event)"
+                            placeholder="No property status selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Building Class </span>
+                <ng-select  [multiple]="false"
+                            [items]="buildingClass"
+                            [active]="buildingClassSelected"
+                            (data)="refreshValueUpdateBuildingClass($event)"
+                            placeholder="No building class selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Rent Type </span>
+                <ng-select  [multiple]="false"
+                            [items]="rentType"
+                            [active]="rentTypeSelected"
+                            (data)="refreshValueUpdateRentType($event)"
+                            placeholder="No rent type selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Construction </span>
+                <ng-select  [multiple]="false"
+                            [items]="construction"
+                            [active]="constructionSelected"
+                            (data)="refreshValueUpdateConstruction($event)"
+                            placeholder="No construction selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Roof Type </span>
+                <ng-select  [multiple]="false"
+                            [items]="roofType"
+                            [active]="roofTypeSelected"
+                            (data)="refreshValueUpdateRoofType($event)"
+                            placeholder="No roof type selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Siding Type </span>
+                <ng-select  [multiple]="false"
+                            [items]="sidingType"
+                            [active]="sidingTypeSelected"
+                            (data)="refreshValueUpdateSidingType($event)"
+                            placeholder="No siding type selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Foundation Type </span>
+                <ng-select  [multiple]="false"
+                            [items]="foundationType"
+                            [active]="foundationTypeSelected"
+                            (data)="refreshValueUpdateFoundationType($event)"
+                            placeholder="No foundation type selected"></ng-select>
+              </div>
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Parking Type </span>
+                <ng-select  [multiple]="false"
+                            [items]="parkingType"
+                            [active]="parkingTypeSelected"
+                            (data)="refreshValueUpdateParkingType($event)"
+                            placeholder="No parking type selected"></ng-select>
+              </div>
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Primary Contact </span>
+                <ng-select  [multiple]="false"
+                            [items]="primaryContact"
+                            [active]="primaryContactSelected"
+                            (data)="refreshValueUpdatePrimaryContact($event)"
+                            placeholder="No primary contact selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                 <span class="title">Unit Amenities </span>
+                <ng-select  [multiple]="true"
+                            [items]="unitAmenities"
+                            [active]="unitAmenitiesSelected"
+                            (data)="refreshValueUpdateUnitAmenities($event)"
+                            placeholder="No unit amenities selected"></ng-select>
+              </div>
+
+              <div class="col-md-4" style="line-height: 2.5em;">
+                <span class="title">Site Amenities </span>
+                <ng-select  [multiple]="true"
+                            [items]="siteAmenities"
+                            [active]="siteAmenitiesSelected"
+                            (data)="refreshValueUpdateSiteAmenities($event)"
+                            placeholder="No site amenities selected"></ng-select>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</form>
+  <div class="card-box tab-box">
+    <div class="row user-tabs">
+      <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
+        <ul class="nav nav-tabs tabs nav-tabs-bottom" style="    text-align: center;">
+          <li class="active col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#activity" >Activity</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#portfolio" >History</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#projects" >Ownership</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#listing" >Sale</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#needs" >Needs</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#files">Files</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#notes" >Notes</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#pictures" >Pictures</a></li>
+          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#location" >Location</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="tab-content  profile-tab-content">
+
+        <div id="activity" class="tab-pane fade in active">
+          <div class="row">
+            <div class="col-md-12">
+              <div>
+                <div class="activity">
+                  <div class="activity-box">
+                    <ul class="activity-list">
+                      <li>
+                        <div class="activity-user">
+                          <a  title="" data-toggle="tooltip" class="avatar" data-original-title="Lesley Grauer">
+                            <img alt="Lesley Grauer" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">
+                          </a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Lesley Grauer</a> added new task <a >Find 3BHK</a>
+                            <span class="time">4 mins ago</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="activity-user">
+                          <a class="avatar" title="" data-toggle="tooltip" style="background-color: #ff6d00" data-original-title="Jeffery Lalor">L</a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Jeffery Lalor</a> added <a class="name">Loren Gatlin</a> and <a class="name">Tarah Shropshire</a> to project <a >Waterloo building sale</a>
+                            <span class="time">6 mins ago</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="activity-user">
+                          <a title="" data-toggle="tooltip" class="avatar" data-original-title="Catherine Manseau">
+                            <img alt="Catherine Manseau" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">
+                          </a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Catherine Manseau</a> completed task <a >Meeting with client</a>
+                            <span class="time">12 mins ago</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="activity-user">
+                          <a  title="" data-toggle="tooltip" class="avatar" data-original-title="Bernardo Galaviz">
+                            <img alt="Bernardo Galaviz" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">
+                          </a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Bernardo Galaviz</a> changed the task name <a >Resale of property</a>
+                            <span class="time">1 day ago</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="activity-user">
+                          <a title="" data-toggle="tooltip" class="avatar" data-original-title="Mike Litorus">
+                            <img alt="Mike Litorus" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">
+                          </a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Mike Litorus</a> added new task <a >File tax for property</a>
+                            <span class="time">2 days ago</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="activity-user">
+                          <a title="" data-toggle="tooltip" class="avatar" data-original-title="Jeffery Lalor">
+                            <img alt="Jeffery Lalor" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">
+                          </a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Jeffery Lalor</a> added <a class="name">Jeffrey Warden</a> and <a class="name">Bernardo Galaviz</a> to the task of <a >Tata and Birla property dispute</a>
+                            <span class="time">7 days ago</span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="portfolio" class="tab-pane fade">
+          <div class="row">
+            <div class="col-md-12">
+              <div>
+                <div class="activity">
+                  <div class="activity-box">
+                    <ul class="activity-list">
+                      <li>
+                        <div class="activity-user">
+                          <a  title="" data-toggle="tooltip" class="avatar" data-original-title="Lesley Grauer">
+                            <img alt="Lesley Grauer" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">
+                          </a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Lesley Grauer</a> sold this property to <a >Allen Walker</a>
+                            <span class="time">1 year ago</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="activity-user">
+                          <a class="avatar" title="" data-toggle="tooltip" style="background-color: #ff6d00" data-original-title="Jeffery Lalor">L</a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Catherine Manseau</a> sold this property to <a >Brad River</a>
+                            <span class="time">3 year ago</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="activity-user">
+                          <a title="" data-toggle="tooltip" class="avatar" data-original-title="Catherine Manseau">
+                            <img alt="Catherine Manseau" src="./../../../../../assets/images/user.jpg" class="img-responsive img-circle">
+                          </a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="timeline-content">
+                            <a class="name">Bernardo Galaviz</a> sold this property to <a >Mike Litorus</a>
+                            <span class="time">3 year ago</span>
+                          </div>
+                        </div>
+                      </li>
+                    
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div id="projects" class="tab-pane fade">
+          <div class="col-md-12" style="    padding: 0;">
+            <div class="col-lg-3 col-sm-4">
+              <div class="card-box project-box">
+                <div class="dropdown profile-action">
+                  <a  class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a  data-toggle="modal" data-target="#edit_project"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>
+                    <li><a  data-toggle="modal" data-target="#delete_project"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+                  </ul>
+                </div>
+                <h4 class="project-title"><a >Owner One</a></h4>
+                
+                <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. When an unknown printer took a galley of type and
+                  scrambled it...
+                </p>
+                <div class="pro-deadline m-b-15">
+                  <div class="sub-title">
+                    Purchased on:
+                  </div>
+                  <div class="text-muted">
+                    27th of Feb, 2018
+                  </div>
+                </div>
+                <div class="project-members m-b-15">
+                  <div>Property owner :</div>
+                  <ul class="team-members">
+                    <li>
+                      <a  data-toggle="tooltip" title="" data-original-title="Jeffery Lalor"><img src="./../../../../../assets/images/user.jpg" alt="Jeffery Lalor"></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="project-members m-b-15">
+                  <div>People connected to this contact:</div>
+                  <ul class="team-members">
+                    <li>
+                      <a  data-toggle="tooltip" title="" data-original-title="John Doe"><img src="./../../../../../assets/images/user.jpg" alt="John Doe"></a>
+                    </li>
+                    <li>
+                      <a  data-toggle="tooltip" title="" data-original-title="Richard Miles"><img src="./../../../../../assets/images/user.jpg" alt="Richard Miles"></a>
+                    </li>
+                    <li>
+                      <a  data-toggle="tooltip" title="" data-original-title="John Smith"><img src="./../../../../../assets/images/user.jpg" alt="John Smith"></a>
+                    </li>
+                    <li>
+                      <a  data-toggle="tooltip" title="" data-original-title="Mike Litorus"><img src="./../../../../../assets/images/user.jpg" alt="Mike Litorus"></a>
+                    </li>
+                    <li>
+                      <a  class="all-users">+15</a>
+                    </li>
+                  </ul>
+                </div>
+               
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="listing" class="tab-pane fade">
+          <div class="col-md-12" style="padding: 0px;">
+            <div class="panel panel-table">
+
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table class="table table-striped custom-table m-b-0">
+                    <thead>
+                    <tr>
+                      <th>Listing ID</th>
+                      <th>Address</th>
+                      <th>Date</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td><a >#LST-0001</a></td>
+                      <td>
+                        <h2><a >H#2, 21st Jump Street.</a></h2>
+                      </td>
+                      <td>30 Aug 201</td>
+                      <td>$380,000</td>
+                      <td>
+                        <span class="label label-warning-border">BOOKED</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a >#LST-0002</a></td>
+                      <td>
+                        <h2><a >Appartment 21, 21st and Lex.</a></h2>
+                      </td>
+                      <td>17 Sep 2018</td>
+                      <td>$500,000</td>
+                      <td>
+                        <span class="label label-success-border">SOLD</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a >#LST-0003</a></td>
+                      <td>
+                        <h2><a >Corner of 23 and Waterloo.</a></h2>
+                      </td>
+                      <td>30 Nov 2018</td>
+                      <td>$600,000</td>
+                      <td>
+                        <span class="label label-danger-border">FOR SALE</span>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <a class="text-primary">View all listings</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="needs" class="tab-pane fade">
+          <div class="add-task-btn-wrapper" style="padding-bottom: 12px; float: right;">
+												<span class="add-task-btn btn btn-default btn-xs">
+													Add Needs
+												</span>
+          </div>
+          <div class="task-wrapper" style="    padding: 0;">
+            <div class="task-list-container">
+              <div class="task-list-body" style="    width: 100%;">
+                <ul id="task-list">
+                  <li class="task">
+                    <div class="task-container">
+																	<span class="task-action-btn task-check">
+																		<span class="action-circle large complete-btn" title="Mark Complete">
+																			<i class="material-icons">check</i>
+																		</span>
+																	</span>
+                      <span class="task-label" contenteditable="true">West open house.</span>
+                      <span class="task-action-btn task-btn-right">
+
+																		<span class="action-circle large delete-btn" title="Delete Task">
+																			<i class="material-icons">delete</i>
+																		</span>
+																	</span>
+                    </div>
+                  </li>
+                  <li class="task">
+                    <div class="task-container">
+																	<span class="task-action-btn task-check">
+																		<span class="action-circle large complete-btn" title="Mark Complete">
+																			<i class="material-icons">check</i>
+																		</span>
+																	</span>
+                      <span class="task-label" contenteditable="true">Italian flooring</span>
+                      <span class="task-action-btn task-btn-right">
+
+																		<span class="action-circle large delete-btn" title="Delete Task">
+																			<i class="material-icons">delete</i>
+																		</span>
+																	</span>
+                    </div>
+                  </li>
+                  <li class="completed task">
+                    <div class="task-container">
+																	<span class="task-action-btn task-check">
+																		<span class="action-circle large complete-btn" title="Mark Complete">
+																			<i class="material-icons">check</i>
+																		</span>
+																	</span>
+                      <span class="task-label">Guest rooms</span>
+                      <span class="task-action-btn task-btn-right">
+
+																		<span class="action-circle large delete-btn" title="Delete Task">
+																			<i class="material-icons">delete</i>
+																		</span>
+																	</span>
+                    </div>
+                  </li>
+                  <li class="task">
+                    <div class="task-container">
+																	<span class="task-action-btn task-check">
+																		<span class="action-circle large complete-btn" title="Mark Complete">
+																			<i class="material-icons">check</i>
+																		</span>
+																	</span>
+                      <span class="task-label" contenteditable="true">Three Bedrooms</span>
+                      <span class="task-action-btn task-btn-right">
+
+																		<span class="action-circle large delete-btn" title="Delete Task">
+																			<i class="material-icons">delete</i>
+																		</span>
+																	</span>
+                    </div>
+                  </li>
+                  <li class="task">
+                    <div class="task-container">
+																	<span class="task-action-btn task-check">
+																		<span class="action-circle large complete-btn" title="Mark Complete">
+																			<i class="material-icons">check</i>
+																		</span>
+																	</span>
+                      <span class="task-label" contenteditable="true">Some other need</span>
+                      <span class="task-action-btn task-btn-right">
+
+																		<span class="action-circle large delete-btn" title="Delete Task">
+																			<i class="material-icons">delete</i>
+																		</span>
+																	</span>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+              <div class="task-list-footer">
+                <div class="new-task-wrapper">
+                  <textarea id="new-task" placeholder="Enter new need here. . ."></textarea>
+                  <span class="error-message hidden">You need to enter a need first</span>
+                  <span class="add-new-task-btn btn" id="add-task">Add Need</span>
+                  <span class="cancel-btn btn" id="close-task-panel">Close</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="files" class="tab-pane fade">
+          <div class="panel" style="padding: 0px;">
+            <div class="panel-body">
+
+              <ul class="files-list">
+                <li>
+                  <div class="files-cont">
+                    <div class="file-type">
+                      <span class="files-icon"><i class="fa fa-file-pdf-o"></i></span>
+                    </div>
+                    <div class="files-info">
+                      <span class="file-name text-ellipsis"><a >Some file name.xls</a></span>
+                      <span class="file-author"><a >Norris</a></span> <span class="file-date">May 11th at 6:53 PM</span>
+                      <div class="file-size">Size: 14.8Mb</div>
+                    </div>
+                    <ul class="files-action">
+                      <li class="dropdown">
+                        <a  class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="javascript:void(0)">Download</a></li>
+                          <li><a  data-toggle="modal" data-target="#share_files">Share</a></li>
+                          <li><a href="javascript:void(0)">Delete</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <div class="files-cont">
+                    <div class="file-type">
+                      <span class="files-icon"><i class="fa fa-file-pdf-o"></i></span>
+                    </div>
+                    <div class="files-info">
+                      <span class="file-name text-ellipsis"><a >some other file name (demo).xls</a></span>
+                      <span class="file-author"><a >Stevens</a></span> <span class="file-date">May 01st at 6:53 PM</span>
+                      <div class="file-size">Size: 1.2Mb</div>
+                    </div>
+                    <ul class="files-action">
+                      <li class="dropdown">
+                        <a  class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="javascript:void(0)">Download</a></li>
+                          <li><a  data-toggle="modal" data-target="#share_files">Share</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="notes" class="tab-pane fade">
+          <div class="col-md-12" style="padding: 0px;">
+            <div class="panel panel-table">
+
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table class="table table-striped custom-table m-b-0">
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Notes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>This is dummy Note. Just for demo purpose. when we will build notes module; this data will be filled with database.</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <a class="text-primary">View all notes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div id="pictures" class="tab-pane fade">
+          <div class="col-md-12" style="padding: 0px;">
+            
+
+            <div class="col-sm-4" id="picDiv">
+              <div class="form-group">
+                <label  class="control-label">Pictures</label>
+                  <input type="file"
+                         id="fileUploadPropertyEdit"
+                         class="filepond2"
+                         name="filepond"
+                         multiple
+                         data-max-file-size="3MB" 
+                         data-max-files="3"  />
+              </div>
+            </div>
+  
+            <div class="col-sm-8">
+              <div class="form-group">
+                <div>
+                  <a *ngIf="(propertyUpdateObj.pictures)?.length > 0" (click)="deleteImage()" style="cursor: pointer;
+                      right: 10%;
+                      position: absolute;
+                      font-size: 200%;
+                      z-index: 999;
+                      top: -5%;"><i  class="fa fa-trash-o m-r-5" style="color: #e70000;"></i></a>
+                  <div class="carousel">
+
+                    
+                    <ul class="slides" *ngIf="(propertyUpdateObj.pictures)?.length == 1">
+                      <div>
+                        <input type="radio" name="radio-buttons" id="one" checked />
+                        <li class="slide-container">
+                          <div class="slide-image">
+                            <img src={{(propertyUpdateObj.pictures)[0]}}>
+                          </div>
+                          <div class="carousel-controls">
+  
+                          </div>
+                        </li>
+                      </div>
+                    </ul>
+  
+                    
+                    <ul class="slides" *ngIf="(propertyUpdateObj.pictures)?.length > 1">
+                        
+                      <div  *ngFor="let image of propertyUpdateObj.pictures; let i = index">
+                        <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i==0" checked />
+                        <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i!=0" />
+                      
+                        <li class="slide-container">
+                          <div class="slide-image">
+                              
+                            <img src={{image}}>  
+                          </div>
+                        
+                          <div class="carousel-controls">
+                            <label for="img-{{i-1}}" *ngIf="i != 0"  (click)="recordDeleteIndex(i-1)" class="prev-slide">
+                              <span>&lsaquo;</span>
+                            </label>
+                            <label for="img-{{i+1}}" *ngIf="(propertyUpdateObj.pictures)?.length != i+1" (click)="recordDeleteIndex(i+1)" class="next-slide">
+                              <span>&rsaquo;</span>
+                            </label>
+                          </div>
+                        </li>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+
+
+            <div class="col-md-12 m-t-20 text-center">
+              <button class="btn btn-primary" (click)="uploadImages()">Save Images</button>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div id="location" class="tab-pane fade">
+          <div class="col-md-12" style="padding: 0px;">
+              <div class="form-group">
+                  <label  class="control-label">Maps</label>
+                  <agm-map  [latitude]="propertyUpdateObj.lat" [longitude]="propertyUpdateObj.lng" >
+                    <agm-marker (dragEnd)="markerMoved($event)" [markerDraggable]="true" class="map-marker" [latitude]="propertyUpdateObj.lat" [longitude]="propertyUpdateObj.lng"  [iconUrl]="markerUrl"></agm-marker>
+                  </agm-map>
+                </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

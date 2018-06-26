@@ -44,11 +44,15 @@ export class PropertyListComponent implements OnInit {
   private valueUpdateMsa:string = '';
 
   market: Array<string> = [];
+  market1: Array<string> = [];
+  market2: Array<string> = [];
   marketSelected: Array<any> = [];
   private valueMarket:string = '';
   private valueUpdateMarket:string = '';
 
   submarket: Array<string> = [];
+  submarket1: Array<string> = [];
+  submarket2: Array<string> = [];
   submarketSelected: Array<any> = [];
   private valueSubmarket:string = '';
   private valueUpdateSubmarket:string = '';
@@ -155,23 +159,113 @@ export class PropertyListComponent implements OnInit {
   ngOnInit() {
     this.initNewProperty();
 
-    this.recordType = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.state = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.county = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.msa = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.market = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.submarket = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.primaryUse = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.propertyStatus = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.buildingClass = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.rentType = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.construction = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.roofType = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.sidingType = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.foundationType = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.unitAmenities = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.siteAmenities = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
-    this.parkingType = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
+    this.recordType = ["Market",
+    "Affordable/Rent Subsidized",
+      "Senior Housing",
+      "Student Housing",
+      "Assisted Living"
+      ];
+    this.state = ["Washington", "Oregon"];
+    this.county = ["Multnomah",
+      "Clark",
+      "Cowlitz",
+      "Clackamas",
+      "Marion",
+      "Linn",
+      "Lane",
+      "Washington",
+      "Columbia",
+      "Deschutes"
+      ];
+    this.msa = ["Portland-Vancouver-Hillsboro",
+      "Salem",
+      "Longview",
+      "Bend-Redmond"
+      ];
+      this.market = ["Kelso",
+      "Longview",
+      "Vancouver",
+      "Outlying Cowlitz County"
+      ];
+    this.market1 = ["Kelso",
+      "Longview",
+      "Vancouver",
+      "Outlying Cowlitz County"
+      ];
+    this.market2 = ["Bend/Central Deschutes County",
+    "Redmond/North Deschutes County",
+      "Central Northeast",
+      "Central Salem",
+      "Clackamas County",
+      "Damascus",
+      "East Portland",
+      "East Salem",
+      "Keizer",
+      "Monmouth/Independence",
+      "Northeast Portland",
+      "North Marion County",
+      "Oregon City",
+      "Outlying Polk County",
+      "Outlying Marion County",
+      "Southeast Portland",
+      "South Salem",
+      "Troutdale/Gresham",
+      "Vancouver",
+      "West Salem",
+      "Yamhill County",
+      "Wilsonville"
+      ]
+    this.submarket = ["A","B","C"];
+    this.submarket1 = ["A","B","C"];
+    this.submarket2 = ["D","E","F"];
+    this.primaryUse = ["Garden",
+      "Low-Rise",
+      "Mid-Rise",
+      "High-Rise"
+      ];
+    this.propertyStatus = ["Existing",
+      "Proposed",
+      "Under Construction",
+      "Demolished",
+      "Under Renovation" 
+      ];
+    this.buildingClass = ["A",
+      "B",
+      "C",
+      "D"
+      ];
+    this.rentType = ["1031 Exchange",
+      "Development",
+      "Investment"
+      ];
+    this.construction = ["Wood Frame",
+      "Masonry",
+      "Unreinforeced Masonry",
+      "Reinforced Masonry",
+      "Podium Wood",
+      "Reinforced Concrete"
+      ];
+    this.roofType = ["Flat",
+    "Pitched/Composition",
+      "Pitched/Shingle",
+      "Pitched/Tile",
+      "Slanted",
+      ];
+    this.sidingType = ["Aluminum",
+    "Brick",
+      "Vinyl",
+      "Hardy Plank",
+      "T1-11",
+      "Fiber Cement",
+      "Wood"
+      ];
+    this.foundationType = ["Post & Beam",
+      "Crawl",
+      "Slab"
+      ];
+    this.unitAmenities = ["D","E","F"];
+    this.siteAmenities = ["D","E","F"];
+    this.parkingType = ["D","E","F"];
     //this.primaryContact = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
     //this.primaryContact = ["<a class=avatar>A</a>"];
 
@@ -355,7 +449,7 @@ export class PropertyListComponent implements OnInit {
       this.parkingTypeSelected = [];
       this.primaryContactSelected = [];
 
-      this.url = this.propertyUpdateObj.pictures[0];
+      this.url = (this.propertyUpdateObj.pictures)?this.propertyUpdateObj.pictures[0]:"";
 
       this.valueUpdateRecordType = '';
       this.valueUpdateState = '';
@@ -560,7 +654,7 @@ export class PropertyListComponent implements OnInit {
   }
 
 
-  getFiles(){
+   getFiles(){
     var files = [];
     for(var i = 0; i < $("input[name=filepond]").length; i++){
       files.push((JSON.parse($("input[name=filepond]")[i].getAttribute("value"))).data);
@@ -603,7 +697,7 @@ export class PropertyListComponent implements OnInit {
       this.propertyUpdateObj.parkingType = this.valueUpdateParkingType;
 
 
-      this.propertyUpdateObj.lastSaleDate = $("#updateLastSaleDate").val();
+      this.propertyUpdateObj.lastSaleDate = $("#updateLastSaleDate").val()?$("#updateLastSaleDate").val():"";
 
       this.propertyUpdateObj.updateTime = firebase.database.ServerValue.TIMESTAMP;
       this.propertyUpdateObj.updatedBy = this.userId;
@@ -614,7 +708,7 @@ export class PropertyListComponent implements OnInit {
           firebase.storage().ref().child('/crm/property/'+this.makeid()+'.png').putString(fileToUpload, 'base64').then(snapshot => {
             files.push(snapshot.downloadURL);
             if(files.length == this.file.length){
-              this.propertyUpdateObj.pictures =  this.propertyUpdateObj.pictures.concat(files);
+              this.propertyUpdateObj.pictures =  (this.propertyUpdateObj.pictures)?this.propertyUpdateObj.pictures.concat(files):files;
               firebase.database().ref('/crm/property/' + this.currentUpdateKey).update(this.propertyUpdateObj).then(result => {
                 $(".close").trigger("click");
                 this.initNewProperty();
@@ -822,7 +916,7 @@ export class PropertyListComponent implements OnInit {
       this.propertyAddObj.parkingType = this.valueParkingType;
       this.propertyAddObj.primaryContact = this.valuePrimaryContact;
 
-      this.propertyAddObj.lastSaleDate = $("#addlastsaledate").val();
+      this.propertyAddObj.lastSaleDate = $("#addlastsaledate").val()?$("#addlastsaledate").val():"";
 
       //Record meta data
       this.propertyAddObj.createTime = firebase.database.ServerValue.TIMESTAMP;
@@ -845,9 +939,33 @@ export class PropertyListComponent implements OnInit {
 
   public refreshValueState(value:any):void {
     this.valueState = value.id;
+    if(value.id == "Washington"){
+      this.market = this.market1;
+      this.submarket = this.submarket1;
+      this.marketSelected = [];
+      this.submarketSelected = [];
+    }
+    else{
+      this.market = this.market2;
+      this.submarket = this.submarket2;
+      this.marketSelected = [];
+      this.submarketSelected = [];
+    }
   }
   public refreshValueUpdateState(value:any):void {
     this.valueUpdateState = value.id;
+    if(value.id == "Washington"){
+      this.market = this.market1;
+      this.submarket = this.submarket1;
+      this.marketSelected = [];
+      this.submarketSelected = [];
+    }
+    else{
+      this.market = this.market2;
+      this.submarket = this.submarket2;
+      this.marketSelected = [];
+      this.submarketSelected = [];
+    }
   }
 
   public refreshValueCounty(value:any):void {
@@ -978,6 +1096,15 @@ export class PropertyListComponent implements OnInit {
   markerMoved(e) {
     this.propertyUpdateObj.lat =  e.coords.lat;
     this.propertyUpdateObj.lng =  e.coords.lng;
+  }
+
+
+  deleteIndex: number = 0;
+  recordDeleteIndex(index){
+    this.deleteIndex = index;
+  }
+  deleteImage(){
+    this.propertyUpdateObj.pictures.splice(this.deleteIndex, 1);
   }
 
 }

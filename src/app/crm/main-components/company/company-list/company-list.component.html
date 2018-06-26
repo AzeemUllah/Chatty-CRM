@@ -33,9 +33,9 @@
           <td class="text-center">
             <a *ngIf="!company.contactPicture || (company.contactPicture).length < 0" class="avatar">{{(company.companyName).substr(0,1)}}</a>
             <a *ngIf="company.contactPicture || (company.contactPicture).length > 0" class="avatar"><img src="{{company.contactPicture}}"></a>
-            <h2><a (click)="gotoCompanyDetails(company.rowId);"> {{company.companyName}} <span></span></a></h2>
+            <h2><a (click)="gotoCompanyDetails(company.rowId);" style="cursor: pointer;"> {{company.companyName}} <span></span></a></h2>
           </td>
-          <td  class="text-center">{{company.companyType}} </td>
+          <td  class="text-center" >{{company.companyType}} </td>
           <td  class="text-center">{{company.companyPhone}} </td>
           <td  class="text-center">{{company.companyEmail}} </td>
           <td  class="text-center">{{company.investorType}} </td>
