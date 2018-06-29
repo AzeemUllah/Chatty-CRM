@@ -24,6 +24,9 @@ import { AgmCoreModule } from '@agm/core';
 import { MultiSelectComponent } from './main-components/multi-select/multi-select.component';
 import { PropertyMultiSelectComponent } from './main-components/multi-select/property-multi-select/property-multi-select.component';
 
+// Import the library
+import { TagsInputModule } from 'ngx-tags-input/dist';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { PropertyMultiSelectComponent } from './main-components/multi-select/pro
     RouterModule,
     SelectModule,
     DataTablesModule,
-
+ // Specify the library as an import
+ TagsInputModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAFMtYWKJswJb49g9NymmEbLlua_xSHfZQ'
     })

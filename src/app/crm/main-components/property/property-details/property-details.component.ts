@@ -17,6 +17,7 @@ export class PropertyDetailsComponent implements OnInit {
 
   propertyList:Array<string> = [];
 
+  multiSelectRef: any;
 
   propertyAddObj: any = {};
 
@@ -276,8 +277,7 @@ export class PropertyDetailsComponent implements OnInit {
       "Yamhill County",
       "Wilsonville"
       ]
-    this.submarket = ["A","B","C"];
-    this.submarket2 = ["D","E","F"];
+    this.submarket = [];
     this.primaryUse = ["Garden",
       "Low-Rise",
       "Mid-Rise",
@@ -323,9 +323,38 @@ export class PropertyDetailsComponent implements OnInit {
       "Crawl",
       "Slab"
       ];
-    this.unitAmenities = ["D","E","F"];
-    this.siteAmenities = ["D","E","F"];
+   
     this.parkingType = ["Off-Street", "Off-Site", "Mixed", "Carports", "Garages"];
+
+
+    this.multiSelectRef = firebase.database().ref("/crm/multiSelect/property/");
+    this.multiSelectRef.child("submarket/washginton/").once('value', (snapshot) => {
+      this.submarket1 = [];
+      for (var key in snapshot.val()) {
+        this.submarket1.push(snapshot.val()[key]);
+      }
+    });
+
+    this.multiSelectRef.child("submarket/oregon/").once('value', (snapshot) => {
+      this.submarket2 = [];
+      for (var key in snapshot.val()) {
+        this.submarket2.push(snapshot.val()[key]);
+      }
+    });
+
+    this.multiSelectRef.child("siteAmenities/").once('value', (snapshot) => {
+      this.unitAmenities = [];
+      for (var key in snapshot.val()) {
+        this.unitAmenities.push(snapshot.val()[key]);
+      }
+    });
+
+    this.multiSelectRef.child("unitAmenities/").once('value', (snapshot) => {
+      this.siteAmenities = [];
+      for (var key in snapshot.val()) {
+        this.siteAmenities.push(snapshot.val()[key]);
+      }
+    });
 
     //Get User ID from Firebase Authentication
     firebase.auth().onAuthStateChanged((user)=> {

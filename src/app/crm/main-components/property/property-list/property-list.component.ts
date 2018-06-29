@@ -21,6 +21,8 @@ export class PropertyListComponent implements OnInit {
 
   propertyUpdateObj: any = {};
 
+  multiSelectRef: any;
+
   propertyAddObj: any = {};
 
   recordType: Array<string> = [];
@@ -215,9 +217,8 @@ export class PropertyListComponent implements OnInit {
       "Yamhill County",
       "Wilsonville"
       ]
-    this.submarket = ["A","B","C"];
-    this.submarket1 = ["A","B","C"];
-    this.submarket2 = ["D","E","F"];
+    this.submarket = [];
+    
     this.primaryUse = ["Garden",
       "Low-Rise",
       "Mid-Rise",
@@ -263,11 +264,42 @@ export class PropertyListComponent implements OnInit {
       "Crawl",
       "Slab"
       ];
-    this.unitAmenities = ["D","E","F"];
-    this.siteAmenities = ["D","E","F"];
-    this.parkingType = ["D","E","F"];
+   
+    this.parkingType = ["Off-Street", "Off-Site", "Mixed", "Carports", "Garages"];
     //this.primaryContact = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
     //this.primaryContact = ["<a class=avatar>A</a>"];
+
+
+    this.multiSelectRef = firebase.database().ref("/crm/multiSelect/property/");
+    this.multiSelectRef.child("submarket/washginton/").once('value', (snapshot) => {
+      this.submarket1 = [];
+      for (var key in snapshot.val()) {
+        this.submarket1.push(snapshot.val()[key]);
+      }
+    });
+
+    this.multiSelectRef.child("submarket/oregon/").once('value', (snapshot) => {
+      this.submarket2 = [];
+      for (var key in snapshot.val()) {
+        this.submarket2.push(snapshot.val()[key]);
+      }
+    });
+
+    this.multiSelectRef.child("siteAmenities/").once('value', (snapshot) => {
+      this.unitAmenities = [];
+      for (var key in snapshot.val()) {
+        this.unitAmenities.push(snapshot.val()[key]);
+      }
+    });
+
+    this.multiSelectRef.child("unitAmenities/").once('value', (snapshot) => {
+      this.siteAmenities = [];
+      for (var key in snapshot.val()) {
+        this.siteAmenities.push(snapshot.val()[key]);
+      }
+    });
+
+
 
     //Get User ID from Firebase Authentication
     firebase.auth().onAuthStateChanged((user)=> {
@@ -344,10 +376,10 @@ export class PropertyListComponent implements OnInit {
 
   //Function to view company details page - navigates using services so that id is not displayed in URL
   gotoPropertyDetails(id){
-    this.router.navigateByData({
-      url: ["property/property-details"],
-      data: [{"propertyId": id}]
-    });
+    // this.router.navigateByData({
+    //   url: ["property/property-details"],
+    //   data: [{"propertyId": id}]
+    // });
   }
 
   //Support function to temporally store item id to be deleted.

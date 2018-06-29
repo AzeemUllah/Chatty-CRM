@@ -50,7 +50,8 @@ import { AgmCoreModule } from '@agm/core';
 import { MultiSelectComponent } from './crm/main-components/multi-select/multi-select.component';
 import { PropertyMultiSelectComponent } from './crm/main-components/multi-select/property-multi-select/property-multi-select.component';
 
-
+// Import the library
+import { TagsInputModule } from 'ngx-tags-input/dist';
 
 export class CustomOption extends ToastOptions {
   animate = 'flyRight';
@@ -75,6 +76,9 @@ export class CustomOption extends ToastOptions {
     SelectModule,
     DataTablesModule,
     AccountManagementModule,
+    // Specify the library as an import
+    TagsInputModule.forRoot(),
+
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'login/:state', component: LoginComponent },

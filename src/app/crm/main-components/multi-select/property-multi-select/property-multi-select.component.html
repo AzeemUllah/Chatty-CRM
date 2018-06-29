@@ -10,7 +10,36 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
-      //https://github.com/Gbuomprisco/ngx-chips
+  
+  <div class="col-md-6">
+    <label  class="control-label"> Submarket (Washginton) </label>
+    <tags-input class="form-control input-lg" (onTagsChanged)="onSubmarketWashgintonChanged($event)" 
+      [removeLastOnBackspace]="removeLastOnBackspace" [canDeleteTags]="canDeleteTags"
+       [(ngModel)]="submarketWashginton" name="tags">
+    </tags-input>
   </div>
+
+  <div class="col-md-6">
+      <label  class="control-label"> Submarket (Oregon) </label>
+      <tags-input class="form-control input-lg" (onTagsChanged)="onSubmarketOregonChanged($event)" 
+        [removeLastOnBackspace]="removeLastOnBackspace" [canDeleteTags]="canDeleteTags"
+         [(ngModel)]="submarketOregon" name="tags">
+      </tags-input>
+    </div>
+
+    <div class="col-md-6">
+        <label  class="control-label"> Site Amenities </label>
+        <tags-input class="form-control input-lg" (onTagsChanged)="onSiteAmenitiesChanged($event)" 
+          [removeLastOnBackspace]="removeLastOnBackspace" [canDeleteTags]="canDeleteTags"
+           [(ngModel)]="siteAmenities" name="tags">
+        </tags-input>
+      </div>
+
+      <div class="col-md-6">
+          <label  class="control-label"> Unit Amenities </label>
+          <tags-input class="form-control input-lg" (onTagsChanged)="onUnitAmenitiesChanged($event)" 
+            [removeLastOnBackspace]="removeLastOnBackspace" [canDeleteTags]="canDeleteTags"
+             [(ngModel)]="unitAmenities" name="tags">
+          </tags-input>
+        </div>
 </div>
