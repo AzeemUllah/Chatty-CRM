@@ -1136,7 +1136,9 @@ export class PropertyListComponent implements OnInit {
     this.deleteIndex = index;
   }
   deleteImage(){
+    
     this.propertyUpdateObj.pictures.splice(this.deleteIndex, 1);
+    $(".prev-slide").click();
   }
 
 }

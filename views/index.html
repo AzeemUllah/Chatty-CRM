@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chatty CRM</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="./assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="./assets/css/fullcalendar.min.css" rel="stylesheet" />
+  <link href="./assets/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./assets/css/select2.min.css" type="text/css">
+  <link rel="stylesheet" href="./assets/css/bootstrap-datetimepicker.min.css" type="text/css">
+  <link rel="stylesheet" href="./assets/plugins/morris/morris.css">
+  <link href="./assets/css/style.css" rel="stylesheet" type="text/css">
+  <link href="./assets/css/animate.css" rel="stylesheet" type="text/css">
+  <link href="./assets/css/ng2-select.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
+
+  <script type="text/javascript" src="./assets/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="./assets/js/select2.js"></script>
+
+
+  <style>.background-image{
+    background: rgba(0, 0, 0, 0) url("/assets/images/background-image.png") repeat scroll center center;
+    opacity: 0.06;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+  }
+  </style>
+</head>
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="scripts.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+
+
+<script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./assets/js/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="./assets/js/select2.min.js"></script>
+<script type="text/javascript" src="./assets/js/moment.min.js"></script>
+<script type="text/javascript" src="./assets/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="./assets/plugins/morris/morris.min.js"></script>
+<script type="text/javascript" src="./assets/plugins/raphael/raphael-min.js"></script>
+<script type="text/javascript" src="./assets/js/app.js"></script>
+<script type="tect/template" id="task-template">
+  <li class="task">
+    <div class="task-container">
+					<span class="task-action-btn task-check">
+						<span class="action-circle large complete-btn" title="Mark Complete">
+							<i class="material-icons">check</i>
+						</span>
+					</span>
+      <span class="task-label" contenteditable="true"></span>
+      <span class="task-action-btn task-btn-right">
+						<span class="action-circle large" title="Assign">
+							<i class="material-icons">person_add</i>
+						</span>
+						<span class="action-circle large delete-btn" title="Delete Task">
+							<i class="material-icons">delete</i>
+						</span>
+					</span>
+    </div>
+  </li>
+</script>
+<script type="text/javascript" src="./assets/js/task.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.1/web-animations.min.js"></script>
+
+
+<script type="text/javascript" src="./assets/js/filepond-plugin-file-encode.min.js"></script>
+<script type="text/javascript" src="./assets/js/filepond-plugin-file-validate-size.min.js"></script>
+<script type="text/javascript" src="./assets/js/filepond-plugin-image-exif-orientation.min.js"></script>
+<script type="text/javascript" src="./assets/js/filepond-plugin-image-preview.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+<script>
+  //console.log($("fileUploadPropertyEdit")?true:false);
+  FilePond.registerPlugin(
+
+// encodes the file as base64 data
+FilePondPluginFileEncode,
+
+// validates the size of the file
+FilePondPluginFileValidateSize,
+
+// corrects mobile image orientation
+FilePondPluginImageExifOrientation,
+
+// previews dropped images
+FilePondPluginImagePreview
+);
+
+  var filePondProperty;
+  setInterval(function () {
+   
+
+    //console.log(filePondProperty);
+    // Select the file input and use create() to turn it into a pond
+    if($('.filepond').length == 1){
+      if(undefined == filePondProperty) {
+        filePondProperty = FilePond.create(
+          document.querySelector('.filepond')
+        );
+      }
+    }
+  },1000)
+
+  var filePondProperty2;
+setInterval(function () {
+
+    //console.log($('.filepond2').length);
+    // Select the file input and use create() to turn it into a pond
+    if($('.filepond2').length == 1){
+    if(undefined == filePondProperty2) {
+      filePondProperty2 = FilePond.create(
+        document.querySelector('.filepond2')
+      );
+    }
+  }
+  },1000)
+
+  var currentUrl = (window.location.pathname);
+  var previousUrl = '';
+  setInterval(function () {
+    currentUrl = (window.location.pathname);
+    if(currentUrl != previousUrl){
+      FilePond.destroy(
+          document.querySelector('.filepond')
+        );
+        FilePond.destroy(
+        document.querySelector('.filepond2')
+      );
+      filePondProperty = undefined;
+      filePondProperty2 = undefined;
+      previousUrl = currentUrl;
+    }
+  },800);
+
+
+
+</script>
+
+</html>

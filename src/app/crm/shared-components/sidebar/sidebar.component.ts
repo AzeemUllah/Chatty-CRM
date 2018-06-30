@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,12 +16,14 @@ export class SidebarComponent implements OnInit {
       dashboard: '',
       contacts: '',
       company: '',
-      property: ''
+      property: '',
+      multiSelect: ''
     }
   }
 
   ngOnInit() {
     this.activeClassAssignment();
+    
   }
 
   gotoDashboard(){
@@ -55,8 +58,18 @@ export class SidebarComponent implements OnInit {
     this.isActive.dashboard = '';
   }
 
+  gotoMultiSelectProperty(){
+    this.router.navigate(['multi-select/property']);
+    this.isActive.property = '';
+    this.isActive.company = '';
+    this.isActive.contacts = '';
+    this.isActive.dashboard = '';
+  }
+
+
   activeClassAssignment(){
     let currentUrl = this.router.url.replace('/','');
+    console.log(currentUrl == 'multi-select');
     if(currentUrl == 'dashboard'){
       this.isActive.dashboard = 'active';
     }
@@ -68,6 +81,9 @@ export class SidebarComponent implements OnInit {
     }
     else if(currentUrl == 'property'){
       this.isActive.property = 'active';
+    }
+    else if(currentUrl == 'multi-select'){
+      $('#multislectToggle').click();
     }
   }
 
