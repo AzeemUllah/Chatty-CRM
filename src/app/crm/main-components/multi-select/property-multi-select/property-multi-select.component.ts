@@ -78,9 +78,8 @@ export class PropertyMultiSelectComponent implements OnInit {
     this.submarketWashgintonTemp = [];
     this.submarketWashginton.forEach((item)=>{
       this.submarketWashgintonTemp.push(item.displayValue);
-      console.log( this.submarketWashginton.length == this.submarketWashgintonTemp.length);
+
       if(this.submarketWashginton.length == this.submarketWashgintonTemp.length){
-        console.log(this.submarketWashgintonTemp);
         this.multiSelectRef.child("submarket/washginton/")
         .set(this.submarketWashgintonTemp).then(result => {});
       }

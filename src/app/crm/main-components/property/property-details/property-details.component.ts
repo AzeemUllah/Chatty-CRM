@@ -201,7 +201,7 @@ export class PropertyDetailsComponent implements OnInit {
   "garages": "",
   "carports": "",
   "pictures": [],
-  "forSale": "",
+  "forSale": true,
   "primaryContact": "",
   "primaryContactPhone": "",
   "primaryContactEmail": "",
@@ -287,17 +287,14 @@ export class PropertyDetailsComponent implements OnInit {
       "Proposed",
       "Under Construction",
       "Demolished",
-      "Under Renovation" 
+      "Under Renovation"
       ];
     this.buildingClass = ["A",
       "B",
       "C",
       "D"
       ];
-    this.rentType = ["1031 Exchange",
-      "Development",
-      "Investment"
-      ];
+    this.rentType = ["Market", "Affordable/Rent Subsidized", "55+"];
     this.construction = ["Wood Frame",
       "Masonry",
       "Unreinforeced Masonry",
@@ -323,7 +320,7 @@ export class PropertyDetailsComponent implements OnInit {
       "Crawl",
       "Slab"
       ];
-   
+
     this.parkingType = ["Off-Street", "Off-Site", "Mixed", "Carports", "Garages"];
 
 
@@ -380,7 +377,6 @@ export class PropertyDetailsComponent implements OnInit {
             text: '<a class=avatar style="height: 30px; width: 30px;"><img src="'+snapshot.val()[key].contactPicture+'"></a>'+snapshot.val()[key].firstName + ' ' + snapshot.val()[key].lastName
           });
         }
-        console.log(this.primaryContact);
       }
     });
     this.propertyRef = firebase.database().ref("/crm/property");
@@ -389,9 +385,9 @@ export class PropertyDetailsComponent implements OnInit {
       if(this.routeState[0]) {
         if (this.routeState[0]['propertyId'] != '') {
           this.currentUpdateKey = this.routeState[0]['propertyId'];
-           this.loadEdit(this.routeState[0]['propertyId']); 
-          
-        
+           this.loadEdit(this.routeState[0]['propertyId']);
+
+
         }
         else{
           this.router.navigate(['property']);
@@ -429,7 +425,7 @@ export class PropertyDetailsComponent implements OnInit {
 
   loadEdit(id){
 
-   
+
     console.log(id);
     this.currentUpdateKey = id;
 
@@ -915,17 +911,17 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
   updateProperty(){
-    
+
     if(this.propertyUpdateObj.propertyName.length <= 0){
       this.toastr.error('Property Name required.', 'Error!');
     }
    else{
       // this.propertyUpdateObj.pictures = '';
 
-    
 
 
-        
+
+
 
       this.propertyUpdateObj.recordType = this.valueUpdateRecordType;
       this.propertyUpdateObj.state = this.valueUpdateState;
@@ -948,12 +944,12 @@ export class PropertyDetailsComponent implements OnInit {
       this.propertyUpdateObj.updateTime = firebase.database.ServerValue.TIMESTAMP;
       this.propertyUpdateObj.updatedBy = this.userId;
 
-      
+
 
 
 
       firebase.database().ref('/crm/property/' + this.currentUpdateKey).update(this.propertyUpdateObj).then(result => {
-        
+
       });
 
 
@@ -1010,7 +1006,7 @@ export class PropertyDetailsComponent implements OnInit {
           if(files.length == this.file.length){
             this.propertyUpdateObj.pictures =  (this.propertyUpdateObj.pictures)?this.propertyUpdateObj.pictures.concat(files):files;
             firebase.database().ref('/crm/property/' + this.currentUpdateKey).update(this.propertyUpdateObj).then(result => {
-            
+
               this.toastr.success('Property picture updated!.', 'Sucess!');
               $(".filepond--action-remove-item").click();
             }).catch((error)=>{
@@ -1025,7 +1021,7 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
   onBlurPropertyName(e){
-    
+
     this.propertyUpdateObj.propertyName = e['innerHTML'];
     e['innerHTML'] = '';
     e['innerHTML'] =  this.propertyUpdateObj.propertyName;
@@ -1116,13 +1112,13 @@ export class PropertyDetailsComponent implements OnInit {
     this.updateProperty();
   }
 
-  onBlurUnits(e){  
+  onBlurUnits(e){
     this.propertyUpdateObj.units = e['innerHTML'];
     e['innerHTML'] = '';
     e['innerHTML'] =  this.propertyUpdateObj.units;
-    this.updateProperty();  
-    
-  
+    this.updateProperty();
+
+
   }
 
   onBlurSquareFootage(e){
@@ -1216,6 +1212,26 @@ export class PropertyDetailsComponent implements OnInit {
     this.updateProperty();
   }
 
+  masterMeteredChange(e){
+    if(e.target.checked){
+      this.propertyUpdateObj.masterMetered = true;
+    }
+    else{
+      this.propertyUpdateObj.masterMetered = false;
+    }
+    this.updateProperty();
+  }
+
+  indivisuallyMeteredChange(e){
+    if(e.target.checked){
+      this.propertyUpdateObj.individuallyMetered = true;
+    }
+    else{
+      this.propertyUpdateObj.individuallyMetered = false;
+    }
+    this.updateProperty();
+  }
+
   onBlurParkingSpaces(e){
     this.propertyUpdateObj.parkingSpaces = e['innerHTML'];
     e['innerHTML'] = '';
@@ -1286,6 +1302,13 @@ export class PropertyDetailsComponent implements OnInit {
     this.updateProperty();
   }
 
+  forSale(){
+    if(this.propertyUpdateObj.forSale == true)
+      this.propertyUpdateObj.forSale = false;
+    else
+      this.propertyUpdateObj.forSale = true;
+    this.updateProperty();
+  }
 
 }
 

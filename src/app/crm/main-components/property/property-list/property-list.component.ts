@@ -218,7 +218,7 @@ export class PropertyListComponent implements OnInit {
       "Wilsonville"
       ]
     this.submarket = [];
-    
+
     this.primaryUse = ["Garden",
       "Low-Rise",
       "Mid-Rise",
@@ -228,17 +228,14 @@ export class PropertyListComponent implements OnInit {
       "Proposed",
       "Under Construction",
       "Demolished",
-      "Under Renovation" 
+      "Under Renovation"
       ];
     this.buildingClass = ["A",
       "B",
       "C",
       "D"
       ];
-    this.rentType = ["1031 Exchange",
-      "Development",
-      "Investment"
-      ];
+    this.rentType = ["Market", "Affordable/Rent Subsidized", "55+"];
     this.construction = ["Wood Frame",
       "Masonry",
       "Unreinforeced Masonry",
@@ -264,7 +261,7 @@ export class PropertyListComponent implements OnInit {
       "Crawl",
       "Slab"
       ];
-   
+
     this.parkingType = ["Off-Street", "Off-Site", "Mixed", "Carports", "Garages"];
     //this.primaryContact = ["Real Estate Brokerage", "Mortgage Brokerage", "Property Management", "Developer", "Lender", "Owner/Principle", "Title Company", "Vendor", "Law", "Appraisal"];
     //this.primaryContact = ["<a class=avatar>A</a>"];
@@ -330,7 +327,6 @@ export class PropertyListComponent implements OnInit {
             text: '<a class=avatar style="height: 30px; width: 30px;"><img src="'+snapshot.val()[key].contactPicture+'"></a>'+snapshot.val()[key].firstName + ' ' + snapshot.val()[key].lastName
           });
         }
-      console.log(this.primaryContact);
       }
     });
 
@@ -376,10 +372,10 @@ export class PropertyListComponent implements OnInit {
 
   //Function to view company details page - navigates using services so that id is not displayed in URL
   gotoPropertyDetails(id){
-    // this.router.navigateByData({
-    //   url: ["property/property-details"],
-    //   data: [{"propertyId": id}]
-    // });
+    this.router.navigateByData({
+      url: ["property/property-details"],
+      data: [{"propertyId": id}]
+    });
   }
 
   //Support function to temporally store item id to be deleted.
@@ -841,7 +837,7 @@ export class PropertyListComponent implements OnInit {
       "garages": "",
       "carports": "",
       "pictures": [],
-      "forSale": "",
+      "forSale": false,
       "primaryContact": "",
       "primaryContactPhone": "",
       "primaryContactEmail": "",
@@ -852,7 +848,7 @@ export class PropertyListComponent implements OnInit {
       "updatedBy": "",
       "updateTime": "",
       "lat": 0,
-      "lng": 0
+      "lng": 0,
     };
 
     this.propertyUpdateObj = {
@@ -907,7 +903,7 @@ export class PropertyListComponent implements OnInit {
       "garages": "",
       "carports": "",
       "pictures": [],
-      "forSale": "",
+      "forSale": false,
       "primaryContact": "",
       "primaryContactPhone": "",
       "primaryContactEmail": "",
@@ -1136,7 +1132,7 @@ export class PropertyListComponent implements OnInit {
     this.deleteIndex = index;
   }
   deleteImage(){
-    
+
     this.propertyUpdateObj.pictures.splice(this.deleteIndex, 1);
     $(".prev-slide").click();
   }

@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
           .then(value => {
             let user: any = firebase.auth().currentUser;
-            console.log(user);
+
             user.sendEmailVerification()
               .then(() => {
                 firebase.database().ref('users/' + user.uid).set({
@@ -88,7 +88,6 @@ export class SignupComponent implements OnInit {
                   email: user.email,
                 });
 
-                console.log(user);
                 this.router.navigateByData({
                   url: ["login"],
                   data: [{"state": "signup-email-sucessful"}]

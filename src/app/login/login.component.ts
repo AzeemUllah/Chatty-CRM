@@ -123,7 +123,7 @@ export class LoginComponent implements OnInit {
           }
         }, (error)=>{
           this.toastr.error('System Error. Call your Admininstrator!', 'Error!');
-          console.log("alpha",error);
+          console.log(error);
         });
     }
     else {

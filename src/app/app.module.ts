@@ -52,6 +52,9 @@ import { PropertyMultiSelectComponent } from './crm/main-components/multi-select
 
 // Import the library
 import { TagsInputModule } from 'ngx-tags-input/dist';
+import {ListingsComponent} from "./crm/main-components/listings/listings.component";
+import {ListingListComponent} from "./crm/main-components/listings/listing-list/listing-list.component";
+import {ListingDetailsComponent} from "./crm/main-components/listings/listing-details/listing-details.component";
 
 export class CustomOption extends ToastOptions {
   animate = 'flyRight';
@@ -107,6 +110,11 @@ export class CustomOption extends ToastOptions {
           { path: 'multi-select', component: MultiSelectComponent,  children: [
             { path: '', component: PropertyMultiSelectComponent},
             { path: 'property', component: PropertyMultiSelectComponent}
+          ]
+          },
+          { path: 'listing', component: ListingsComponent,  children: [
+            { path: '', component: ListingListComponent},
+            { path: 'listing-details', component: ListingDetailsComponent}
           ]
           }
         ]

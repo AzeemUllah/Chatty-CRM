@@ -26,6 +26,9 @@ import { PropertyMultiSelectComponent } from './main-components/multi-select/pro
 
 // Import the library
 import { TagsInputModule } from 'ngx-tags-input/dist';
+import { ListingsComponent } from './main-components/listings/listings.component';
+import { ListingDetailsComponent } from './main-components/listings/listing-details/listing-details.component';
+import { ListingListComponent } from './main-components/listings/listing-list/listing-list.component';
 
 @NgModule({
   imports: [
@@ -44,6 +47,9 @@ import { TagsInputModule } from 'ngx-tags-input/dist';
      SidebarComponent, DashboardComponent, ContactsComponent, ContactDetailsComponent, 
      ContactsListComponent, CompanyComponent, CompanyDetailsComponent, CompanyListComponent, 
      PropertyComponent, PropertyListComponent, PropertyDetailsComponent, MultiSelectComponent,
-      PropertyMultiSelectComponent]
+      PropertyMultiSelectComponent,
+      ListingsComponent,
+      ListingDetailsComponent,
+      ListingListComponent]
 })
 export class CrmModule { }

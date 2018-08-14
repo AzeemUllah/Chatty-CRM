@@ -15,7 +15,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="">
-          <table *ngIf="contactsList.length > 0 && !pivot" datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
+          <div [hidden]="pivot">
+            <table *ngIf="contactsList.length > 0" datatable id="example"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped custom-table" style="font-size: 12px;">
             <thead>
             <tr>
               <th class="text-center">Contact Name</th>
@@ -85,9 +86,10 @@
 
             </tbody>
           </table>
+          </div>
 
-
-          <div  *ngIf="contactsList.length > 0 && pivot"  class="row staff-grid-row">
+          <div [hidden]="!pivot">
+            <div  *ngIf="contactsList.length > 0"  class="row staff-grid-row">
             <div *ngFor="let contact of contactsList; let i = index" class="animated fadeInUp col-md-4 col-sm-4 col-xs-6 col-lg-3">
               <div class="profile-widget">
                 <div class="profile-img">
@@ -109,7 +111,7 @@
               </div>
             </div>
           </div>
-
+          </div>
 
 
         </div>

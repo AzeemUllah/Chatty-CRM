@@ -141,14 +141,21 @@ agm-map{
   width: 50px;
 }
 
+
 .form-control:focus {
   border-color: #1f89cc;
   box-shadow: none;
   outline: 0 none;
 }
 
+.filepond--drop-label label{
+  padding: .3em 0 !important;
+  font-size: 1.3em !important;
+}
 
 .filepond--drop-label {
+  padding: .3em 0 !important;
+  font-size: 1.3em !important;
 	color: #4c4e53;
 }
 
@@ -168,4 +175,23 @@ agm-map{
 
 .filepond--drip-blob {
 	background-color: #7f8a9a;
+}
+
+
+.image--cover {
+  width: 130px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 20px;
+
+  object-fit: cover;
+  object-position: center right;
+}
+.image--cover2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  object-fit: cover;
+  object-position: center right;
 }

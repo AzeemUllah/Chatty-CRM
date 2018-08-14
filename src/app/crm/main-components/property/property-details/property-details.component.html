@@ -5,6 +5,9 @@
       <h4 class="page-title">Property Details</h4>
     </div>
     <div class="col-sm-4 text-right m-b-30">
+        <button type="button" class="btn btn-lg btn-toggle {{propertyUpdateObj.forSale?'active':''}}"  (click)="forSale();" >
+          <div class="handle"></div>
+        </button>
     </div>
   </div>
   <div class="card-box m-b-0">
@@ -87,14 +90,35 @@
                       <span class="title">Website:</span>
                       <span class="text" (blur)="onBlurWebsite($event.target)" contenteditable="true">{{propertyUpdateObj.website}}</span>
                     </li>
+
+
+                    <!-- <div class="col-sm-4">
+                      <div class="form-group">
+                        <label  class="control-label">Master Metered</label>
+                      <br>
+                        <input (change)="masterMeteredChange($event)" [(ngModel)]="propertyUpdateObj.masterMetered" name="firstName28" class="" type="checkbox">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label  class="control-label">Indivisually Metered</label>
+                      <br>
+                        <input (change)="indivisuallyMeteredChange($event)" [(ngModel)]="propertyUpdateObj.individuallyMetered" name="firstName29" class="" type="checkbox">
+                      </div>
+                    </div> -->
+
                     <li>
                       <span class="title">Master Metered:</span>
-                      <span class="text" (blur)="onBlurMasterMetered($event.target)" contenteditable="true">{{propertyUpdateObj.masterMetered}}</span>
+                      <input (change)="masterMeteredChange($event)" [(ngModel)]="propertyUpdateObj.masterMetered" name="firstName28" class="" type="checkbox">
                     </li>
                     <li>
                       <span class="title">Individually Metered:</span>
-                      <span class="text" (blur)="onBlurIndividuallyMetered($event.target)" contenteditable="true">{{propertyUpdateObj.lastSaleType}}</span>
+                      <input (change)="indivisuallyMeteredChange($event)" [(ngModel)]="propertyUpdateObj.individuallyMetered" name="firstName29" class="" type="checkbox">
                     </li>
+
+
+
                     <li>
                       <span class="title">Parking Spaces:</span>
                       <span class="text" (blur)="onBlurParkingSpaces($event.target)" contenteditable="true">{{propertyUpdateObj.parkingSpaces}}</span>
@@ -103,10 +127,10 @@
                       <span class="title">Parking Ratio:</span>
                       <span class="text" (blur)="onBlurParkingRatio($event.target)" contenteditable="true">{{propertyUpdateObj.parkingRatio}}</span>
                     </li>
-                    <li>
+                    <!-- <li>
                       <span class="title">Parking Type:</span>
                       <span class="text" (blur)="onBlurParkingType($event.target)" contenteditable="true">{{propertyUpdateObj.parkingType}}</span>
-                    </li>
+                    </li> -->
                     <li>
                       <span class="title">Garages:</span>
                       <span class="text" (blur)="onBlurGarages($event.target)" contenteditable="true">{{propertyUpdateObj.garages}}</span>
@@ -388,6 +412,7 @@
 
 
 
+
             </div>
 
           </div>
@@ -399,15 +424,15 @@
     <div class="row user-tabs">
       <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
         <ul class="nav nav-tabs tabs nav-tabs-bottom" style="    text-align: center;">
-          <li class="active col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#activity" >Activity</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#portfolio" >History</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#projects" >Ownership</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#listing" >Sale</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#needs" >Needs</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#files">Files</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#notes" >Notes</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#pictures" >Pictures</a></li>
-          <li class="col-sm-1" style="padding: 0px;"><a data-toggle="tab" href="#location" >Location</a></li>
+          <li class=" active col-sm-1" style="padding: 0px; width:11%"><a data-toggle="tab" href="#unitMix" >Unit Mix</a></li>
+          <li class="col-sm-1" style="padding: 0px; width:11%"><a data-toggle="tab" href="#projects" >Ownership</a></li>
+          <li class=" col-sm-1" style="padding: 0px; width:11%"><a data-toggle="tab" href="#activity" >Activity</a></li>
+          <li *ngIf="propertyUpdateObj.forSale" class="col-sm-1" style="padding: 0px; width:11%"><a data-toggle="tab" href="#listing" >Sale</a></li>
+          <li class="col-sm-1" style="padding: 0px; width:11%"><a data-toggle="tab" href="#portfolio" >History</a></li>
+          <li class="col-sm-1" style="padding: 0px; width:11%"><a data-toggle="tab" href="#files">Files</a></li>
+          <li class="col-sm-1" style="padding: 0px; width:11%"><a data-toggle="tab" href="#pictures" >Attachments </a></li>
+          <li class="col-sm-1" style="padding: 0px;width:11%"><a data-toggle="tab" href="#notes" >Notes</a></li>
+          <li class="col-sm-1" style="padding: 0px;width:11%"><a data-toggle="tab" href="#location" >Location</a></li>
         </ul>
       </div>
     </div>
@@ -416,7 +441,18 @@
     <div class="col-lg-12">
       <div class="tab-content  profile-tab-content">
 
-        <div id="activity" class="tab-pane fade in active">
+        <div id="unitMix" class="tab-pane fade in active">
+          <div class="row">
+            <div class="col-md-12">
+              Need details and sample for this.
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div id="activity" class="tab-pane fade">
           <div class="row">
             <div class="col-md-12">
               <div>
@@ -551,7 +587,7 @@
                           </div>
                         </div>
                       </li>
-                    
+
                     </ul>
                   </div>
                 </div>
@@ -574,7 +610,7 @@
                   </ul>
                 </div>
                 <h4 class="project-title"><a >Owner One</a></h4>
-                
+
                 <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. When an unknown printer took a galley of type and
                   scrambled it...
@@ -615,14 +651,14 @@
                     </li>
                   </ul>
                 </div>
-               
+
               </div>
             </div>
 
           </div>
         </div>
 
-        <div id="listing" class="tab-pane fade">
+        <div id="listing" *ngIf="propertyUpdateObj.forSale" class="tab-pane fade">
           <div class="col-md-12" style="padding: 0px;">
             <div class="panel panel-table">
 
@@ -678,112 +714,6 @@
               </div>
               <div class="panel-footer">
                 <a class="text-primary">View all listings</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div id="needs" class="tab-pane fade">
-          <div class="add-task-btn-wrapper" style="padding-bottom: 12px; float: right;">
-												<span class="add-task-btn btn btn-default btn-xs">
-													Add Needs
-												</span>
-          </div>
-          <div class="task-wrapper" style="    padding: 0;">
-            <div class="task-list-container">
-              <div class="task-list-body" style="    width: 100%;">
-                <ul id="task-list">
-                  <li class="task">
-                    <div class="task-container">
-																	<span class="task-action-btn task-check">
-																		<span class="action-circle large complete-btn" title="Mark Complete">
-																			<i class="material-icons">check</i>
-																		</span>
-																	</span>
-                      <span class="task-label" contenteditable="true">West open house.</span>
-                      <span class="task-action-btn task-btn-right">
-
-																		<span class="action-circle large delete-btn" title="Delete Task">
-																			<i class="material-icons">delete</i>
-																		</span>
-																	</span>
-                    </div>
-                  </li>
-                  <li class="task">
-                    <div class="task-container">
-																	<span class="task-action-btn task-check">
-																		<span class="action-circle large complete-btn" title="Mark Complete">
-																			<i class="material-icons">check</i>
-																		</span>
-																	</span>
-                      <span class="task-label" contenteditable="true">Italian flooring</span>
-                      <span class="task-action-btn task-btn-right">
-
-																		<span class="action-circle large delete-btn" title="Delete Task">
-																			<i class="material-icons">delete</i>
-																		</span>
-																	</span>
-                    </div>
-                  </li>
-                  <li class="completed task">
-                    <div class="task-container">
-																	<span class="task-action-btn task-check">
-																		<span class="action-circle large complete-btn" title="Mark Complete">
-																			<i class="material-icons">check</i>
-																		</span>
-																	</span>
-                      <span class="task-label">Guest rooms</span>
-                      <span class="task-action-btn task-btn-right">
-
-																		<span class="action-circle large delete-btn" title="Delete Task">
-																			<i class="material-icons">delete</i>
-																		</span>
-																	</span>
-                    </div>
-                  </li>
-                  <li class="task">
-                    <div class="task-container">
-																	<span class="task-action-btn task-check">
-																		<span class="action-circle large complete-btn" title="Mark Complete">
-																			<i class="material-icons">check</i>
-																		</span>
-																	</span>
-                      <span class="task-label" contenteditable="true">Three Bedrooms</span>
-                      <span class="task-action-btn task-btn-right">
-
-																		<span class="action-circle large delete-btn" title="Delete Task">
-																			<i class="material-icons">delete</i>
-																		</span>
-																	</span>
-                    </div>
-                  </li>
-                  <li class="task">
-                    <div class="task-container">
-																	<span class="task-action-btn task-check">
-																		<span class="action-circle large complete-btn" title="Mark Complete">
-																			<i class="material-icons">check</i>
-																		</span>
-																	</span>
-                      <span class="task-label" contenteditable="true">Some other need</span>
-                      <span class="task-action-btn task-btn-right">
-
-																		<span class="action-circle large delete-btn" title="Delete Task">
-																			<i class="material-icons">delete</i>
-																		</span>
-																	</span>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-              <div class="task-list-footer">
-                <div class="new-task-wrapper">
-                  <textarea id="new-task" placeholder="Enter new need here. . ."></textarea>
-                  <span class="error-message hidden">You need to enter a need first</span>
-                  <span class="add-new-task-btn btn" id="add-task">Add Need</span>
-                  <span class="cancel-btn btn" id="close-task-panel">Close</span>
-                </div>
               </div>
             </div>
           </div>
@@ -893,7 +823,7 @@
 
         <div id="pictures" class="tab-pane fade">
           <div class="col-md-12" style="padding: 0px;">
-            
+
 
             <div class="col-sm-4" id="picDiv">
               <div class="form-group">
@@ -907,7 +837,7 @@
                          />
               </div>
             </div>
-  
+
             <div class="col-sm-8">
               <div class="form-group">
                 <div>
@@ -919,7 +849,7 @@
                       top: -5%;"><i  class="fa fa-trash-o m-r-5" style="color: #e70000;"></i></a>
                   <div class="carousel">
 
-                    
+
                     <ul class="slides" *ngIf="(propertyUpdateObj.pictures)?.length == 1">
                       <div>
                         <input type="radio" name="radio-buttons" id="one" checked />
@@ -928,25 +858,25 @@
                             <img src={{(propertyUpdateObj.pictures)[0]}}>
                           </div>
                           <div class="carousel-controls">
-  
+
                           </div>
                         </li>
                       </div>
                     </ul>
-  
-                    
+
+
                     <ul class="slides" *ngIf="(propertyUpdateObj.pictures)?.length > 1">
-                        
+
                       <div  *ngFor="let image of propertyUpdateObj.pictures; let i = index">
                         <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i==0" checked />
                         <input type="radio" name="radio-buttons" id="img-{{i}}" *ngIf="i!=0" />
-                      
+
                         <li class="slide-container">
                           <div class="slide-image">
-                              
-                            <img src={{image}}>  
+
+                            <img src={{image}}>
                           </div>
-                        
+
                           <div class="carousel-controls">
                             <label for="img-{{i-1}}" *ngIf="i != 0"  (click)="recordDeleteIndex(i-1)" class="prev-slide">
                               <span>&lsaquo;</span>
@@ -960,7 +890,7 @@
                     </ul>
                   </div>
                 </div>
-  
+
               </div>
             </div>
 

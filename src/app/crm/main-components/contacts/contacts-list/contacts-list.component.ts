@@ -338,8 +338,6 @@ export class ContactsListComponent implements OnInit {
       this.updatedContact.updatedBy = this.userId;
       this.updatedContact.birthdate = $("#birthDate").val();
 
-      console.log(typeof this.file);
-
       if(typeof this.file != 'undefined' ){
         firebase.storage().ref().child('/crm/contacts/'+this.makeid()+'.png').put(this.file).then(snapshot => {
           this.updatedContact.contactPicture = snapshot.downloadURL;
@@ -391,7 +389,6 @@ export class ContactsListComponent implements OnInit {
 
   uploadFile(event) {
     this.file = event.srcElement.files[0];
-    console.log(this.file);
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event:any) => {

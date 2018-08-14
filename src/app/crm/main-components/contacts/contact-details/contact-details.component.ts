@@ -215,8 +215,6 @@ export class ContactDetailsComponent implements OnInit {
         });
       }
 
-      console.log(this.updatedContact);
-
     });
   }
 

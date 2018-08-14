@@ -27,7 +27,6 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Success!', value);
         return("Done");
       })
       .catch(err => {
@@ -42,7 +41,7 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Nice, it worked!');
+
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
